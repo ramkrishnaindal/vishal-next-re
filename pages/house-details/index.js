@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { withRouter } from "react-router";
 import {
   Container,
@@ -255,9 +255,9 @@ const HouseDetailPage = (props) => {
   const router = useRouter();
   const { item } = props;
   const dispatch = useDispatch();
-  let query = useQuery();
+  // let query = useQuery();
   const [viewDetails, setViewDetails] = React.useState(false);
-  let token = query.get("token");
+  // let token = query.get("token");
   const [PropertyDetail, setPropertyDetail] = React.useState({});
   debugger;
   const propertyListItem = useSelector((state) => state.PropertyDetail.data);
@@ -713,7 +713,7 @@ const HouseDetailPage = (props) => {
                     if (!localStorage.getItem("user")) {
                       localStorage.setItem("bookNow", true);
                       localStorage.setItem("pid", router?.query);
-                      return props.history.push("/signin");
+                      return router.push("/signin");
                     }
                     setBookNow(true);
                     console.log("book now clicked");

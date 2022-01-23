@@ -69,7 +69,7 @@ const Finance = (props) => {
   return (
     <div>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="Finance"
         currentPage="Finance"
       />
@@ -116,7 +116,12 @@ const Finance = (props) => {
                           shrink: true,
                         }}
                       />
-                      <div style={{display:"flex",justifyContent:"space-between"}}>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
                         <TextField
                           className="form-group"
                           label="Loan Tenure"
@@ -135,12 +140,16 @@ const Finance = (props) => {
                         <div
                           class="input-group-append tenure-choice"
                           data-toggle="buttons"
-                          
                         >
                           <div
                             class="btn-group btn-group-toggle"
                             data-toggle="buttons"
-                            style={{display:"flex",flexDirection:"column", justifyContent:"center",alignItems:"flex-start"}}  
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "center",
+                              alignItems: "flex-start",
+                            }}
                           >
                             <label class="btn btn-secondary active">
                               <input

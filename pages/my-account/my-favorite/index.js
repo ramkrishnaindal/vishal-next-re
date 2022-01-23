@@ -23,7 +23,7 @@ import * as Snackbar from "../../../redux/actions/SnackbarActions";
 // import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import NextLink from "../../,,/components/UI/NextLink";
+import NextLink from "../../../components/UI/NextLink";
 const settings1 = {
   dots: false,
   arrows: false,
@@ -44,6 +44,15 @@ const MyFavorite = (props) => {
   const dispatch = useDispatch();
   const { classes } = props;
   const router = useRouter();
+  const logoutHandler = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("bookNow");
+      localStorage.removeItem("postProperty");
+      router.replace("/");
+    }
+  };
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     setName(user.firstName + " " + user.lastName);
@@ -110,7 +119,7 @@ const MyFavorite = (props) => {
   return (
     <div>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="My Favorite"
         currentPage="My Favorite"
       />
@@ -184,11 +193,11 @@ const MyFavorite = (props) => {
                       </li>
                       <li>
                         {" "}
-                        <a className="logout" href="#">
-                          <MUILink>
-                            <i className="fas fa-sign-out-alt"></i>Log out
-                          </MUILink>
-                        </a>{" "}
+                        {/* <NextLink className="logout" href="#"> */}
+                        <Typography onClick={logoutHandler}>
+                          <i className="fas fa-sign-out-alt"></i>Log out
+                        </Typography>
+                        {/* </NextLink>{" "} */}
                       </li>
                     </ul>
                   </Box>
@@ -232,7 +241,10 @@ const MyFavorite = (props) => {
                                     </a>
                                   </Grid>
                                   <Grid className="property-image">
-                                    <Slider {...settings1}>
+                                    <Slider
+                                      {...settings1}
+                                      style={{ display: "inline-block" }}
+                                    >
                                       {item?.images?.map((img) => (
                                         <Box className="property-image-thumb">
                                           <img
@@ -312,10 +324,10 @@ const MyFavorite = (props) => {
                                     </Grid>
                                   </Grid>
                                   <Grid container className="property-button">
-                                    {/* <a className="btn btn-primary" href="/">
+                                    {/* <NextLink className="btn btn-primary" href="/">
                                     {" "}
                                     MORE DETAIL
-                                  </a> */}
+                                  </NextLink> */}
                                     {/* <Link
                                       href={{
                                         pathname: "/house-details",

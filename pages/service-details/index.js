@@ -154,7 +154,7 @@ const ServiceDetailPage = (props) => {
       const response = await ApiClient.call(
         ApiClient.REQUEST_METHOD.POST,
         "/home/getServiceDetails",
-        { _id: serviceId },
+        { _id: Object.keys(serviceId)[0] + "" },
         {},
         { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
         false

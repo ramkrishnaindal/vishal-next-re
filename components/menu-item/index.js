@@ -193,7 +193,7 @@ const MenuItem = (props) => {
           }}
         >
           <img
-            src={process.env.PUBLIC_URL + "/property_img3.jpeg"}
+            src={process.env.NEXT_PUBLIC_PUBLIC_URL + "/property_img3.jpeg"}
             style={{ width: 100, height: 100 }}
           />
         </Grid>
@@ -232,12 +232,17 @@ const MenuItem = (props) => {
     console.log("menu", menu);
     setAnchorEl(null);
     setIsOpen(!isOpen);
-    router.push(menu.href);
+    if (menu?.href) router.push(menu.href);
   };
 
   return (
     <>
-      <Box onClick={onMenuClickListener} aria-controls="menu" m={0}>
+      <Box
+        href={href || "/"}
+        onClick={onMenuClickListener}
+        aria-controls="menu"
+        m={0}
+      >
         <Grid
           container
           className="primary-menu-navbar"
@@ -262,7 +267,7 @@ const MenuItem = (props) => {
           id="menu"
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
-          onClose={handleClose}
+          onClose={handleClose.bind(null, { href: href })}
         >
           {_renderSubmenu(id)}
         </Menu>

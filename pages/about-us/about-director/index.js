@@ -155,7 +155,7 @@ const AboutDirectors = (props) => {
   return loading == false ? (
     <div style={{ background: "#fff" }}>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="About Directors"
         currentPage="About The Director"
       />

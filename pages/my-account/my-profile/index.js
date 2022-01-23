@@ -9,12 +9,13 @@ import {
   Button,
 } from "@material-ui/core";
 import PageBanner from "../../../components/page-banner";
-// import "../my-account.css";
+// import styles from "../my-account.module.css";
 import ApiClient from "../../../api-client/index";
 import { useDispatch } from "react-redux";
 import * as Snackbar from "../../../redux/actions/SnackbarActions";
 import EditIcon from "@material-ui/icons//Edit";
-
+import NextLink from "./../../../components/UI/NextLink";
+import { useRouter } from "next/router";
 const useStyles = makeStyles((theme) => ({}));
 
 const MyProfile = (props) => {
@@ -25,6 +26,15 @@ const MyProfile = (props) => {
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const [verifyLoader, setVerifyLoader] = useState(false);
   const [otp, setOtp] = useState("");
+  const router = useRouter();
+  const logoutHandler = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("bookNow");
+      localStorage.removeItem("postProperty");
+      router.replace("/");
+    }
+  };
 
   const otpHandler = async () => {
     try {
@@ -109,7 +119,7 @@ const MyProfile = (props) => {
   return (
     <div>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="My Profile"
         currentPage="My Profile"
       />
@@ -133,44 +143,44 @@ const MyProfile = (props) => {
                   <Box className="box-body p-0">
                     <ul className="sidebar-account-menu">
                       <li>
-                        <a href="/my-account">
+                        <NextLink href="/my-account">
                           {" "}
                           <i className="fas fa-house-user"></i>My Account{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li className="active">
                         {" "}
-                        <a href="/my-account/my-profile">
+                        <NextLink href="/my-account/my-profile">
                           {" "}
                           <i className="far fa-user"></i>My Profile{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a href="/my-account/my-property">
+                        <NextLink href="/my-account/my-property">
                           {" "}
                           <i className="fas fa-building"></i>My Property{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a href="/my-account/my-booking">
+                        <NextLink href="/my-account/my-booking">
                           {" "}
                           <i className="far fa-list-alt"></i>My Booking{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a href="my-favorite">
+                        <NextLink href="/my-account/my-favorite">
                           {" "}
                           <i className="far fa-heart"></i>My Favorite{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a className="logout" href="#">
+                        <Typography className="logout" onClick={logoutHandler}>
                           <i className="fas fa-sign-out-alt"></i>Log out
-                        </a>{" "}
+                        </Typography>{" "}
                       </li>
                     </ul>
                   </Box>

@@ -5,20 +5,22 @@ import {
   GetPropertyDetailError,
   PostPropertySuccess,
   PostPropertyError,
-  RestPostPropertySuccess
+  RestPostPropertySuccess,
 } from "../redux/actions/PropertyAction";
 import ApiClient from "../api-client";
 import API_ENDPOINTS from "../constants/api-endpoints";
-import propertyList from '../utils/property-list.json';
+import propertyList from "../utils/property-list.json";
 import * as Snackbar from "../redux/actions/SnackbarActions";
 import * as PropertyAction from "../redux/actions/PropertyAction";
-import history from "../utils/history";
+import { useRouter } from "next/router";
+// import history from "../utils/history";
 /**
  * ****** Service to fetch Property List
  */
 export const PropertyListService = async (dispatch, data) => {
   // const result2 = propertyList;
   // dispatch(GetPropertyListSuccess(result2));
+  const router = useRouter();
   try {
     const result1 = await ApiClient.call(
       ApiClient.REQUEST_METHOD.POST,
@@ -574,8 +576,8 @@ export const PropertyAddService = async (dispatch, data, imageData) => {
 
     dispatch(PropertyAction.PropertyAddSuccess(result));
     dispatch(Snackbar.showSuccessSnackbar(result.message));
-    history.replace("/");
-    window.location.reload();
+    router.replace("/");
+    // window.location.reload();
   } catch (error) {
     dispatch(PropertyAction.PropertyAddError(error));
     dispatch(
@@ -591,14 +593,18 @@ export const PropertyAddService = async (dispatch, data, imageData) => {
  * Service to fetch Property detail
  */
 export const PropertyDetailService = async (dispatch, data) => {
-  try {    
+  try {
     const result = await ApiClient.call(
-      ApiClient.REQUEST_METHOD.POST, 
-      API_ENDPOINTS.PROPERTY_DETAIL, 
-      data, null, null, true);
-    console.log("result of property detail api", result);    
+      ApiClient.REQUEST_METHOD.POST,
+      API_ENDPOINTS.PROPERTY_DETAIL,
+      data,
+      null,
+      null,
+      true
+    );
+    console.log("result of property detail api", result);
     dispatch(GetPropertyDetailSuccess(result));
-  } catch (error) {    
+  } catch (error) {
     dispatch(GetPropertyDetailError(error));
   }
 };
@@ -617,7 +623,13 @@ export const ResetPostPropertySuccessService = async (dispatch) => {
 export const PostPropertyService = async (dispatch, data) => {
   try {
     const result = await ApiClient.call(
-      ApiClient.REQUEST_METHOD.POST, API_ENDPOINTS.POST_PROPERTY_ENDPOINT, data, null, null, true);
+      ApiClient.REQUEST_METHOD.POST,
+      API_ENDPOINTS.POST_PROPERTY_ENDPOINT,
+      data,
+      null,
+      null,
+      true
+    );
     dispatch(PostPropertySuccess(result));
   } catch (error) {
     dispatch(PostPropertyError(error));
@@ -627,7 +639,13 @@ export const PostPropertyService = async (dispatch, data) => {
 export const AddPropertyService = async (dispatch, data) => {
   try {
     const result = await ApiClient.call(
-      ApiClient.REQUEST_METHOD.POST, API_ENDPOINTS.ADD_PROPERTY, data, null, null, true);
+      ApiClient.REQUEST_METHOD.POST,
+      API_ENDPOINTS.ADD_PROPERTY,
+      data,
+      null,
+      null,
+      true
+    );
     dispatch(PostPropertySuccess(result));
   } catch (error) {
     dispatch(PostPropertyError(error));
@@ -637,11 +655,15 @@ export const AddPropertyService = async (dispatch, data) => {
 export const UploadPropertyImageService = async (dispatch, data) => {
   try {
     const result = await ApiClient.call(
-      ApiClient.REQUEST_METHOD.POST, API_ENDPOINTS.UPLOAD_IMAGE, data, null, null, true);
+      ApiClient.REQUEST_METHOD.POST,
+      API_ENDPOINTS.UPLOAD_IMAGE,
+      data,
+      null,
+      null,
+      true
+    );
     dispatch(PostPropertySuccess(result));
   } catch (error) {
     dispatch(PostPropertyError(error));
   }
 };
-
-

@@ -2,26 +2,37 @@ import React, { useEffect, useState } from "react";
 import {
   Container,
   Grid,
-  // Typography,
+  Typography,
   makeStyles,
   Box,
   // TextField,
   Button,
   Link as MUILink,
 } from "@material-ui/core";
-import NextLink from "../../../components/UI/NextLink";
+// import NextLink from "../../../components/UI/NextLink";
 import PageBanner from "../../../components/page-banner";
 // import "../my-account.css";
 import ApiClient from "../../../api-client";
 import * as Snackbar from "../../../redux/actions/SnackbarActions";
 // import { Link as RouterLink } from "react-router-dom";
 // import Link from "next/link";
-
+import NextLink from "./../../../components/UI/NextLink";
+import { useRouter } from "next/router";
 const useStyles = makeStyles((theme) => ({}));
 
 const MyBooking = (props) => {
   const [name, setName] = useState("");
   const [booking, setBookingList] = useState([]);
+  const router = useRouter();
+
+  const logoutHandler = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("bookNow");
+      localStorage.removeItem("postProperty");
+      router.replace("/");
+    }
+  };
 
   const { classes } = props;
 
@@ -58,7 +69,7 @@ const MyBooking = (props) => {
   return (
     <div>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="My Booking"
         currentPage="My Booking"
       />
@@ -134,11 +145,11 @@ const MyBooking = (props) => {
                       <li>
                         {" "}
                         {/* <Link className="logout" href="#" passHref> */}
-                        <NextLink href="#">
-                          <Typography className="logout">
-                            <i className="fas fa-sign-out-alt"></i>Log out
-                          </Typography>
-                        </NextLink>
+                        {/* <NextLink href="#"> */}
+                        <Typography className="logout" onClick={logoutHandler}>
+                          <i className="fas fa-sign-out-alt"></i>Log out
+                        </Typography>
+                        {/* </NextLink> */}
                         {/* </Link>{" "} */}
                       </li>
                     </ul>
@@ -169,7 +180,7 @@ const MyBooking = (props) => {
                             </Box>
                             <Box class="tabel-row">
                               <Box class="table-cell booking-img">
-                                <a href="#">
+                                <NextLink href="#">
                                   <img
                                     src={
                                       item?.images[0]?.mainImage[0]?.path
@@ -181,7 +192,7 @@ const MyBooking = (props) => {
                                     width="75"
                                     height="75"
                                   />
-                                </a>
+                                </NextLink>
                               </Box>
                               <Box class="table-cell">
                                 <p class="booking-title">

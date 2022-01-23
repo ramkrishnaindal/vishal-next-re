@@ -9,6 +9,8 @@ import {
   Button,
 } from "@material-ui/core";
 import PageBanner from "../../components/page-banner";
+import NextLink from "./../../components/UI/NextLink";
+import { useRouter } from "next/router";
 // import './my-account.css';
 
 const useStyles = makeStyles((theme) => ({}));
@@ -17,7 +19,15 @@ const MyAccount = (props) => {
   const [name, setName] = useState("user");
   const [email, setEmail] = useState("-");
   const [mobile, setMobile] = useState("-");
-
+  const router = useRouter();
+  const logoutHandler = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("bookNow");
+      localStorage.removeItem("postProperty");
+      router.replace("/");
+    }
+  };
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     setName(user.firstName + " " + user.lastName);
@@ -28,7 +38,7 @@ const MyAccount = (props) => {
   return (
     <div>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="My Acount"
         currentPage="My Account"
       />
@@ -52,44 +62,44 @@ const MyAccount = (props) => {
                   <Box className="box-body p-0">
                     <ul className="sidebar-account-menu">
                       <li className="active">
-                        <a href="/my-account">
+                        <NextLink href="/my-account">
                           {" "}
                           <i className="fas fa-house-user"></i>My Account{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a href="/my-account/my-profile">
+                        <NextLink href="/my-account/my-profile">
                           {" "}
                           <i className="far fa-user"></i>My Profile{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a href="/my-account/my-property">
+                        <NextLink href="/my-account/my-property">
                           {" "}
                           <i className="fas fa-building"></i>My Property{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a href="/my-account/my-booking">
+                        <NextLink href="/my-account/my-booking">
                           {" "}
                           <i className="far fa-list-alt"></i>My Booking{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a href="my-favorite">
+                        <NextLink href="/my-account/my-favorite">
                           {" "}
                           <i className="far fa-heart"></i>My Favorite{" "}
-                        </a>{" "}
+                        </NextLink>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a className="logout" href="#">
+                        <Typography className="logout" onClick={logoutHandler}>
                           <i className="fas fa-sign-out-alt"></i>Log out
-                        </a>{" "}
+                        </Typography>{" "}
                       </li>
                     </ul>
                   </Box>
@@ -135,12 +145,12 @@ const MyAccount = (props) => {
                       </Grid>
                       <hr />
                       <Box align="right">
-                        <a
+                        <NextLink
                           className="btn btn-primary"
                           href="/my-account/my-profile"
                         >
                           Edit Profile
-                        </a>
+                        </NextLink>
                       </Box>
                     </Box>
                   </Box>

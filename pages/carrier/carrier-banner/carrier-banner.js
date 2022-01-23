@@ -5,7 +5,9 @@ import React from "react";
 function CarrierBannerImg() {
   return (
     <Box className="onlineFormHeader">
-      <img src={process.env.PUBLIC_URL + "/banner/carrier-banner.jpg"} />
+      <img
+        src={process.env.NEXT_PUBLIC_PUBLIC_URL + "/banner/carrier-banner.jpg"}
+      />
     </Box>
   );
 }

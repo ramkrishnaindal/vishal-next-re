@@ -12,7 +12,8 @@ import PropTypes from "prop-types";
 // import {Link as RouterLink} from "react-router-dom";
 // import "./page-slider.css";
 
-const useStyles = makeStyles((theme) => ({
+// const useStyles = makeStyles((theme) => (
+const classes = {
   bannerContainer: {
     display: "flex",
     alignItems: "center",
@@ -62,33 +63,35 @@ const useStyles = makeStyles((theme) => ({
       fontSize: 24,
     },
   },
-}));
+};
 
 const PageBanner = (props) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const { showSearch = false, bgImage, title, currentPage } = props;
 
   return (
     <div
-      className={`${classes.bannerContainer}`}
-      style={{ backgroundImage: `url(${bgImage}` }}
+      style={{ ...classes.bannerContainer, backgroundImage: `url(${bgImage}` }}
     >
-      <div className={classes.overlay}></div>
-      <Grid container className={classes.bannersummery}>
+      <div style={{ ...classes.overlay }}></div>
+      <Grid container style={{ ...classes.bannersummery }}>
         <Grid item xs={12} md={12}>
-          <Typography variant="h1" className={classes.bannertitle}>
+          <Typography variant="h1" style={{ ...classes.bannertitle }}>
             {title}
           </Typography>
 
-          <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumbs}>
+          <Breadcrumbs
+            aria-label="breadcrumb"
+            style={{ ...classes.breadcrumbs }}
+          >
             {/* <RouterLink href="/" passHref> */}
-            <NextLink href="/" className={classes.breadcrumbtext}>
+            <NextLink href="/" style={{ ...classes.breadcrumbtext }}>
               <Typography color="inherit" underline="hover">
                 HOME
               </Typography>
             </NextLink>
             {/* </RouterLink> */}
-            <Typography className={classes.breadcrumbtext}>
+            <Typography style={{ ...classes.breadcrumbtext }}>
               {currentPage}
             </Typography>
           </Breadcrumbs>

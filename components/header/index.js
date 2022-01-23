@@ -40,6 +40,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 // import BookNowModal from "../book-now/book-now";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+
 import * as SitevisitAction from "../../redux/actions/SitevisitAction";
 
 // import ReactDOM from "react-dom";
@@ -227,8 +228,8 @@ const Header = (props) => {
   };
 
   useEffect(() => {
-    let userdata = localStorage.getItem("user");
-    if (userdata) {
+    let userdataLC = localStorage.getItem("user");
+    if (userdataLC) {
       setUserdata(true);
     } else {
       setUserdata(false);
@@ -388,9 +389,9 @@ const Header = (props) => {
                   onClick={() => {
                     if (!localStorage.getItem("user")) {
                       localStorage.setItem("postProperty", true);
-                      return props.history.push("/signin");
+                      return router.push("/signin");
                     } else {
-                      return props.history.push("/post-property");
+                      return router.push("/post-property");
                     }
                   }}
                 >

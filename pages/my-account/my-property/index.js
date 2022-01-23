@@ -7,7 +7,7 @@ import {
   Box,
   // TextField,
   // Button,
-  Link as MUILink,
+  // Link as MUILink,
 } from "@material-ui/core";
 import NextLink from "../../../components/UI/NextLink";
 import PageBanner from "../../../components/page-banner";
@@ -21,7 +21,7 @@ import BathtubIcon from "@material-ui/icons/Bathtub";
 import API_ENDPOINTS from "./../../../constants/api-endpoints";
 import ApiClient from "./../../../api-client/index";
 // import { Link, useHistory } from "react-router-dom";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/router";
 // import "../my-account.css";
 const settings1 = {
@@ -45,6 +45,15 @@ const MyProperty = (props) => {
   const router = useRouter();
   const [propertyList, setPropertyList] = useState([]);
   // const populatePropertyListDetails = () => {
+  const logoutHandler = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("user");
+      localStorage.removeItem("bookNow");
+      localStorage.removeItem("postProperty");
+      router.replace("/");
+    }
+  };
+
   const propertyClickHandler = (propertyId) => {
     router.push({
       pathname: "/house-details",
@@ -78,7 +87,7 @@ const MyProperty = (props) => {
   return (
     <div>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="My Property"
         currentPage="My Property"
       />
@@ -111,7 +120,7 @@ const MyProperty = (props) => {
                       <li>
                         {" "}
                         {/* <Link href="/my-profile" passHref> */}
-                        <NextLink href="/my-profile">
+                        <NextLink href="/my-account/my-profile">
                           <i className="far fa-user"></i>My Profile{" "}
                         </NextLink>
                         {/* <MUILink href="/my-profile" component={NextLink}>
@@ -122,7 +131,7 @@ const MyProperty = (props) => {
                       <li className="active">
                         {" "}
                         {/* <Link href="/my-property" passHref> */}
-                        <NextLink href="/my-property">
+                        <NextLink href="/my-account/my-property">
                           <i className="fas fa-building"></i>My Property{" "}
                         </NextLink>
                         {/* <MUILink href="/my-property" component={NextLink}>
@@ -133,7 +142,7 @@ const MyProperty = (props) => {
                       <li>
                         {" "}
                         {/* <Link href="/my-booking" passHref> */}
-                        <NextLink href="/my-booking">
+                        <NextLink href="/my-account/my-booking">
                           <i className="far fa-list-alt"></i>My Booking{" "}
                         </NextLink>
                         {/* <MUILink href="/my-booking" component={NextLink}>
@@ -144,7 +153,7 @@ const MyProperty = (props) => {
                       <li>
                         {" "}
                         {/* <Link href="/my-favorite" passHref> */}
-                        <NextLink href="/my-favorite">
+                        <NextLink href="/my-account/my-favorite">
                           <i className="far fa-heart"></i>My Favorite{" "}
                         </NextLink>
                         {/* <MUILink href="/my-favorite" component={NextLink}>
@@ -152,12 +161,12 @@ const MyProperty = (props) => {
                         </MUILink> */}
                         {/* </Link>{" "} */}
                       </li>
-                      {/* <li>
+                      <li>
                         {" "}
-                        <Link className="logout" href="#">
+                        <Typogaphy className="logout" onClick={logoutHandler}>
                           <i className="fas fa-sign-out-alt"></i>Log out
-                        </Link>{" "}
-                      </li> */}
+                        </Typogaphy>{" "}
+                      </li>
                     </ul>
                   </Box>
                 </Box>
@@ -306,7 +315,7 @@ const MyProperty = (props) => {
                                         state={property?._id}
                                         className="btn btn-primary"
                                       >
-                                        {/* <a className="btn btn-primary" href="/"> */}{" "}
+                                        {/* <NextLink className="btn btn-primary" href="/"> */}{" "}
                                         MORE DETAIL
                                         {/* </a> */}
                                       </button>

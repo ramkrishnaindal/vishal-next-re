@@ -316,9 +316,9 @@ export default function Mobilemenu(props) {
                     onClick={() => {
                       if (!localStorage.getItem("user")) {
                         localStorage.setItem("postProperty", true);
-                        return props.history.push("/signin");
+                        return router.push("/signin");
                       } else {
-                        return props.history.push("/post-property");
+                        return router.push("/post-property");
                       }
                     }}
                   >

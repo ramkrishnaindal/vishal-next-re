@@ -40,7 +40,7 @@ const ConstructionProcess = (props) => {
   return (
     <div style={{ background: "#fff" }}>
       <PageBanner
-        bgImage={"/about_us.jpeg"}
+        bgImage={"/images/about_us.jpeg"}
         title="Construction Process"
         currentPage="Construction Process"
       />
