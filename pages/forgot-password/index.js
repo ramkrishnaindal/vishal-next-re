@@ -10,7 +10,7 @@ import {
   Button,
   Link,
 } from "@material-ui/core";
-import NextLink from '"../../components/UI/NextLink"';
+import NextLink from "../../components/UI/NextLink";
 // import bannerImage from "/public/images/banner-2.jpeg";
 import * as ForgotAction from "../../redux/actions/ForgotAction";
 import { useDispatch } from "react-redux";
@@ -124,15 +124,12 @@ const ForgotPage = (props) => {
     console.log("reqData  ", reqData);
     dispatch(ForgotAction.ForgotRequestAsync(reqData));
   };
-  const handleChange = (e) => {
-    //
-  };
 
   return (
     <div
       className={`${classes.bannerContainer}`}
       style={{
-        backgroundImage: `url("/public/images/banner-2.jpeg")`,
+        backgroundImage: `url("/images/banner-2.jpeg")`,
         // height: 326,
         overflow: "hidden",
         textAlign: "center",
@@ -175,9 +172,9 @@ const ForgotPage = (props) => {
 
           <Grid item xs={12} md={12} className={classes.gridStyle3}>
             {/* <RouterLink href="/signin" passHref> */}
-            <Typography href="/signin" component={NextLink}>
-              Back to login
-            </Typography>
+            <NextLink href="/signin">
+              <Typography>Back to login</Typography>
+            </NextLink>
             {/* </RouterLink> */}
           </Grid>
         </Grid>

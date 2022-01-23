@@ -88,16 +88,16 @@ export const clientLookingforInfo = {
 };
 
 export const building_materials = [
-  { imageUrl: "/public/images/building_material_img/m2.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m3.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m4.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m5.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m6.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m7.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m8.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m9.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m10.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m11.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m12.png", desc: "" },
-  { imageUrl: "/public/images/building_material_img/m13.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m2.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m3.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m4.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m5.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m6.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m7.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m8.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m9.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m10.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m11.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m12.png", desc: "" },
+  { imageUrl: "/images/building_material_img/m13.png", desc: "" },
 ];

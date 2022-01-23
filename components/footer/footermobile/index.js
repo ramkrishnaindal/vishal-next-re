@@ -325,14 +325,9 @@ export default function Mobilefootermenu() {
         className={classes.footermenu}
       >
         {/* <Link href="/" passHref> */}
-        <BottomNavigationAction
-          label="Home"
-          value="home"
-          icon={<Home />}
-          component={NextLink}
-          href="/"
-          className={classes.TextbottomMenuColor}
-        />
+        <NextLink href="/" className={classes.TextbottomMenuColor}>
+          <BottomNavigationAction label="Home" value="home" icon={<Home />} />
+        </NextLink>
         {/* </Link> */}
 
         <BottomNavigationAction
@@ -342,24 +337,20 @@ export default function Mobilefootermenu() {
           className={classes.TextbottomMenuColor}
         />
         {/* <Link href="/search-property-details?type=Sell" passHref> */}
-        <BottomNavigationAction
-          label="Sell"
-          value="/sell"
-          icon={<Sell />}
-          component={NextLink}
+        <NextLink
           href="/search-property-details?type=Sell"
           className={classes.TextbottomMenuColor}
-        />
+        >
+          <BottomNavigationAction label="Sell" value="/sell" icon={<Sell />} />
+        </NextLink>
         {/* </Link> */}
         {/* <Link href="/search-property-details?type=Rent" passHref> */}
-        <BottomNavigationAction
-          label="Rent"
-          value="/rent"
-          icon={<Rent />}
-          component={NextLink}
+        <NextLink
           href="/search-property-details?type=Rent"
           className={classes.TextbottomMenuColor}
-        />
+        >
+          <BottomNavigationAction label="Rent" value="/rent" icon={<Rent />} />
+        </NextLink>
         {/* </Link> */}
         <BottomNavigationAction
           label="Visit"

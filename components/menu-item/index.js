@@ -130,15 +130,15 @@ const MenuItem = (props) => {
               //   href={{ pathname: "/service-details", query: sm._id }}
               //   passHref
               // >
-              <DropdownMenu
-                onClick={() => handleClose(sm)}
-                style={mStyle}
-                component={NextLink}
+              <NextLink
                 key={idx}
                 href={{ pathname: "/service-details", query: sm._id }}
+                style={mStyle}
               >
-                {sm.title}
-              </DropdownMenu>
+                <DropdownMenu onClick={() => handleClose(sm)}>
+                  {sm.title}
+                </DropdownMenu>
+              </NextLink>
               // </Link>
             );
           })}
@@ -249,13 +249,9 @@ const MenuItem = (props) => {
           }}
         >
           {/* <Link href={href} passHref> */}
-          <Typography
-            href={href || "/"}
-            className={menuStyle}
-            component={NextLink}
-          >
-            {title}
-          </Typography>
+          <NextLink href={href || "/"} className={menuStyle}>
+            <Typography>{title}</Typography>
+          </NextLink>
           {/* </Link> */}
           {_renderIcon()}
         </Grid>

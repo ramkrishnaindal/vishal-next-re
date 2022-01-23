@@ -102,15 +102,14 @@ export default function Blog() {
                     passHref
                   > */}
                   <Box className="ParentButton">
-                    <Typography
-                      component={NextLink}
+                    <NextLink
                       href={{
                         pathname: "/blog-details",
                         query: _id,
                       }}
                     >
-                      View Details{" "}
-                    </Typography>
+                      <Button>View Details </Button>
+                    </NextLink>
                   </Box>
                   {/* </Link> */}
                 </CardContent>

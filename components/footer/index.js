@@ -308,15 +308,14 @@ const Footer = (props) => {
                   }}
                   passHref
                 > */}
-                <Typography
-                  className={`${classes.text3} links`}
-                  component={NextLink}
+                <NextLink
                   href={{
                     pathname: "/",
                   }}
+                  className={`${classes.text3} links`}
                 >
-                  Home
-                </Typography>
+                  <Typography>Home</Typography>
+                </NextLink>
                 {/* </Link> */}
               </Box>
               <Box style={{ lineHeight: "30px" }}>
@@ -344,15 +343,14 @@ const Footer = (props) => {
                   }}
                   passHref
                 > */}
-                <Typography
+                <NextLink
                   className={`${classes.text3} links`}
-                  component={NextLink}
                   href={{
                     pathname: "search-property-details?type=Sell",
                   }}
                 >
-                  Properties
-                </Typography>
+                  <Typography>Properties</Typography>
+                </NextLink>
                 {/* </Link> */}
               </Box>
               <Box style={{ lineHeight: "30px" }}>
@@ -362,15 +360,14 @@ const Footer = (props) => {
                   }}
                   passHref
                 > */}
-                <Typography
+                <NextLink
                   className={`${classes.text3} links`}
-                  component={NextLink}
                   href={{
                     pathname: "carrier",
                   }}
                 >
-                  Careers
-                </Typography>
+                  <Typography>Careers</Typography>
+                </NextLink>
                 {/* </Link> */}
               </Box>
               <Box style={{ lineHeight: "30px" }}>
@@ -380,15 +377,14 @@ const Footer = (props) => {
                   }}
                   passHref
                 > */}
-                <Typography
+                <NextLink
                   className={`${classes.text3} links`}
-                  component={NextLink}
                   href={{
                     pathname: "blog",
                   }}
                 >
-                  Blog
-                </Typography>
+                  <Typography>Blog</Typography>
+                </NextLink>
                 {/* </Link> */}
               </Box>
               <Box style={{ lineHeight: "30px" }}>
@@ -398,15 +394,14 @@ const Footer = (props) => {
                   }}
                   passHref
                 > */}
-                <Typography
+                <NextLink
                   className={`${classes.text3} links`}
-                  component={NextLink}
                   href={{
                     pathname: "/supplier-form",
                   }}
                 >
-                  Supplier Form
-                </Typography>
+                  <Typography>Supplier Form</Typography>
+                </NextLink>
                 {/* </Link> */}
               </Box>
               <Box style={{ lineHeight: "30px" }}>
@@ -416,15 +411,14 @@ const Footer = (props) => {
                   }}
                   passHref
                 > */}
-                <Typography
+                <NextLink
                   className={`${classes.text3} links`}
-                  component={NextLink}
                   href={{
                     pathname: "/contact-us",
                   }}
                 >
-                  Contact
-                </Typography>
+                  <Typography>Contact</Typography>
+                </NextLink>
                 {/* </Link> */}
               </Box>
             </Grid>
@@ -438,17 +432,16 @@ const Footer = (props) => {
                   //   }}
                   //   passHref
                   // >
-                  <Typography
+                  <NextLink
                     className={`${classes.text3} links`}
-                    component={NextLink}
                     href={{
                       pathname: "/cms-page-details",
                       query: lp._id,
                     }}
                     key={index + 5000}
                   >
-                    {lp.pageName || ""}
-                  </Typography>
+                    <Typography>{lp.pageName || ""}</Typography>
+                  </NextLink>
                   // </Link>
                 ))}
             </Grid>
@@ -575,7 +568,7 @@ const Footer = (props) => {
         </Grid>
       </Grid>
       <Grid
-        container
+        // container
         style={{ marginTop: 40, display: "flex", flexWrap: "wrap" }}
         spacing={2}
       >
@@ -592,16 +585,20 @@ const Footer = (props) => {
               xs={12}
               md={2}
               mb={2}
-              component={NextLink}
+
               // // onClick={onBottomPageHandler.bind(this, bp._id)}
-              href={{
-                pathname: "/cms-page-details",
-                query: bp._id,
-              }}
             >
-              <Typography className={classes.text4}>
-                {bp.pageName || ""}
-              </Typography>
+              <NextLink
+                className={`${classes.text3} links`}
+                href={{
+                  pathname: "/cms-page-details",
+                  query: bp._id,
+                }}
+              >
+                <Typography className={classes.text4}>
+                  {bp.pageName || ""}
+                </Typography>
+              </NextLink>
             </Grid>
             // </Link>
           ))}

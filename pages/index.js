@@ -411,15 +411,15 @@ const HomePage = (props) => {
                 <Typography variant="h2">{aboutSection.title}</Typography>
                 <Typography>{aboutSection.description}</Typography>
                 {/* <Link href={{ pathname: "/about-us" }} passHref> */}
-                <Typography
-                  component={NextLink}
-                  href={{ pathname: "/about-us" }}
-                  variant="outlined"
-                  color="primary"
-                  className="about-btn"
-                >
-                  Read More
-                </Typography>
+                <NextLink href={{ pathname: "/about-us" }}>
+                  <Typography
+                    variant="outlined"
+                    color="primary"
+                    className="about-btn"
+                  >
+                    Read More
+                  </Typography>
+                </NextLink>
                 {/* </Link> */}
               </Grid>
             </Grid>

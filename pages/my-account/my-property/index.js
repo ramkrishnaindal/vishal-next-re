@@ -103,41 +103,53 @@ const MyProperty = (props) => {
                     <ul className="sidebar-account-menu">
                       <li>
                         {/* <Link href="/my-account" passHref> */}
-                        <MUILink href="/my-account" component={NextLink}>
+                        <NextLink href="/my-account">
                           <i className="fas fa-house-user"></i>My Account{" "}
-                        </MUILink>
+                        </NextLink>
                         {/* </Link>{" "} */}
                       </li>
                       <li>
                         {" "}
                         {/* <Link href="/my-profile" passHref> */}
-                        <MUILink href="/my-profile" component={NextLink}>
+                        <NextLink href="/my-profile">
                           <i className="far fa-user"></i>My Profile{" "}
-                        </MUILink>
+                        </NextLink>
+                        {/* <MUILink href="/my-profile" component={NextLink}>
+                          <i className="far fa-user"></i>My Profile{" "}
+                        </MUILink> */}
                         {/* </Link>{" "} */}
                       </li>
                       <li className="active">
                         {" "}
                         {/* <Link href="/my-property" passHref> */}
-                        <MUILink href="/my-property" component={NextLink}>
+                        <NextLink href="/my-property">
                           <i className="fas fa-building"></i>My Property{" "}
-                        </MUILink>
+                        </NextLink>
+                        {/* <MUILink href="/my-property" component={NextLink}>
+                          <i className="fas fa-building"></i>My Property{" "}
+                        </MUILink> */}
                         {/* </Link>{" "} */}
                       </li>
                       <li>
                         {" "}
                         {/* <Link href="/my-booking" passHref> */}
-                        <MUILink href="/my-booking" component={NextLink}>
+                        <NextLink href="/my-booking">
                           <i className="far fa-list-alt"></i>My Booking{" "}
-                        </MUILink>
+                        </NextLink>
+                        {/* <MUILink href="/my-booking" component={NextLink}>
+                          <i className="far fa-list-alt"></i>My Booking{" "}
+                        </MUILink> */}
                         {/* </Link>{" "} */}
                       </li>
                       <li>
                         {" "}
                         {/* <Link href="/my-favorite" passHref> */}
-                        <MUILink href="/my-favorite" component={NextLink}>
+                        <NextLink href="/my-favorite">
                           <i className="far fa-heart"></i>My Favorite{" "}
-                        </MUILink>
+                        </NextLink>
+                        {/* <MUILink href="/my-favorite" component={NextLink}>
+                          <i className="far fa-heart"></i>My Favorite{" "}
+                        </MUILink> */}
                         {/* </Link>{" "} */}
                       </li>
                       {/* <li>

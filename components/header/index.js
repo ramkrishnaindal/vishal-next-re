@@ -373,22 +373,18 @@ const Header = (props) => {
                 }}
               >
                 {/* <Link href="/book-online" passHref> */}
-                <Typography
-                  variant="contained"
-                  component={NextLink}
+                <NextLink
                   href="/book-online"
                   className={`${classes.btn1} btn-book-online`}
                 >
-                  {APP_CONSTANTS.btnBookOnlineText}
-                </Typography>
+                  <Button variant="contained">
+                    {APP_CONSTANTS.btnBookOnlineText}
+                  </Button>
+                </NextLink>
                 {/* </Link> */}
-
-                <Typography
-                  variant="contained"
-                  className={classes.btn2}
-                  component={NextLink}
-                  // to="/post-property"
+                <NextLink
                   href="/"
+                  className={classes.btn2}
                   onClick={() => {
                     if (!localStorage.getItem("user")) {
                       localStorage.setItem("postProperty", true);
@@ -398,8 +394,14 @@ const Header = (props) => {
                     }
                   }}
                 >
-                  Post Property
-                </Typography>
+                  <Button
+                    variant="contained"
+
+                    // to="/post-property"
+                  >
+                    Post Property
+                  </Button>
+                </NextLink>
 
                 {userdata ? (
                   <>
@@ -443,9 +445,12 @@ const Header = (props) => {
               <Box className="logoImage">
                 <div className="logo">
                   {/* <Link href="/" passHref> */}
-                  <MUILink href="/" component={NextLink}>
+                  <NextLink href="/">
+                    <img src="/images/vishal-logo.png" />
+                  </NextLink>
+                  {/* <MUILink href="/" component={NextLink}>
                     <img src="/images/vishal-logo.png" />{" "}
-                  </MUILink>
+                  </MUILink> */}
                   {/* </Link> */}
                 </div>
               </Box>
@@ -483,14 +488,11 @@ const Header = (props) => {
                   ""
                 ) : (
                   // <Link href="/signin" passHref>
-                  <Typography
-                    variant="outlined"
-                    className={classes.btn4}
-                    component={NextLink}
-                    href="/signin"
-                  >
-                    Login / Signup
-                  </Typography>
+                  <NextLink href="/signin">
+                    <Button variant="outlined" className={classes.btn4}>
+                      Login / Signup
+                    </Button>
+                  </NextLink>
                   // </Link>
                 )}
               </Grid>

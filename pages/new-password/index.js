@@ -145,7 +145,7 @@ const NewPasswordPage = (props) => {
     <div
       className={`${classes.bannerContainer}`}
       style={{
-        backgroundImage: `url("/public/images/banner-2.jpeg")`,
+        backgroundImage: `url("/images/banner-2.jpeg")`,
         // height: 326,
         overflow: "hidden",
         textAlign: "center",
@@ -207,9 +207,9 @@ const NewPasswordPage = (props) => {
 
           <Grid item xs={12} md={12} className={classes.gridStyle3}>
             {/* <RouterLink href="/signin" passHref> */}
-            <Typography component={NextLink} href="/signin">
-              Back to login
-            </Typography>
+            <NextLink href="/signin">
+              <Typography>Back to login</Typography>
+            </NextLink>
             {/* </RouterLink> */}
           </Grid>
         </Grid>

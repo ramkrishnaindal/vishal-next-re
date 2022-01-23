@@ -175,23 +175,23 @@ export default function Mobilemenu(props) {
           return (
             <div onClick={!submenu ? toggleDrawer(anchor, false) : () => {}}>
               {/* <Link href={href} passHref> */}
-              <ListItem
-                button
-                key={id}
-                onClick={() => {
-                  setNo({
-                    no: index,
-                    status: !no.status,
-                  });
-                }}
-                component={NextLink}
-                href={href || "/"}
-              >
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={title} />
-              </ListItem>
+              <NextLink href={href || "/"}>
+                <ListItem
+                  button
+                  key={id}
+                  onClick={() => {
+                    setNo({
+                      no: index,
+                      status: !no.status,
+                    });
+                  }}
+                >
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={title} />
+                </ListItem>
+              </NextLink>
               {/* </Link> */}
               {submenu
                 ? submenu.map((sm, i) => {
@@ -205,30 +205,32 @@ export default function Mobilemenu(props) {
                           //     }}
                           //     passHref
                           //   >
-                          <ListItem
-                            onClick={toggleDrawer(anchor, false)}
+                          <NextLink
+                            key={i}
+                            href={{
+                              pathname: "/service-details",
+                              query: sm._id,
+                            }}
                             className={
                               no.no == index && no.status === true
                                 ? "showNav"
                                 : "hideNav"
                             }
-                            button
-                            key={i}
-                            component={NextLink}
-                            href={{
-                              pathname: "/service-details",
-                              query: sm._id,
-                            }}
                           >
-                            <ListItemIcon>
-                              <DoubleArrowIcon />
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                              <b>
-                                {" "}
-                                <ListItemText primary={sm.title} />
-                              </b>
-                            </ListItemIcon>
-                          </ListItem>
+                            <ListItem
+                              onClick={toggleDrawer(anchor, false)}
+                              button
+                            >
+                              <ListItemIcon>
+                                <DoubleArrowIcon />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                <b>
+                                  {" "}
+                                  <ListItemText primary={sm.title} />
+                                </b>
+                              </ListItemIcon>
+                            </ListItem>
+                          </NextLink>
                           // </Link>
                         );
                       });
@@ -243,27 +245,26 @@ export default function Mobilemenu(props) {
 
                     return (
                       // <Link href={href} passHref>
-                      <ListItem
-                        onClick={toggleDrawer(anchor, false)}
+                      <NextLink
+                        key={id}
+                        href={href || "/"}
                         className={
                           no.no == index && no.status === true
                             ? "showNav"
                             : "hideNav"
                         }
-                        button
-                        key={id}
-                        component={NextLink}
-                        href={href || "/"}
                       >
-                        <ListItemIcon>
-                          <DoubleArrowIcon />
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                          <b>
-                            {" "}
-                            <ListItemText primary={title} />
-                          </b>
-                        </ListItemIcon>
-                      </ListItem>
+                        <ListItem onClick={toggleDrawer(anchor, false)} button>
+                          <ListItemIcon>
+                            <DoubleArrowIcon />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                            <b>
+                              {" "}
+                              <ListItemText primary={title} />
+                            </b>
+                          </ListItemIcon>
+                        </ListItem>
+                      </NextLink>
                       // </Link>
                     );
                   })
@@ -305,31 +306,26 @@ export default function Mobilemenu(props) {
             <div className="completeRow">
               <div className="headerRight_part">
                 {/* <Link href="/book-online" passHref> */}
-                <Typography
-                  className={classes.btn1}
-                  component={NextLink}
-                  href="/book-online"
-                >
-                  Book Online
-                </Typography>
+                <NextLink href="/book-online" className={classes.btn1}>
+                  <Button>Book Online</Button>
+                </NextLink>
                 {/* </Link> */}
                 &nbsp;&nbsp;
-                <Typography
-                  className="btn_Postonline"
-                  component={NextLink}
-                  href="/"
-                  onClick={() => {
-                    if (!localStorage.getItem("user")) {
-                      localStorage.setItem("postProperty", true);
-                      return props.history.push("/signin");
-                    } else {
-                      return props.history.push("/post-property");
-                    }
-                  }}
-                >
-                  {" "}
-                  Post Property
-                </Typography>
+                <NextLink href="/" className="btn_Postonline">
+                  <Button
+                    onClick={() => {
+                      if (!localStorage.getItem("user")) {
+                        localStorage.setItem("postProperty", true);
+                        return props.history.push("/signin");
+                      } else {
+                        return props.history.push("/post-property");
+                      }
+                    }}
+                  >
+                    {" "}
+                    Post Property
+                  </Button>
+                </NextLink>
                 &nbsp;&nbsp;
                 {userdata ? (
                   <Button
@@ -342,15 +338,11 @@ export default function Mobilemenu(props) {
                   </Button>
                 ) : (
                   // <Link href="/signin" passHref>
-                  <Typography
-                    variant="outlined"
-                    className="btn_Bookonline"
-                    component={NextLink}
-                    href="/signin"
-                    style={{ padding: "1px 4px" }}
-                  >
-                    Login / Signup
-                  </Typography>
+                  <NextLink href="/signin" className="btn_Bookonline">
+                    <Button variant="outlined" style={{ padding: "1px 4px" }}>
+                      Login / Signup
+                    </Button>
+                  </NextLink>
                   // </Link>
                 )}
               </div>

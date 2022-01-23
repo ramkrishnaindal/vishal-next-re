@@ -167,178 +167,162 @@ const OuterCarouselSlider = (props) => {
             }
 
             return (
-              // <Link
-              //   href={{
-              //     pathname: "/house-details",
-              //     query: _id,
-              //   }}
-              //   passHref
-              // >
-              <Box
-                key={i}
-                className="property-item"
-                component={NextLink}
+              <NextLink
                 href={{
                   pathname: "/house-details",
                   query: _id,
                 }}
+                className="property-item"
                 style={{ cursor: "pointer" }}
               >
-                <Grid container className="property-wrap">
-                  {/* <InnerCarouselSlider /> */}
-                  <Grid
-                    className="property-image"
-                    style={{ position: "relative" }}
-                  >
-                    {propertTag ? (
-                      <span class="featured">{propertTag}</span>
-                    ) : null}
-                    {/* <img className="img" src={process.env.PUBLIC_URL + '/property_img3.jpeg'} /> */}
-                    <Slider {...settings1}>
-                      {imgs.map((imgPath) => {
-                        return (
-                          <Box className="property-image-thumb">
-                            <img
-                              src={imgPath}
-                              alt=""
-                              style={{ cursor: "pointer" }}
-                            />
-                          </Box>
-                        );
-                      })}
-                    </Slider>
-                    <div
-                      class="fs-2 mb-3"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        handleFavourite(_id, isFavorite, e);
-                      }}
-                      // onClick={(e) => handleFavourite(_id,isFavorite, e)}
+                <Box key={i}>
+                  <Grid className="property-wrap">
+                    {/* <InnerCarouselSlider /> */}
+                    <Grid
+                      className="property-image"
+                      style={{ position: "relative" }}
                     >
-                      {!isFavorite && (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="44"
-                          height="44"
-                          fill="red"
-                          class="bi bi-heart"
-                          style={{
-                            position: "absolute",
-                            right: "5",
-                            top: "5",
-                            cursor: "pointer",
-                          }}
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
-                      )}
-                      {isFavorite && (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="44"
-                          height="44"
-                          fill="red"
-                          class="bi bi-heart-fill"
-                          viewBox="0 0 16 16"
-                          style={{
-                            position: "absolute",
-                            right: "5",
-                            top: "5",
-                            cursor: "pointer",
-                          }}
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                          ></path>
-                        </svg>
-                      )}
-                    </div>
-                  </Grid>
-
-                  <Grid className="property-summery">
-                    <Box component="span" className="property-tag">
-                      {pType}
-                    </Box>
-                    <Typography variant="h3" className="property-title">
-                      {nameOfProject}
-                    </Typography>
-
-                    <Grid container className="property-information">
-                      <Grid item xs={6} md={6} className="property-feature">
-                        <ZoomOutMapIcon />
-                        <Typography>
-                          {features[0]?.builtUpArea} Sq-Ft
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6} md={6} className="property-feature">
-                        <LocalHotelIcon />
-                        <Typography>
-                          {features[0]?.bedrooms} Bedrooms
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6} md={6} className="property-feature">
-                        <LocalHotelIcon />
-                        <Typography>
-                          {features[0]?.balconies} Balconies
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={6} md={6} className="property-feature">
-                        <BathtubIcon />
-                        <Typography>
-                          {features[0]?.bathrooms} Bathroom
-                        </Typography>
-                      </Grid>
+                      {propertTag ? (
+                        <span class="featured">{propertTag}</span>
+                      ) : null}
+                      {/* <img className="img" src={process.env.PUBLIC_URL + '/property_img3.jpeg'} /> */}
+                      <Slider {...settings1}>
+                        {imgs.map((imgPath) => {
+                          return (
+                            <Box className="property-image-thumb">
+                              <img
+                                src={imgPath}
+                                alt=""
+                                style={{ cursor: "pointer" }}
+                              />
+                            </Box>
+                          );
+                        })}
+                      </Slider>
+                      <div
+                        class="fs-2 mb-3"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleFavourite(_id, isFavorite, e);
+                        }}
+                        // onClick={(e) => handleFavourite(_id,isFavorite, e)}
+                      >
+                        {!isFavorite && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="44"
+                            height="44"
+                            fill="red"
+                            class="bi bi-heart"
+                            style={{
+                              position: "absolute",
+                              right: "5",
+                              top: "5",
+                              cursor: "pointer",
+                            }}
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                          </svg>
+                        )}
+                        {isFavorite && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="44"
+                            height="44"
+                            fill="red"
+                            class="bi bi-heart-fill"
+                            viewBox="0 0 16 16"
+                            style={{
+                              position: "absolute",
+                              right: "5",
+                              top: "5",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                            ></path>
+                          </svg>
+                        )}
+                      </div>
                     </Grid>
-                    <Grid container className="property-button">
-                      {/* <Link
+
+                    <Grid className="property-summery">
+                      <Box component="span" className="property-tag">
+                        {pType}
+                      </Box>
+                      <Typography variant="h3" className="property-title">
+                        {nameOfProject}
+                      </Typography>
+
+                      <Grid container className="property-information">
+                        <Grid item xs={6} md={6} className="property-feature">
+                          <ZoomOutMapIcon />
+                          <Typography>
+                            {features[0]?.builtUpArea} Sq-Ft
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={6} md={6} className="property-feature">
+                          <LocalHotelIcon />
+                          <Typography>
+                            {features[0]?.bedrooms} Bedrooms
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={6} md={6} className="property-feature">
+                          <LocalHotelIcon />
+                          <Typography>
+                            {features[0]?.balconies} Balconies
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={6} md={6} className="property-feature">
+                          <BathtubIcon />
+                          <Typography>
+                            {features[0]?.bathrooms} Bathroom
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                      <Grid className="property-button">
+                        <NextLink
                           href={{
                             pathname: "/house-details",
                             query: _id,
                           }}
-                          passHref
-                        > */}
-                      <Box
-                        className="btn btn-primary"
-                        component={NextLink}
-                        href={{
-                          pathname: "/house-details",
-                          query: _id,
-                        }}
-                      >
-                        MORE DETAIL
-                      </Box>
-                      {/* </Link> */}
-                      <Box className="btn btn-secondary">
-                        <a
-                          // href="tel:+91 9571647680"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            window.location.href = "tel:+91 9571647680";
-                          }}
-                          style={{
-                            textDecoration: "none",
-                            color: "ActiveCaption",
-                          }}
+                          className="btn btn-primary"
                         >
-                          CALL NOW
-                        </a>
-                      </Box>
+                          <Box>MORE DETAIL</Box>
+                        </NextLink>
+                        {/* </Link> */}
+                        <Box className="btn btn-secondary" style={{ flex: 1 }}>
+                          <a
+                            // href="tel:+91 9571647680"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              window.location.href = "tel:+91 9571647680";
+                            }}
+                            style={{
+                              textDecoration: "none",
+                              color: "ActiveCaption",
+                            }}
+                          >
+                            CALL NOW
+                          </a>
+                        </Box>
+                      </Grid>
                     </Grid>
-                  </Grid>
 
-                  {/* <Grid contaienr>
+                    {/* <Grid contaienr>
                                         <Grid item style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', marginTop: 10}}>
                                             <LocationOnIcon style={{color: '#FF7601', fontSize: 20, padding: 0, marginRight: 8}} />
                                             <Typography className={classes.text3}>{iAm}</Typography>
                                         </Grid>
                                     </Grid> */}
-                </Grid>
-              </Box>
-              // </Link>
+                  </Grid>
+                </Box>
+              </NextLink>
             );
           })}
         </Slider>

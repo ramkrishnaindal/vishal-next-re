@@ -37,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
   verify: {
     background: "green",
-    height: " 30px",
-    top: " 10px",
+    height: "30px",
+    top: "10px",
     left: "5px",
   },
   text1: {
@@ -277,7 +277,7 @@ states?.phone?.length == 10 &&
     <div
       className={`${classes.bannerContainer}`}
       style={{
-        backgroundImage: `url("/public/images/banner-2.jpeg")`,
+        backgroundImage: `url("/images/banner-2.jpeg")`,
         // height: 326,
         overflow: "hidden",
         textAlign: "center",
@@ -549,9 +549,9 @@ states?.phone?.length == 10 &&
           </Grid>
           <Grid item xs={12} md={12} className={classes.gridStyle3}>
             {/* <RouterLink href="/signin" passHref> */}
-            <Typography component={NextLink} href="/signin">
-              Already have account?
-            </Typography>
+            <NextLink href="/signin">
+              <Typography>Already have account?</Typography>
+            </NextLink>
             {/* </RouterLink> */}
           </Grid>
         </Grid>

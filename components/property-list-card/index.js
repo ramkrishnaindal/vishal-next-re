@@ -673,17 +673,15 @@ const PropertyListCard = (props) => {
                           }}
                           passHref
                         > */}
-                        <Typography
-                          variant="contained"
-                          className={classes.btn1}
-                          component={NextLink}
+                        <NextLink
                           href={{
                             pathname: "/house-details",
                             query: item?._id,
                           }}
+                          className={classes.btn1}
                         >
-                          View Detail
-                        </Typography>
+                          <Button variant="contained">View Detail</Button>
+                        </NextLink>
                         {/* </Link> */}
                         <Box style={{ width: 10 }}></Box>
                         <Button

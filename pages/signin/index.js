@@ -290,7 +290,7 @@ const LoginPage = (props) => {
     <div
       className={`${classes.bannerContainer}`}
       style={{
-        backgroundImage: `url("/public/images/banner-2.jpeg")`,
+        backgroundImage: `url("/images/banner-2.jpeg")`,
         // height: 326,
         overflow: "hidden",
         textAlign: "center",
@@ -471,9 +471,9 @@ const LoginPage = (props) => {
               label="Remember Me"
             /> */}
             {/* <RouterLink href="/forgot-password" passHref> */}
-            <Typography component={NextLink} href="/forgot-password">
-              Forgot Password?
-            </Typography>
+            <NextLink href="/forgot-password">
+              <Typography>Forgot Password?</Typography>
+            </NextLink>
             {/* </RouterLink> */}
           </Grid>
           <Grid item xs={12} md={12}>
@@ -504,9 +504,9 @@ const LoginPage = (props) => {
           </Grid> */}
           <Grid item xs={12} md={12} className={classes.gridStyle3}>
             {/* <RouterLink href="/register" passHref> */}
-            <Typography component={NextLink} href="/register">
-              Create Account?
-            </Typography>
+            <NextLink href="/register">
+              <Typography>Create Account?</Typography>
+            </NextLink>
             {/* </RouterLink> */}
           </Grid>
         </Grid>

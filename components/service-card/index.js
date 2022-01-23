@@ -1,6 +1,6 @@
 import React from "react";
 // import "./service-card.css";
-import { makeStyles, Box} from "@material-ui/core";
+import { makeStyles, Box } from "@material-ui/core";
 // import { Link as RouterLink } from "react-router-dom";
 // import Link from "next/link";
 import ApiClient from "../../api-client";
@@ -58,17 +58,16 @@ const ServiceCard = (props) => {
             }}
             passHref
           > */}
-          <Box
-            className={"info"}
-            style={{ marginTop: 10 }}
-            component={NextLink}
+          <NextLink
             href={{
               pathname: "/service-details",
               query: _id,
             }}
+            className={"info"}
+            style={{ marginTop: 10 }}
           >
-            MORE DETAIL
-          </Box>
+            <Box>MORE DETAIL</Box>
+          </NextLink>
           {/* </Link> */}
           {/* <a href="/service-details" className="info" style={{marginTop: 10}} >Read More</a> */}
         </div>

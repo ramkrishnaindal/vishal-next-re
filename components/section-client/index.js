@@ -75,16 +75,19 @@ const SectionClient = (props) => {
                     href={{ pathname: "/dealingIn-details", query: _id }}
                     passHref
                   > */}
-                  <Box
-                    component={NextLink}
+                  <NextLink
                     href={{ pathname: "/dealingIn-details", query: _id }}
                     className="client-block-summery"
                   >
-                    <Typography>
-                      <strong>{title}</strong>
-                    </Typography>
-                    <Typography>{ReactHtmlParser(shortDescription)}</Typography>
-                  </Box>
+                    <Box>
+                      <Typography>
+                        <strong>{title}</strong>
+                      </Typography>
+                      <Typography>
+                        {ReactHtmlParser(shortDescription)}
+                      </Typography>
+                    </Box>
+                  </NextLink>
                   {/* </Link> */}
                 </Box>
               </Grid>

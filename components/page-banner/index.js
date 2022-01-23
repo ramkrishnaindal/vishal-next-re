@@ -82,15 +82,11 @@ const PageBanner = (props) => {
 
           <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumbs}>
             {/* <RouterLink href="/" passHref> */}
-            <Typography
-              className={classes.breadcrumbtext}
-              color="inherit"
-              underline="hover"
-              href="/"
-              component={NextLink}
-            >
-              HOME
-            </Typography>
+            <NextLink href="/" className={classes.breadcrumbtext}>
+              <Typography color="inherit" underline="hover">
+                HOME
+              </Typography>
+            </NextLink>
             {/* </RouterLink> */}
             <Typography className={classes.breadcrumbtext}>
               {currentPage}

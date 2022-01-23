@@ -83,66 +83,62 @@ const MyBooking = (props) => {
                     <ul className="sidebar-account-menu">
                       <li>
                         {/* <Link href="/my-account" passHref> */}
-                        <Typography href="/my-account" component={NextLink}>
-                          {" "}
-                          <i className="fas fa-house-user"></i>My Account{" "}
-                        </Typography>
+                        <NextLink href="/my-account">
+                          <Typography>
+                            {" "}
+                            <i className="fas fa-house-user"></i>My Account{" "}
+                          </Typography>
+                        </NextLink>
                         {/* </Link>{" "} */}
                       </li>
                       <li>
                         {" "}
                         {/* <Link href="/my-account/my-profile" passHref> */}
-                        <Typography
-                          href="/my-account/my-profile"
-                          component={NextLink}
-                        >
-                          <i className="far fa-user"></i>My Profile{" "}
-                        </Typography>
+                        <NextLink href="/my-account/my-profile">
+                          <Typography>
+                            <i className="far fa-user"></i>My Profile{" "}
+                          </Typography>
+                        </NextLink>
                         {/* </Link>{" "} */}
                       </li>
                       <li>
                         {" "}
                         {/* <Link href="/my-account/my-property" passHref> */}
-                        <Typography
-                          href="/my-account/my-property"
-                          component={NextLink}
-                        >
-                          <i className="fas fa-building"></i>My Property{" "}
-                        </Typography>
+                        <NextLink href="/my-account/my-property">
+                          <Typography>
+                            <i className="fas fa-building"></i>My Property{" "}
+                          </Typography>
+                        </NextLink>
                         {/* </Link>{" "} */}
                       </li>
                       <li className="active">
                         {" "}
                         {/* <Link href="/my-account/my-booking" passHref> */}
-                        <Typography
-                          href="/my-account/my-booking"
-                          component={NextLink}
-                        >
-                          <i className="far fa-list-alt"></i>My Booking{" "}
-                        </Typography>
+                        <NextLink href="/my-account/my-booking">
+                          <Typography>
+                            <i className="far fa-list-alt"></i>My Booking{" "}
+                          </Typography>
+                        </NextLink>
                         {/* </Link>{" "} */}
                       </li>
                       <li>
                         {" "}
                         {/* <Link href="/my-account/my-favorite" passHref> */}
-                        <Typography
-                          href="/my-account/my-favorite"
-                          component={NextLink}
-                        >
-                          <i className="far fa-heart"></i>My Favorite{" "}
-                        </Typography>
+                        <NextLink href="/my-account/my-favorite">
+                          <Typography>
+                            <i className="far fa-heart"></i>My Favorite{" "}
+                          </Typography>
+                        </NextLink>
                         {/* </Link>{" "} */}
                       </li>
                       <li>
                         {" "}
                         {/* <Link className="logout" href="#" passHref> */}
-                        <Typography
-                          href="#"
-                          component={NextLink}
-                          className="logout"
-                        >
-                          <i className="fas fa-sign-out-alt"></i>Log out
-                        </Typography>
+                        <NextLink href="#">
+                          <Typography className="logout">
+                            <i className="fas fa-sign-out-alt"></i>Log out
+                          </Typography>
+                        </NextLink>
                         {/* </Link>{" "} */}
                       </li>
                     </ul>
@@ -208,15 +204,14 @@ const MyBooking = (props) => {
                                     }}
                                     passHref
                                   > */}
-                                  <Typography
-                                    component={NextLink}
+                                  <NextLink
                                     href={{
                                       pathname: "/house-details",
                                       query: item?._id,
                                     }}
                                   >
-                                    View
-                                  </Typography>
+                                    <Button>View</Button>
+                                  </NextLink>
                                   {/* </Link> */}
                                 </p>
                               </Box>

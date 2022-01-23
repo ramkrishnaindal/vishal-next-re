@@ -397,11 +397,7 @@ const SearchBox = (props) => {
                 }}
                 passHref
               > */}
-              <Typography
-                class="mb-search__btn"
-                type="submit"
-                onClick={() => handleSubmit}
-                component={NextLink}
+              <NextLink
                 href={{
                   pathname: "/search-property-details",
                   query: {
@@ -412,11 +408,17 @@ const SearchBox = (props) => {
                     type,
                   },
                 }}
-                variant="contained"
-                color="primary"
+                class="mb-search__btn"
               >
-                Search
-              </Typography>
+                <Button
+                  type="submit"
+                  onClick={() => handleSubmit}
+                  variant="contained"
+                  color="primary"
+                >
+                  Search
+                </Button>
+              </NextLink>
               {/* </Link> */}
               {/* : null */}
               {/* } */}
