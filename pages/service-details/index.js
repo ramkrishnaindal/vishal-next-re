@@ -168,7 +168,7 @@ const ServiceDetailPage = (props) => {
   };
 
   let img1 = "/property_img3.jpeg";
-  let banner = "/about_us.jpeg";
+  let banner = "/images/about_us.jpeg";
   let images = [];
   if (
     serviceDetail !== {} &&

@@ -227,7 +227,7 @@ const SearchPropertyList = (props) => {
         style={{
           height: 326,
           width: "100%",
-          backgroundImage: "url(/about_us.jpeg)",
+          backgroundImage: "url(/images/about_us.jpeg)",
         }}
       >
         <SearchBox searchPayload={searchPayload} />

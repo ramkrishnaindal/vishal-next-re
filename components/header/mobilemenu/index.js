@@ -306,8 +306,8 @@ export default function Mobilemenu(props) {
             <div className="completeRow">
               <div className="headerRight_part">
                 {/* <Link href="/book-online" passHref> */}
-                <NextLink href="/book-online" className={classes.btn1}>
-                  <Button>Book Online</Button>
+                <NextLink href="/book-online" className="btn_Bookonline">
+                  <Button style={{ color: "white" }}>Book Online</Button>
                 </NextLink>
                 {/* </Link> */}
                 &nbsp;&nbsp;
@@ -321,6 +321,7 @@ export default function Mobilemenu(props) {
                         return router.push("/post-property");
                       }
                     }}
+                    style={{ color: "white" }}
                   >
                     {" "}
                     Post Property
@@ -329,17 +330,20 @@ export default function Mobilemenu(props) {
                 &nbsp;&nbsp;
                 {userdata ? (
                   <Button
-                    variant="outlined"
+                    // variant="outlined"
                     className="btn_Bookonline"
                     onClick={logoutHandler}
-                    style={{ padding: "1px 4px" }}
+                    style={{ padding: "1px 4px", color: "white" }}
                   >
                     Logout
                   </Button>
                 ) : (
                   // <Link href="/signin" passHref>
                   <NextLink href="/signin" className="btn_Bookonline">
-                    <Button variant="outlined" style={{ padding: "1px 4px" }}>
+                    <Button
+                      variant="outlined"
+                      style={{ padding: "1px 4px", color: "white" }}
+                    >
                       Login / Signup
                     </Button>
                   </NextLink>

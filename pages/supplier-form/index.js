@@ -153,7 +153,7 @@ const SupplierFormPage = (props) => {
   //   };
 
   let img1 = "/property_img3.jpeg";
-  let banner = "/about_us.jpeg";
+  let banner = "/images/about_us.jpeg";
   let images = [];
   //   if (serviceDetail !== {} && serviceDetail.media && serviceDetail.media.length > 0 && serviceDetail.media[0].image && serviceDetail.media[0].image.length > 0) {
   //     // img1 = ApiClient.SERVER_ADDRESS + "/" + serviceDetail.media[0].image[0].path;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles, Box, Grid } from "@material-ui/core";
+import { makeStyles, Box, Grid, Typography } from "@material-ui/core";
 // import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -410,14 +410,14 @@ const SearchBox = (props) => {
                 }}
                 className="mb-search__btn"
               >
-                <Button
-                  type="submit"
+                <Typography
+                  // type="submit"
                   onClick={() => handleSubmit}
                   variant="contained"
-                  color="primary"
+                  // color="primary"
                 >
                   Search
-                </Button>
+                </Typography>
               </NextLink>
               {/* </Link> */}
               {/* : null */}

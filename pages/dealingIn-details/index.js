@@ -162,8 +162,8 @@ const DealingInItemDetailPage = (props) => {
     getData();
   };
 
-  let img1 = "/property_img3.jpeg";
-  let banner = "/about_us.jpeg";
+  let img1 = "/images/property_img3.jpeg";
+  let banner = "/images/about_us.jpeg";
   if (
     dealingInDetail !== {} &&
     dealingInDetail.media &&

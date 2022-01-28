@@ -88,8 +88,7 @@ const DialogActions = withStyles((theme) => ({
     padding: theme.spacing(1),
   },
 }))(MuiDialogActions);
-
-const useStyles = makeStyles((theme) => ({
+const classes = {
   contact: {
     padding: 0,
     color: "#FFFFFF",
@@ -136,9 +135,57 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     fontFamily: '"Open Sans",sans-serif',
   },
-}));
+};
+// const useStyles = makeStyles((theme) => ({
+//   contact: {
+//     padding: 0,
+//     color: "#FFFFFF",
+//     marginRight: 10,
+//     fontFamily: '"Open Sans",sans-serif',
+//   },
+//   icon: {
+//     padding: 0,
+//     color: "#FFFFFF",
+//     marginRight: 10,
+//   },
+//   menu: {
+//     padding: 0,
+//     color: "#000000",
+//     marginRight: 10,
+//     fontFamily: '"Open Sans",sans-serif',
+//     fontWeight: 400,
+//     cursor: "pointer",
+//   },
+//   btn1: {
+//     borderRadius: 15,
+//     color: "#FFFFFF",
+//     textTransform: "none",
+//     marginRight: 10,
+//     fontFamily: '"Open Sans",sans-serif',
+//   },
+//   btn2: {
+//     borderRadius: 15,
+//     background: "#FF7601",
+//     color: "#FFFFFF",
+//     textTransform: "none",
+//     fontFamily: "Open Sans,sans-serif",
+//   },
+//   btn3: {
+//     borderRadius: 15,
+//     marginRight: 10,
+//     color: "#000000",
+//     textTransform: "none",
+//     fontFamily: '"Open Sans",sans-serif',
+//   },
+//   btn4: {
+//     borderRadius: 15,
+//     color: "#000000",
+//     textTransform: "none",
+//     fontFamily: '"Open Sans",sans-serif',
+//   },
+// }));
 const Header = (props) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
@@ -353,13 +400,13 @@ const Header = (props) => {
                   justifyContent: "center",
                 }}
               >
-                <PhoneIcon className={classes.icon} />
-                <Typography className={classes.contact}>
+                <PhoneIcon style={classes.icon} />
+                <Typography style={classes.contact}>
                   {/* {APP_CONSTANTS.phoneNumber} */}
                   {handleNull(ownerDetails?.mobile)}
                 </Typography>
-                <MailOutlineIcon className={classes.icon} />
-                <Typography className={classes.contact}>
+                <MailOutlineIcon style={classes.icon} />
+                <Typography style={classes.contact}>
                   {/* {APP_CONSTANTS.email} */}
                   {handleNull(ownerDetails?.email)}
                 </Typography>
@@ -376,16 +423,19 @@ const Header = (props) => {
                 {/* <Link href="/book-online" passHref> */}
                 <NextLink
                   href="/book-online"
-                  className={`${classes.btn1} btn-book-online`}
+                  style={classes.btn1}
+                  className="btn_Bookonline"
                 >
-                  <Button variant="contained">
+                  <Button
+                    style={{ color: "white", textTransform: "capitalize" }}
+                  >
                     {APP_CONSTANTS.btnBookOnlineText}
                   </Button>
                 </NextLink>
                 {/* </Link> */}
                 <NextLink
                   href="/"
-                  className={classes.btn2}
+                  style={classes.btn2}
                   onClick={() => {
                     if (!localStorage.getItem("user")) {
                       localStorage.setItem("postProperty", true);
@@ -396,9 +446,8 @@ const Header = (props) => {
                   }}
                 >
                   <Button
-                    variant="contained"
-
                     // to="/post-property"
+                    style={{ color: "white", textTransform: "capitalize" }}
                   >
                     Post Property
                   </Button>
@@ -406,10 +455,7 @@ const Header = (props) => {
 
                 {userdata ? (
                   <>
-                    <Button
-                      className={classes.btn3}
-                      onClick={handleClickUserMenu}
-                    >
+                    <Button style={classes.btn3} onClick={handleClickUserMenu}>
                       <PermIdentityIcon />
                     </Button>
 
@@ -480,7 +526,7 @@ const Header = (props) => {
               >
                 <Button
                   variant="outlined"
-                  className={classes.btn3}
+                  style={classes.btn3}
                   onClick={handleClickOpen}
                 >
                   {APP_CONSTANTS.btnRegisterASiteVisit}
@@ -490,7 +536,7 @@ const Header = (props) => {
                 ) : (
                   // <Link href="/signin" passHref>
                   <NextLink href="/signin">
-                    <Button variant="outlined" className={classes.btn4}>
+                    <Button variant="outlined" style={classes.btn4}>
                       Login / Signup
                     </Button>
                   </NextLink>
