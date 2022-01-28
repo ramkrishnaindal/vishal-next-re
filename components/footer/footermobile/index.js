@@ -105,6 +105,97 @@ const useStyles = makeStyles((theme) => ({
   TextbottomMenuColor: { color: "white" },
 }));
 
+const classes = {
+  text1: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#FF7601",
+    fontSize: 14,
+    marginTop: 10,
+  },
+  text2: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#333333",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  text3: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#666666",
+    fontSize: 14,
+  },
+  text4: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#333333",
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+  text5: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#FF7601",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  features: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingTop: 20,
+  },
+  icon: {
+    color: "#FF7601",
+    fontSize: 20,
+    paddingRight: 10,
+  },
+  btn1: {
+    borderRadius: 12,
+    color: "#FFFFFF",
+    textTransform: "none",
+    fontFamily: '"Open Sans",sans-serif',
+    backgroundColor: "#FF7601",
+  },
+  btn2: {
+    borderRadius: 12,
+    color: "#666666",
+    textTransform: "none",
+    fontFamily: '"Open Sans",sans-serif',
+    backgroundColor: "#ECECEC",
+  },
+  footermenuAnchor: {
+    backgroundColor: "#FF7601",
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    "& a": {
+      minWidth: "auto",
+    },
+    "& .MuiBottomNavigationAction-root": {
+      minWidth: "auto",
+    },
+    "& .MuiBottomNavigationAction-root.Mui-selected": {
+      color: "#fff",
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
+    },
+  },
+  footermenu: {
+    backgroundColor: "#FF7601",
+    width: "100%",
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    "& a": {
+      minWidth: "auto",
+    },
+    "& .MuiBottomNavigationAction-root": {
+      minWidth: "auto",
+    },
+    "& .MuiBottomNavigationAction-root.Mui-selected": {
+      color: "#fff",
+      backgroundColor: "rgba(0, 0, 0, 0.1)",
+    },
+  },
+  TextbottomMenuColor: { color: "white" },
+};
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -197,7 +288,7 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 export default function Mobilefootermenu() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [value, setValue] = React.useState("recents");
 
   const [name, setName] = useState("");
@@ -322,11 +413,16 @@ export default function Mobilefootermenu() {
         showLabels
         value={value}
         onChange={handleChange}
-        className={classes.footermenu}
+        style={classes.footermenu}
       >
         {/* <Link href="/" passHref> */}
-        <NextLink href="/" className={classes.TextbottomMenuColor}>
-          <BottomNavigationAction label="Home" value="home" icon={<Home />} />
+        <NextLink href="/" style={classes.footermenuAnchor}>
+          <BottomNavigationAction
+            label="Home"
+            value="Home"
+            icon={<Home />}
+            // style={classes.footermenuAnchor}
+          />
         </NextLink>
         {/* </Link> */}
 
@@ -334,22 +430,32 @@ export default function Mobilefootermenu() {
           label="Call"
           value="+91-9571647680"
           icon={<Phone />}
-          className={classes.TextbottomMenuColor}
+          // style={classes.TextbottomMenuColor}
         />
         {/* <Link href="/search-property-details?type=Sell" passHref> */}
         <NextLink
           href="/search-property-details?type=Sell"
-          className={classes.TextbottomMenuColor}
+          style={classes.footermenuAnchor}
         >
-          <BottomNavigationAction label="Sell" value="/sell" icon={<Sell />} />
+          <BottomNavigationAction
+            label="Sell"
+            value="Sell"
+            icon={<Sell />}
+            // style={classes.TextbottomMenuColor}
+          />
         </NextLink>
         {/* </Link> */}
         {/* <Link href="/search-property-details?type=Rent" passHref> */}
         <NextLink
           href="/search-property-details?type=Rent"
-          className={classes.TextbottomMenuColor}
+          style={classes.footermenuAnchor}
         >
-          <BottomNavigationAction label="Rent" value="/rent" icon={<Rent />} />
+          <BottomNavigationAction
+            label="Rent"
+            value="Rent"
+            icon={<Rent />}
+            // style={classes.TextbottomMenuColor}
+          />
         </NextLink>
         {/* </Link> */}
         <BottomNavigationAction
@@ -357,7 +463,7 @@ export default function Mobilefootermenu() {
           value="Visit"
           icon={<Visit />}
           onClick={handleClickOpen}
-          className={classes.TextbottomMenuColor}
+          style={classes.TextbottomMenuColor}
         />
       </BottomNavigation>
       <Dialog
