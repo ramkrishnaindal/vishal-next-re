@@ -164,7 +164,7 @@ const SearchPropertyList = (props) => {
     }
   }, []);
 
-  const params = useParams();
+  // const params = useParams();
 
   useEffect(() => {
     // console.log("params changed", params);
@@ -181,7 +181,7 @@ const SearchPropertyList = (props) => {
       populateProperties(payload);
       setSearchPayload(payload);
     }
-  }, [params]);
+  }, [router.query]);
   const changeHandler = () => {
     // console.log("params changed", params);
     const type = router.query.type;

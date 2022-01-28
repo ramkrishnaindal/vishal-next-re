@@ -240,7 +240,7 @@ const SearchBox = (props) => {
               <Grid className="search-form-item" item xs={6} md={3}>
                 <Box className="search-form-wrap">
                   <Box className="form-icon-wrap">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i className="fas fa-map-marker-alt"></i>
                   </Box>
                   <Autocomplete
                     disablePortal
@@ -263,7 +263,7 @@ const SearchBox = (props) => {
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
-                              <i class="fas fa-map-marker-alt"></i>
+                              <i className="fas fa-map-marker-alt"></i>
                             </InputAdornment>
                           ),
                         }}
@@ -292,7 +292,7 @@ const SearchBox = (props) => {
               <Grid className="search-form-item" item xs={6} md={3}>
                 <Box className="search-form-wrap">
                   <Box className="form-icon-wrap">
-                    <i class="fas fa-home"></i>
+                    <i className="fas fa-home"></i>
                   </Box>
                   <TextField
                     className="search-form-group"
@@ -323,7 +323,7 @@ const SearchBox = (props) => {
               <Grid className="search-form-item" item xs={6} md={3}>
                 <Box className="search-form-wrap">
                   <Box className="form-icon-wrap">
-                    <i class="fas fa-rupee-sign"></i>
+                    <i className="fas fa-rupee-sign"></i>
                   </Box>
                   <TextField
                     className="search-form-group"
@@ -354,7 +354,7 @@ const SearchBox = (props) => {
               <Grid className="search-form-item" item xs={6} md={3}>
                 <Box className="search-form-wrap">
                   <Box className="form-icon-wrap">
-                    <i class="fas fa-rupee-sign"></i>
+                    <i className="fas fa-rupee-sign"></i>
                   </Box>
                   <TextField
                     className="search-form-group"
@@ -408,7 +408,7 @@ const SearchBox = (props) => {
                     type,
                   },
                 }}
-                class="mb-search__btn"
+                className="mb-search__btn"
               >
                 <Button
                   type="submit"

@@ -238,7 +238,7 @@ const ContactUsPage = (props) => {
           <Grid container spacing={1}>
             <Grid item xs={12} md={6} className={classes.style1}>
               <Typography className={classes.text1}>
-                Let's get in touch
+                Let&apos;s get in touch
               </Typography>
               <Typography className={classes.text4}>
                 Contact us with the following details. and fillup the form with
@@ -467,10 +467,10 @@ const ContactUsPage = (props) => {
                     !enableOtpField && (
                       <div>
                         <Button
-                          style={{ width: "20%" }}
                           onClick={otpHandler}
                           variant="contained"
                           style={{
+                            width: "20%",
                             background: "green",
                             height: " 30px",
                             top: " 10px",

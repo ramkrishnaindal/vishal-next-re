@@ -225,7 +225,7 @@ const MyFavorite = (props) => {
                               <Box className="property-item my-property-item">
                                 <Grid container className="property-wrap">
                                   <Grid
-                                    class="property-favorite-remove"
+                                    className="property-favorite-remove"
                                     style={{ cursor: "pointer" }}
                                   >
                                     <a
@@ -234,7 +234,7 @@ const MyFavorite = (props) => {
                                           item?.propertyId._id
                                         )
                                       }
-                                      class="remove remove-from-favorite"
+                                      className="remove remove-from-favorite"
                                       title="Remove this Property"
                                     >
                                       ×

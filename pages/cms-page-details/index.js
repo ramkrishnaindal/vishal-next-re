@@ -11,7 +11,7 @@ import {
 import PageBanner from "../../components/page-banner";
 // import InfoCard from "./components/ourTeam";
 // import { useLocation } from "react-router-dom";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 // import OurTeam from "./components/ourTeam/index";
 import ApiClient from "../../api-client";
 // import OwlCarouselSlider from '../../components/carousel-slider';
@@ -131,11 +131,10 @@ const CmsPageDetails = (props) => {
             data?.image[0].image &&
             data?.image[0].image[0] && (
               <Grid
-                className="about-page-images"
                 item
                 xs={12}
                 md={12}
-                className={classes.style2}
+                className={`${classes.style2} about-page-images`}
               >
                 <Box
                   style={{

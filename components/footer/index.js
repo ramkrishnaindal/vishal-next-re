@@ -516,7 +516,7 @@ const Footer = (props) => {
                   target="_blank"
                   href={socialLinks?.facebook}
                 >
-                  <i class="fab fa-facebook"></i>
+                  <i className="fab fa-facebook"></i>
                   {/* <FacebookIcon style={{color: '#FFFFFF', fontSize: 20, padding: 0, }} /> */}
                 </a>
               </Box>
@@ -527,7 +527,7 @@ const Footer = (props) => {
                   target="_blank"
                   href={socialLinks?.instagram}
                 >
-                  <i class="fab fa-instagram"></i>
+                  <i className="fab fa-instagram"></i>
                   {/* <InstagramIcon style={{color: '#FFFFFF', fontSize: 20, padding: 0, }} /> */}
                 </a>
               </Box>
@@ -537,7 +537,7 @@ const Footer = (props) => {
                   target="_blank"
                   href={socialLinks?.linkedin}
                 >
-                  <i class="fab fa-linkedin"></i>
+                  <i className="fab fa-linkedin"></i>
                   {/* <LinkedInIcon style={{color: '#FFFFFF', fontSize: 20, padding: 0, }} /> */}
                 </a>
               </Box>
@@ -547,7 +547,7 @@ const Footer = (props) => {
                   target="_blank"
                   href={socialLinks ? socialLinks.twitter : ""}
                 >
-                  <i class="fab fa-twitter"></i>
+                  <i className="fab fa-twitter"></i>
                   {/* <TwitterIcon style={{color: '#FFFFFF', fontSize: 20, padding: 0, }} /> */}
                 </a>
               </Box>
@@ -558,7 +558,7 @@ const Footer = (props) => {
                   target="_blank"
                   href={socialLinks ? socialLinks.youtube : ""}
                 >
-                  <i class="fab fa-youtube"></i>
+                  <i className="fab fa-youtube"></i>
 
                   {/* <YouTubeIcon style={{color: '#FFFFFF', fontSize: 20, padding: 0, }} /> */}
                 </a>
@@ -652,8 +652,8 @@ const Footer = (props) => {
       </Grid>
       <Box className="projectquick_action genralsticky" onClick={btnClick}>
         <ul>
-          <li id="show-hidden-menu" class="animatebtn social_links">
-            <i class="fas fa-external-link-alt"></i>
+          <li id="show-hidden-menu" className="animatebtn social_links">
+            <i className="fas fa-external-link-alt"></i>
           </li>
           <Box
             className="hidden-menu"
@@ -661,35 +661,35 @@ const Footer = (props) => {
               display: hide ? "none" : "block",
             }}
           >
-            <div class="fixed-social">
+            <div className="fixed-social">
               <a
                 href={socialLinks?.facebook}
-                class="fixed-facebook"
+                className="fixed-facebook"
                 target="_blank"
               >
-                <i class="fab fa-facebook"></i>
+                <i className="fab fa-facebook"></i>
               </a>
               <a
                 href={socialLinks ? socialLinks.twitter : ""}
-                class="fixed-twitter"
+                className="fixed-twitter"
                 target="_blank"
               >
-                <i class="fab fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </a>
               {/* <a href="#" class="fixed-gplus" target="_blank"><i class="fab fa-google"></i></a> */}
               <a
                 href={socialLinks?.linkedin}
-                class="fixed-linkedin"
+                className="fixed-linkedin"
                 target="_blank"
               >
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
               <a
                 href={socialLinks?.instagram}
-                class="fixed-instagrem"
+                className="fixed-instagrem"
                 target="_blank"
               >
-                <i class="fab fa-instagram"></i>
+                <i className="fab fa-instagram"></i>
               </a>
               {/* <a href="#" class="fixed-tumblr" target="_blank"><i class="fab fa-tumblr"></i></a> */}
               <a
@@ -697,15 +697,15 @@ const Footer = (props) => {
                 target="_blank"
                 href={socialLinks ? socialLinks.youtube : ""}
               >
-                <i class="fab fa-youtube"></i>
+                <i className="fab fa-youtube"></i>
               </a>
             </div>
           </Box>
-          <li class="animatebtn">
+          <li className="animatebtn">
             {" "}
             <a href="tel:+91 9571647680">
               {" "}
-              <i class="fa fa-phone-alt"></i>{" "}
+              <i className="fa fa-phone-alt"></i>{" "}
             </a>{" "}
           </li>
         </ul>

@@ -92,7 +92,7 @@ const AboutUsPage = (props) => {
 
               if (i % 2 === 0) {
                 return (
-                  <Box className="about-block-item">
+                  <Box className="about-block-item" key={i}>
                     <Grid container alignItems="center">
                       <Grid className="about-block-images" item xs={12} md={6}>
                         <Box className="about-block-image">
@@ -116,7 +116,7 @@ const AboutUsPage = (props) => {
                 );
               }
               return (
-                <Box className="about-page-item about-whyus-item">
+                <Box className="about-page-item about-whyus-item" key={i}>
                   <Grid container spacing={3}>
                     <Grid className="about-page-summery" item xs={12} md={6}>
                       <Box className="about-page-content">
@@ -130,11 +130,10 @@ const AboutUsPage = (props) => {
                       </Box>
                     </Grid>
                     <Grid
-                      className="about-page-images"
                       item
                       xs={12}
                       md={6}
-                      className={classes.style2}
+                      className={`${classes.style2} about-page-images`}
                     >
                       <Box className="about-page-image">
                         {" "}

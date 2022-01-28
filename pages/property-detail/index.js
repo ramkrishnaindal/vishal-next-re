@@ -121,7 +121,7 @@ const PropertyDetailPage = (props) => {
   const dispatch = useDispatch();
   // let query = useQuery();
   const [viewDetails, setViewDetails] = React.useState(false);
-  let token = query.get("token");
+  let token = router.query.token;
   const [PropertyDetail, setPropertyDetail] = React.useState({});
   const propertyListItem = useSelector((state) => state.PropertyDetail.data);
   console.log("propertyListItem", propertyListItem);

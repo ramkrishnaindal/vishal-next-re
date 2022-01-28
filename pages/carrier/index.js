@@ -159,7 +159,7 @@ export default function Carrier() {
       />
       <Box className="CareerPageText">
         <Container>
-          <div className={classes.root} className="headingtext">
+          <div className={`${classes.root} headingtext`}>
             <Box className="middel-content">
               {/* <CarrierBannerImg /> */}
               <h2>
@@ -186,7 +186,7 @@ export default function Carrier() {
                     } = career;
 
                     return (
-                      <div className=" job_inner wow fadeInUp">
+                      <div key={i} className=" job_inner wow fadeInUp">
                         <Grid item xs={9}>
                           <h3 className="job-title">
                             {degination} - {department} - {vacancy || 0}{" "}

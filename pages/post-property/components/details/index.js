@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  // Grid,
+  Grid,
   RadioGroup,
   Radio,
   FormControlLabel,
@@ -114,14 +114,15 @@ const PersonalDetail = (props) => {
         onChange={handleChange}
         row
       >
-        {options.map((option, index) => {
-          <FormControlLabel
-            value={option}
-            key={index}
-            control={<Radio />}
-            label={option}
-          />;
-        })}
+        {options &&
+          options.map((option, index) => {
+            <FormControlLabel
+              value={option}
+              key={index}
+              control={<Radio />}
+              label={option}
+            />;
+          })}
       </RadioGroup>
     </FormControl>
   );

@@ -32,7 +32,7 @@ export class MapContainer extends Component {
     console.log("markers for map **** ", this.props.markers);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
     if (nextProps.markers !== this.state.markers) {
       this.setState({ markers: nextProps.markers });

@@ -647,7 +647,7 @@ const HouseDetailPage = (props) => {
                 style={{ flexDirection: "column", alignItems: "flex-end" }}
               >
                 <div
-                  class="fs-2 mb-3"
+                  className="fs-2 mb-3"
                   onClick={(e) =>
                     handleFavourite(
                       PropertyDetail?._id,
@@ -662,7 +662,7 @@ const HouseDetailPage = (props) => {
                       width="44"
                       height="44"
                       fill="red"
-                      class="bi bi-heart"
+                      className="bi bi-heart"
                       style={{
                         position: "relative",
                         right: "5",
@@ -680,7 +680,7 @@ const HouseDetailPage = (props) => {
                       width="44"
                       height="44"
                       fill="red"
-                      class="bi bi-heart-fill"
+                      className="bi bi-heart-fill"
                       viewBox="0 0 16 16"
                       style={{
                         position: "relative",
@@ -690,7 +690,7 @@ const HouseDetailPage = (props) => {
                       }}
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                       ></path>
                     </svg>
@@ -882,10 +882,10 @@ const HouseDetailPage = (props) => {
 
               <InfoCard item={{ title: "Amenities" }}>
                 <Grid container>
-                  {(PropertyDetail?.amenities || []).map((amenities) => {
+                  {(PropertyDetail?.amenities || []).map((amenities, i) => {
                     debugger;
                     return (
-                      <Grid item xs={12} md={4}>
+                      <Grid item xs={12} md={4} key={i}>
                         <Aminities
                           icon={""}
                           title={
@@ -948,34 +948,41 @@ const HouseDetailPage = (props) => {
               </InfoCard>
               <InfoCard item={{ title: "Price Details" }}>
                 <Grid container>
-                  {Object.keys(PropertyDetail?.price || []).map((priceInfo) => {
-                    if (
-                      priceInfo === "_id" ||
-                      priceInfo === "propertyId" ||
-                      priceInfo === "priceIncludes" ||
-                      priceInfo === "__v" ||
-                      priceInfo === "created" ||
-                      priceInfo === "updated"
-                    ) {
-                      return null;
-                    }
+                  {Object.keys(PropertyDetail?.price || []).map(
+                    (priceInfo, i) => {
+                      if (
+                        priceInfo === "_id" ||
+                        priceInfo === "propertyId" ||
+                        priceInfo === "priceIncludes" ||
+                        priceInfo === "__v" ||
+                        priceInfo === "created" ||
+                        priceInfo === "updated"
+                      ) {
+                        return null;
+                      }
 
-                    return (
-                      <Grid item xs={12} md={4}>
-                        <Grid
-                          container
-                          style={{ marginTop: 10, marginBottom: 10 }}
-                        >
-                          <Grid item xs={12} md={12} className={classes.style2}>
-                            <Typography className={classes.text1}>
-                              {priceInfo} :{" "}
-                              {handleNull(PropertyDetail?.price[priceInfo])}
-                            </Typography>
+                      return (
+                        <Grid item xs={12} md={4} key={i}>
+                          <Grid
+                            container
+                            style={{ marginTop: 10, marginBottom: 10 }}
+                          >
+                            <Grid
+                              item
+                              xs={12}
+                              md={12}
+                              className={classes.style2}
+                            >
+                              <Typography className={classes.text1}>
+                                {priceInfo} :{" "}
+                                {handleNull(PropertyDetail?.price[priceInfo])}
+                              </Typography>
+                            </Grid>
                           </Grid>
                         </Grid>
-                      </Grid>
-                    );
-                  })}
+                      );
+                    }
+                  )}
                 </Grid>
               </InfoCard>
               <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
@@ -997,8 +1004,9 @@ const HouseDetailPage = (props) => {
                               href={plan.original}
                               download
                               target="_blank"
+                              rel="noreferrer"
                             >
-                              <i class="fa fa-download"></i>
+                              <i className="fa fa-download"></i>
                             </a>
                             <div
                               data-fancybox="dialog"
@@ -1022,7 +1030,7 @@ const HouseDetailPage = (props) => {
                               download
                               target="_blank"
                             >
-                              <i class="fa fa-download"></i>
+                              <i className="fa fa-download"></i>
                             </a>
                             <div
                               data-fancybox="dialog"
@@ -1053,7 +1061,7 @@ const HouseDetailPage = (props) => {
                 }
               >
                 {(reviews || []).map((review, i) => (
-                  <Paper elevation={0} style={{ borderRadius: 20 }}>
+                  <Paper elevation={0} key={i} style={{ borderRadius: 20 }}>
                     <Grid
                       key={i}
                       container
@@ -1205,9 +1213,10 @@ const HouseDetailPage = (props) => {
                                   textDecoration: "none",
                                 }}
                                 href={`https://www.google.com/maps/search/?api=1&query=${PropertyDetail?.address?.latitude},${PropertyDetail?.address?.longitude}`}
-                                class="location-map"
+                                className="location-map"
                               >
-                                View Map <i class="far fa-map-marker-alt"></i>
+                                View Map{" "}
+                                <i className="far fa-map-marker-alt"></i>
                               </a>
                             </Button>
                           </Typography>

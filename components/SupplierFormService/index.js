@@ -516,7 +516,6 @@ function SupplierForm(props) {
             company.trim().length > 0 &&
             !enableOtpField && (
               <Button
-                style={{ width: "23%", marginTop: "15px" }}
                 onClick={otpHandler}
                 variant="contained"
                 style={{
@@ -525,6 +524,8 @@ function SupplierForm(props) {
                   top: " 10px",
                   left: "5px",
                   color: "#fff",
+                  width: "23%",
+                  marginTop: "15px",
                 }}
               >
                 Verify
@@ -574,10 +575,10 @@ function SupplierForm(props) {
               />
               {!isOtpVerified && (
                 <Button
-                  style={{ width: "23%" }}
                   onClick={otpHandler}
                   variant="contained"
                   style={{
+                    width: "23%",
                     background: "green",
                     height: " 30px",
                     top: " 10px",

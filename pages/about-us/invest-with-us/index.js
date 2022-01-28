@@ -221,11 +221,10 @@ const InvestWithUs = (props) => {
               })}
             </Box>
             <Grid
-              className="about-page-images"
               item
               xs={12}
               md={6}
-              className={classes.style2}
+              className={`${classes.style2} about-page-images`}
               style={{
                 flexBasis: "40%",
                 display: "flex",
@@ -274,7 +273,7 @@ const InvestWithUs = (props) => {
               {(data?.howToInvest || []).map((details, i) => {
                 debugger;
                 return (
-                  <Grid className="invest-item" item xs={12} md={4}>
+                  <Grid className="invest-item" item xs={12} md={4} key={i}>
                     <Box className="client-block-icon">
                       <img
                         src={

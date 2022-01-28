@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as VerificationAction from "../../redux/actions/VerificationAction";
 // import { Link as RouterLink, useLocation } from "react-router-dom";
 import RouterLink from "next/link";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import NextLink from "../../components/UI/NextLink";
 const useStyles = makeStyles((theme) => ({
   bannerContainer: {

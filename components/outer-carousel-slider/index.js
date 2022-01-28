@@ -183,7 +183,7 @@ const OuterCarouselSlider = (props) => {
                       style={{ position: "relative" }}
                     >
                       {propertTag ? (
-                        <span class="featured">{propertTag}</span>
+                        <span className="featured">{propertTag}</span>
                       ) : null}
                       {/* <img className="img" src={process.env.PUBLIC_URL + '/property_img3.jpeg'} /> */}
                       <Slider {...settings1}>
@@ -200,7 +200,7 @@ const OuterCarouselSlider = (props) => {
                         })}
                       </Slider>
                       <div
-                        class="fs-2 mb-3"
+                        className="fs-2 mb-3"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
@@ -214,7 +214,7 @@ const OuterCarouselSlider = (props) => {
                             width="44"
                             height="44"
                             fill="red"
-                            class="bi bi-heart"
+                            className="bi bi-heart"
                             style={{
                               position: "absolute",
                               right: "5",
@@ -232,7 +232,7 @@ const OuterCarouselSlider = (props) => {
                             width="44"
                             height="44"
                             fill="red"
-                            class="bi bi-heart-fill"
+                            className="bi bi-heart-fill"
                             viewBox="0 0 16 16"
                             style={{
                               position: "absolute",

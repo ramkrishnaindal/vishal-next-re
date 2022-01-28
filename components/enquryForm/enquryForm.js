@@ -206,7 +206,7 @@ function EnquryForm(props) {
         onClick={handleClickOpen}
         className="enquryButton"
       >
-        <i class="fas fa-comments"></i>
+        <i className="fas fa-comments"></i>
       </Button>
       <Dialog
         onClose={handleClose}

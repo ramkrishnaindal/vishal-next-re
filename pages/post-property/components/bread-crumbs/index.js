@@ -1,7 +1,7 @@
 // import '../bread-crumbs/index.css'
 import React from "react";
 import { Box, Typography } from "@material-ui/core";
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import SvgIcon from "@material-ui/core/SvgIcon";
 
 function HomeIcon(props) {

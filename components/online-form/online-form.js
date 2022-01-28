@@ -227,7 +227,7 @@ export default function OnlineBooking(props) {
   console.log("state", state);
   console.log("emailValid", emailValid);
   return (
-    <div class="client-bgform">
+    <div className="client-bgform">
       <div className={classes.root}>
         <Container>
           <SectionHeader
@@ -245,7 +245,7 @@ export default function OnlineBooking(props) {
           <Box className="WholeCont">
             <Grid container spacing={3} className="onlineFormControl">
               <Grid item xs={3}>
-                <FormControl className={classes.margin} className="FormControl">
+                <FormControl className={`${classes.margin} FormControl`}>
                   <NativeSelect
                     className="SelectBox"
                     id="demo-customized-select-native"
@@ -270,7 +270,7 @@ export default function OnlineBooking(props) {
               </Grid>
 
               <Grid item xs={3}>
-                <FormControl className={classes.margin} className="FormControl">
+                <FormControl className={`${classes.margin} FormControl`}>
                   <NativeSelect
                     className="SelectBox"
                     id="demo-customized-select-native"
@@ -289,7 +289,9 @@ export default function OnlineBooking(props) {
                   >
                     <option value={10}>Select Property Name</option>
                     {propertyOptions?.map((role, index) => (
-                      <option value={role?._id}>{role?.nameOfProject}</option>
+                      <option key={index} value={role?._id}>
+                        {role?.nameOfProject}
+                      </option>
                     ))}
                   </NativeSelect>
                 </FormControl>
@@ -297,8 +299,7 @@ export default function OnlineBooking(props) {
 
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
                   noValidate
                   autoComplete="off"
                 >
@@ -324,8 +325,7 @@ export default function OnlineBooking(props) {
               </Grid>
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
                   noValidate
                   autoComplete="off"
                 >
@@ -354,8 +354,7 @@ export default function OnlineBooking(props) {
               </Grid>
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
                   noValidate
                   autoComplete="off"
                 >
@@ -381,8 +380,7 @@ export default function OnlineBooking(props) {
               </Grid>
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
                   noValidate
                   autoComplete="off"
                 >
@@ -409,8 +407,7 @@ export default function OnlineBooking(props) {
 
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
                   noValidate
                   autoComplete="off"
                 >

@@ -163,7 +163,7 @@ export default function BookNowForm(props) {
     }
   }, []);
   return (
-    <div class="client-bgform" style={{ padding: 20, borderRadius: 20 }}>
+    <div className="client-bgform" style={{ padding: 20, borderRadius: 20 }}>
       <div className={classes.root}>
         <SectionHeader
           title={APP_CONSTANTS.online_form_title}

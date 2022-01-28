@@ -165,21 +165,21 @@ const MyBooking = (props) => {
                     <Box className="box-header">
                       <h5 className="box-title">My Booking Lists</h5>
                     </Box>
-                    <Box class="box-body">
+                    <Box className="box-body">
                       {booking?.map((item, index) => {
                         debugger;
                         return (
-                          <Box class="booking-table">
-                            <Box class="tabel-row">
-                              <Box class="table-cell">
+                          <Box className="booking-table">
+                            <Box className="tabel-row">
+                              <Box className="table-cell">
                                 Booking No.-{item?._id}
                               </Box>
-                              <Box class="table-cell text-right">
+                              <Box className="table-cell text-right">
                                 {item?.created}
                               </Box>
                             </Box>
-                            <Box class="tabel-row">
-                              <Box class="table-cell booking-img">
+                            <Box className="tabel-row">
+                              <Box className="table-cell booking-img">
                                 <NextLink href="#">
                                   <img
                                     src={
@@ -194,20 +194,20 @@ const MyBooking = (props) => {
                                   />
                                 </NextLink>
                               </Box>
-                              <Box class="table-cell">
-                                <p class="booking-title">
+                              <Box className="table-cell">
+                                <p className="booking-title">
                                   {item?.propertyId?.nameOfProject}
                                 </p>
-                                <p class="booking-status booking-sucess">
+                                <p className="booking-status booking-sucess">
                                   Booking Sucessfully!
                                 </p>
                               </Box>
-                              <Box class="table-cell text-right booking-total">
-                                <p class="booking-price">
-                                  <i class="fas fa-rupee-sign"></i>{" "}
+                              <Box className="table-cell text-right booking-total">
+                                <p className="booking-price">
+                                  <i className="fas fa-rupee-sign"></i>{" "}
                                   {item?.bookingAmount}
                                 </p>
-                                <p class="booking-view">
+                                <p className="booking-view">
                                   {/* <Link
                                     href={{
                                       pathname: "/house-details",

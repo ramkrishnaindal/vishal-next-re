@@ -8,6 +8,7 @@ import {
   Box,
   // Link as MUILink,
 } from "@material-ui/core";
+import Image from "next/image";
 import NextLink from "../components/UI/NextLink";
 import { useDispatch } from "react-redux";
 // import * as LoginAction from "../redux/actions/LoginAction";
@@ -47,6 +48,13 @@ import SearchBox from "../components/search-box/index";
 // import { Link as RouterLink } from "react-router-dom";
 // import Link from "next/link";
 const useStyles = makeStyles((theme) => ({}));
+function viewportToPixels(value) {
+  var parts = value.match(/([0-9\.]+)(vh|vw)/);
+  var q = Number(parts[1]);
+  var side =
+    window[["innerHeight", "innerWidth"][["vh", "vw"].indexOf(parts[2])]];
+  return side * (q / 100);
+}
 const settings1 = {
   // dots: true,
   arrows: false,
@@ -346,8 +354,22 @@ const HomePage = (props) => {
           {(banners || []).map((imgPath) => {
             console.log("asdas", imgPath);
             return (
-              <Box className="property-image-thumb">
-                <img src={imgPath.imageUrl} alt="" />
+              <Box
+                className="property-image-thumb"
+                style={{
+                  width: "100vw",
+                  height: "100vh",
+                  // position: "relative",
+                }}
+              >
+                {/* <img src={imgPath.imageUrl} alt="" /> */}
+                <Image
+                  src={imgPath.imageUrl}
+                  height={viewportToPixels("90vh")}
+                  width={viewportToPixels("100vw")}
+                  // layout="fill"
+                  // objectFit="fill"
+                />
               </Box>
             );
           })}

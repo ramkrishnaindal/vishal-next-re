@@ -163,9 +163,9 @@ const MyProperty = (props) => {
                       </li>
                       <li>
                         {" "}
-                        <Typogaphy className="logout" onClick={logoutHandler}>
+                        <Typography className="logout" onClick={logoutHandler}>
                           <i className="fas fa-sign-out-alt"></i>Log out
-                        </Typogaphy>{" "}
+                        </Typography>{" "}
                       </li>
                     </ul>
                   </Box>

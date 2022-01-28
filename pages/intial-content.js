@@ -101,3 +101,6 @@ export const building_materials = [
   { imageUrl: "/images/building_material_img/m12.png", desc: "" },
   { imageUrl: "/images/building_material_img/m13.png", desc: "" },
 ];
+export default function () {
+  return <></>;
+}

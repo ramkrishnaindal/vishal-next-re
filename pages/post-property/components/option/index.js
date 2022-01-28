@@ -57,7 +57,7 @@ const Option = (props) => {
   } = props;
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const allItemsExceptLast = items.slice(0, -1);
+  const allItemsExceptLast = items ? items.slice(0, -1) : null;
   const [selectedOption, setSelectedOption] = React.useState(null);
   const [selectedOptionIndex, setSelectedOptionIndex] = React.useState(-1);
 
@@ -142,7 +142,9 @@ const Option = (props) => {
           >
             {showMore && selectedOption
               ? selectedOption
-              : items[items.length - 1]}
+              : items
+              ? items[items.length - 1]
+              : ""}
           </Button>
           {showMore && (
             <Menu

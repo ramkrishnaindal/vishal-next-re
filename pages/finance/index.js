@@ -78,17 +78,11 @@ const Finance = (props) => {
         <Box className="content-wrapper">
           <Box className="about-block-item">
             <Grid container spacing={3} alignItems="center">
-              <Grid
-                className="about-block-images"
-                item
-                xs={12}
-                md={5}
-                className=""
-              >
+              <Grid className="about-block-images" item xs={12} md={5}>
                 <Box className="about-block-image">
                   <img src="../images/about-img.jpg" alt="" />
 
-                  <div id="form1" class="finance-form-block">
+                  <div id="form1" className="finance-form-block">
                     <form className="form-enquiry finance-form">
                       <TextField
                         className="form-group"
@@ -138,11 +132,11 @@ const Finance = (props) => {
                         />
 
                         <div
-                          class="input-group-append tenure-choice"
+                          className="input-group-append tenure-choice"
                           data-toggle="buttons"
                         >
                           <div
-                            class="btn-group btn-group-toggle"
+                            className="btn-group btn-group-toggle"
                             data-toggle="buttons"
                             style={{
                               display: "flex",
@@ -151,28 +145,28 @@ const Finance = (props) => {
                               alignItems: "flex-start",
                             }}
                           >
-                            <label class="btn btn-secondary active">
+                            <label className="btn btn-secondary active">
                               <input
                                 type="radio"
                                 name="loantenure"
                                 id="loanyears"
                                 value="12"
-                                tabindex="4"
+                                tabIndex="4"
                                 checked={yearSelected}
-                                autocomplete="off"
+                                autoComplete="off"
                                 onChange={(e) => setYearselected(true)}
                               />
                               Years
                             </label>
 
-                            <label class="btn btn-secondary ml-2">
+                            <label className="btn btn-secondary ml-2">
                               <input
                                 type="radio"
                                 name="loantenure"
                                 id="loanmonths"
                                 value="1"
-                                tabindex="5"
-                                autocomplete="off"
+                                tabIndex="5"
+                                autoComplete="off"
                                 checked={!yearSelected}
                                 onChange={(e) => setYearselected(false)}
                               />
@@ -189,7 +183,7 @@ const Finance = (props) => {
                           onClick={(e) => handleData(e)}
                         >
                           <i
-                            class="fas fa-calculator"
+                            className="fas fa-calculator"
                             style={{ marginRight: "10px" }}
                           ></i>
                           Calculate
@@ -200,7 +194,7 @@ const Finance = (props) => {
                           onClick={(e) => resetData(e)}
                         >
                           <i
-                            class="fas fa-trash-restore"
+                            className="fas fa-trash-restore"
                             style={{ marginRight: "10px" }}
                           ></i>
                           Reset
@@ -261,7 +255,7 @@ const Finance = (props) => {
             <Box className="finance-bank-outer">
               {bankImage?.map((item, index) => {
                 return (
-                  <Box className="finance-bank-wrap">
+                  <Box className="finance-bank-wrap" key={index}>
                     <img src={ApiClient.SERVER_ADDRESS + "/" + item.path} />
                   </Box>
                 );

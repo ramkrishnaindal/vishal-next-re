@@ -363,7 +363,7 @@ const PropertyListCard = (props) => {
     if (!userDetails) {
       router.replace("/signin");
     }
-    const endPoint = item.isFavorite ? "removeFromWishList" : "addToWishList";
+    const endPoint = item?.isFavorite ? "removeFromWishList" : "addToWishList";
     try {
       userDetails = JSON.parse(userDetails);
       const body = {
@@ -416,7 +416,9 @@ const PropertyListCard = (props) => {
               onClick={contentClickHandler.bind(null, item)}
               style={{ position: "relative", cursor: "pointer" }}
             >
-              {propertTag ? <span class="featured">{propertTag}</span> : null}
+              {propertTag ? (
+                <span className="featured">{propertTag}</span>
+              ) : null}
               <img
                 className="image"
                 src={mainImage}
@@ -531,16 +533,16 @@ const PropertyListCard = (props) => {
                     }}
                   >
                     <div
-                      class="fs-2 mb-3"
+                      className="fs-2 mb-3"
                       onClick={(e) => handleFavourite(item?._id, e)}
                     >
-                      {!item.isFavorite && (
+                      {!item?.isFavorite && (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="44"
                           height="44"
                           fill="red"
-                          class="bi bi-heart"
+                          className="bi bi-heart"
                           style={{
                             position: "absolute",
                             right: "0",
@@ -552,13 +554,13 @@ const PropertyListCard = (props) => {
                           <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                         </svg>
                       )}
-                      {item.isFavorite && (
+                      {item?.isFavorite && (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="44"
                           height="44"
                           fill="red"
-                          class="bi bi-heart-fill"
+                          className="bi bi-heart-fill"
                           viewBox="0 0 16 16"
                           style={{
                             position: "absolute",
@@ -594,7 +596,7 @@ const PropertyListCard = (props) => {
                     </Typography> */}
 
                       <Typography className={classes.text5}>
-                        Rs. {item.price[0].expectedPrice}
+                        Rs. {item?.price[0].expectedPrice}
                       </Typography>
                     </Grid>
                   </Grid>
