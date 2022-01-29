@@ -4354,3 +4354,6 @@ hr {
   .MuiBottomNavigationAction-label.MuiBottomNavigationAction-iconOnly {
   opacity: 1;
 }
+#__next {
+  overflow-x: hidden;
+}
