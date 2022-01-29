@@ -76,8 +76,8 @@ export default function Mobilemenu(props) {
       localStorage.removeItem("user");
       localStorage.removeItem("bookNow");
       localStorage.removeItem("postProperty");
-      router.replace("/");
-      // window.location.href = "/";
+      // router.replace("/");
+      window.location.href = "/";
     }
   };
   const toggleDrawer = (anchor, open) => (event) => {

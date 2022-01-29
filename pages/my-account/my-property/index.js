@@ -50,7 +50,8 @@ const MyProperty = (props) => {
       localStorage.removeItem("user");
       localStorage.removeItem("bookNow");
       localStorage.removeItem("postProperty");
-      router.replace("/");
+      // router.replace("/");
+      window.location.href = "/";
     }
   };
 
