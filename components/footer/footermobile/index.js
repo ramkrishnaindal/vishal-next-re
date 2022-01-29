@@ -93,9 +93,9 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     bottom: 0,
     left: 0,
-
-    "& .MuiBottomNavigationAction-root": {
+    "& .MuiBottomNavigationAction-root.MuiBottomNavigationAction-iconOnly": {
       minWidth: "auto",
+      paddingTop: "0px!important",
     },
     "& .MuiBottomNavigationAction-root.Mui-selected": {
       color: "#fff",
@@ -172,7 +172,7 @@ const classes = {
     "& .MuiBottomNavigationAction-root": {
       minWidth: "auto",
     },
-    "& .MuiBottomNavigationAction-root.Mui-selected": {
+    "& .MuiBottomNavigationAction-label": {
       color: "#fff",
       backgroundColor: "rgba(0, 0, 0, 0.1)",
     },
@@ -184,7 +184,7 @@ const classes = {
     bottom: 0,
     left: 0,
     "& a": {
-      minWidth: "auto",
+      minWidth: "100%",
     },
     "& .MuiBottomNavigationAction-root": {
       minWidth: "auto",
@@ -414,14 +414,19 @@ export default function Mobilefootermenu() {
         value={value}
         onChange={handleChange}
         style={classes.footermenu}
+        className="mobile-footer"
       >
         {/* <Link href="/" passHref> */}
-        <NextLink href="/" style={classes.footermenuAnchor}>
+        <NextLink href="/" style={{ width: "100%" }}>
           <BottomNavigationAction
             label="Home"
             value="Home"
             icon={<Home />}
-            // style={classes.footermenuAnchor}
+            style={{
+              ...classes.TextbottomMenuColor,
+              width: "100%",
+              paddingTop: 10,
+            }}
           />
         </NextLink>
         {/* </Link> */}
@@ -430,31 +435,40 @@ export default function Mobilefootermenu() {
           label="Call"
           value="+91-9571647680"
           icon={<Phone />}
-          // style={classes.TextbottomMenuColor}
+          style={classes.TextbottomMenuColor}
         />
         {/* <Link href="/search-property-details?type=Sell" passHref> */}
         <NextLink
           href="/search-property-details?type=Sell"
-          style={classes.footermenuAnchor}
+          style={{ width: "100%" }}
         >
           <BottomNavigationAction
             label="Sell"
             value="Sell"
             icon={<Sell />}
-            // style={classes.TextbottomMenuColor}
+            style={{
+              ...classes.TextbottomMenuColor,
+              width: "100%",
+              paddingTop: 10,
+            }}
           />
         </NextLink>
         {/* </Link> */}
         {/* <Link href="/search-property-details?type=Rent" passHref> */}
         <NextLink
           href="/search-property-details?type=Rent"
-          style={classes.footermenuAnchor}
+          // style={classes.footermenuAnchor}
+          style={{ width: "100%" }}
         >
           <BottomNavigationAction
             label="Rent"
             value="Rent"
             icon={<Rent />}
-            // style={classes.TextbottomMenuColor}
+            style={{
+              ...classes.TextbottomMenuColor,
+              width: "100%",
+              paddingTop: 10,
+            }}
           />
         </NextLink>
         {/* </Link> */}

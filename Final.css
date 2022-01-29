@@ -4350,3 +4350,7 @@ hr {
     font-size: 20px;
   }
 }
+.mobile-footer
+  .MuiBottomNavigationAction-label.MuiBottomNavigationAction-iconOnly {
+  opacity: 1;
+}
