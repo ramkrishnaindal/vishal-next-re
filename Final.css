@@ -4357,3 +4357,6 @@ hr {
 #__next {
   overflow-x: hidden;
 }
+.MainMenu .primary-menu-navbar p {
+  font-size: 0.9rem;
+}
