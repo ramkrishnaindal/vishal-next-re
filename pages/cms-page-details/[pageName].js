@@ -26,32 +26,38 @@ const CmsPageDetails = (props) => {
   // let query = useQuery();
   const [data, setData] = useState();
   const [bgImage, setBgImage] = useState("");
+
   const { query: id } = router;
+  debugger;
   React.useEffect(() => {
-    populateAboutUsDetails(id);
+    if (id) populateAboutUsDetails(id);
     // populateTeamDetails();
   }, [id]);
 
   const populateAboutUsDetails = (id) => {
     const getData = async () => {
-      const response = await ApiClient.call(
-        ApiClient.REQUEST_METHOD.POST,
-        "/cms/getDetailData",
-        { _id: id },
-        {},
-        {},
-        false
-      );
-      setData(response.data || null);
-      if (
-        response.data?.image &&
-        response.data?.image.length > 0 &&
-        response.data?.image[0].image &&
-        response.data?.image[0].image[0]
-      ) {
-        setBgImage(
-          API_ENDPOINTS.BASE_URL + response.data?.image[0]?.image[0]?.path
+      try {
+        const response = await ApiClient.call(
+          ApiClient.REQUEST_METHOD.POST,
+          "/cms/getDetailData",
+          { _id: id.id },
+          {},
+          {},
+          false
         );
+        setData(response.data || null);
+        if (
+          response.data?.image &&
+          response.data?.image.length > 0 &&
+          response.data?.image[0].image &&
+          response.data?.image[0].image[0]
+        ) {
+          setBgImage(
+            API_ENDPOINTS.BASE_URL + response.data?.image[0]?.image[0]?.path
+          );
+        }
+      } catch (err) {
+        console.log(err);
       }
     };
     getData();

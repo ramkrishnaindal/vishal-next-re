@@ -340,8 +340,8 @@ const PropertyListCard = (props) => {
   };
   const contentClickHandler = (item) => {
     router.push({
-      pathname: "/house-details",
-      query: item?._id,
+      pathname: `/house-details/${item?._id}`,
+      // query: item?._id,
     });
   };
   const handleClickOpen = (e) => {
@@ -677,8 +677,8 @@ const PropertyListCard = (props) => {
                         > */}
                         <NextLink
                           href={{
-                            pathname: "/house-details",
-                            query: item?._id,
+                            pathname: `/house-details/${item?._id}`,
+                            // query: item?._id,
                           }}
                           className={classes.btn1}
                         >

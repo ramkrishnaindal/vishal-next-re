@@ -439,7 +439,7 @@ export default function Mobilefootermenu() {
         />
         {/* <Link href="/search-property-details?type=Sell" passHref> */}
         <NextLink
-          href="/search-property-details?type=Sell"
+          href="/search-property-details/Sell"
           style={{ width: "100%" }}
         >
           <BottomNavigationAction
@@ -456,7 +456,7 @@ export default function Mobilefootermenu() {
         {/* </Link> */}
         {/* <Link href="/search-property-details?type=Rent" passHref> */}
         <NextLink
-          href="/search-property-details?type=Rent"
+          href="/search-property-details/Rent"
           // style={classes.footermenuAnchor}
           style={{ width: "100%" }}
         >

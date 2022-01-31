@@ -346,7 +346,7 @@ const Footer = (props) => {
                 <NextLink
                   className={`${classes.text3} links`}
                   href={{
-                    pathname: "search-property-details?type=Sell",
+                    pathname: "search-property-details/Sell",
                   }}
                 >
                   <Typography>Properties</Typography>
@@ -435,8 +435,10 @@ const Footer = (props) => {
                   <NextLink
                     className={`${classes.text3} links`}
                     href={{
-                      pathname: "/cms-page-details",
-                      query: lp._id,
+                      pathname: `/cms-page-details/${(
+                        lp.pageName || ""
+                      ).replace(/\s/g, "-")}`,
+                      query: { id: lp._id },
                     }}
                     key={index + 5000}
                   >
@@ -591,8 +593,11 @@ const Footer = (props) => {
               <NextLink
                 className={`${classes.text3} links`}
                 href={{
-                  pathname: "/cms-page-details",
-                  query: bp._id,
+                  pathname: `/cms-page-details/${(bp.pageName || "").replace(
+                    /\s/g,
+                    "-"
+                  )}`,
+                  query: { id: bp._id },
                 }}
               >
                 <Typography className={classes.text4}>

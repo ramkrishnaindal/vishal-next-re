@@ -151,7 +151,7 @@ const SearchPropertyList = (props) => {
   }, [router?.query]);
 
   useEffect(() => {
-    const type = new URLSearchParams(location.search).get("type");
+    const { type } = router.query;
     if (type) {
       const payload = {
         type: type,
@@ -168,8 +168,8 @@ const SearchPropertyList = (props) => {
 
   useEffect(() => {
     // console.log("params changed", params);
-    const type = new URLSearchParams(location.search).get("type");
-
+    // const type = new URLSearchParams(location.search).get("type");
+    const { type } = router.query;
     if (type === "Rent" || type === "Sell") {
       // console.log("type is ^^^ ", type);
       const payload = {
@@ -184,8 +184,8 @@ const SearchPropertyList = (props) => {
   }, [params]);
   const changeHandler = () => {
     // console.log("params changed", params);
-    const type = new URLSearchParams(location.search).get("type");
-
+    // const type = new URLSearchParams(location.search).get("type");
+    const { type } = router.query;
     if (type === "Rent" || type === "Sell") {
       // console.log("type is ^^^ ", type);
       const payload = {

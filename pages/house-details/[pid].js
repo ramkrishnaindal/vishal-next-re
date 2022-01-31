@@ -288,7 +288,7 @@ const HouseDetailPage = (props) => {
     }
     dispatch(PropertyAction.ResetPropertyDetail());
   }, []);
-  const pId = router?.query;
+  const pId = router?.query?.pid;
   debugger;
   const { isFavorite: isFavoriteState } = propertyListItem?.data || {
     isFavorite: false,
@@ -297,7 +297,7 @@ const HouseDetailPage = (props) => {
     debugger;
     reset();
     let reqData = {
-      propertyId: router?.query,
+      propertyId: router?.query?.pid,
       // || localStorage.getItem("pid")
       // propertyId: "6125373540f10f2712e43db5"
     };
@@ -567,7 +567,7 @@ const HouseDetailPage = (props) => {
 
       dispatch(Snackbar.showSuccessSnackbar(response.message));
       let reqData = {
-        propertyId: router?.query,
+        propertyId: router?.query?.pid,
         // || localStorage.getItem("pid")
         // propertyId: "6125373540f10f2712e43db5"
       };
@@ -712,7 +712,7 @@ const HouseDetailPage = (props) => {
                   onClick={() => {
                     if (!localStorage.getItem("user")) {
                       localStorage.setItem("bookNow", true);
-                      localStorage.setItem("pid", router?.query);
+                      localStorage.setItem("pid", router?.query?.pid);
                       return router.push("/signin");
                     }
                     setBookNow(true);

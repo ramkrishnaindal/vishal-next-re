@@ -218,8 +218,8 @@ const MyBooking = (props) => {
                                   > */}
                                   <NextLink
                                     href={{
-                                      pathname: "/house-details",
-                                      query: item?._id,
+                                      pathname: `/house-details/${item?._id}`,
+                                      // query: item?._id,
                                     }}
                                   >
                                     <Button>View</Button>

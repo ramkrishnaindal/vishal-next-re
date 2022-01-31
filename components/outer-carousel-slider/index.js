@@ -169,8 +169,7 @@ const OuterCarouselSlider = (props) => {
             return (
               <NextLink
                 href={{
-                  pathname: "/house-details",
-                  query: _id,
+                  pathname: `/house-details/${_id}`,
                 }}
                 className="property-item"
                 style={{ cursor: "pointer" }}
@@ -287,8 +286,8 @@ const OuterCarouselSlider = (props) => {
                       <Grid className="property-button">
                         <NextLink
                           href={{
-                            pathname: "/house-details",
-                            query: _id,
+                            pathname: `/house-details/${_id}`,
+                            // query: _id,
                           }}
                           className="btn btn-primary"
                         >

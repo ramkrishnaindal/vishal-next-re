@@ -132,7 +132,10 @@ const MenuItem = (props) => {
               // >
               <NextLink
                 key={idx}
-                href={{ pathname: "/service-details", query: sm._id }}
+                href={{
+                  pathname: `/service-details/${sm.title}/`,
+                  query: sm._id,
+                }}
                 style={mStyle}
               >
                 <DropdownMenu onClick={() => handleClose(sm)}>

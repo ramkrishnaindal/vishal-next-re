@@ -57,9 +57,9 @@ const MyProperty = (props) => {
 
   const propertyClickHandler = (propertyId) => {
     router.push({
-      pathname: "/house-details",
+      pathname: `/house-details/${propertyId}`,
       // search: "?update=true", // query string
-      query: propertyId,
+      // query: propertyId,
     });
   };
   const getData = async () => {

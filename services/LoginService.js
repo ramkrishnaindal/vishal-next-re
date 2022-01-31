@@ -17,7 +17,7 @@ export const LoginService = async (dispatch, data) => {
     dispatch(LoginSuccess(result));
     dispatch(Snackbar.showSuccessSnackbar(result.message));
     if (localStorage.getItem("bookNow") == "true") {
-      window.location.href = "/housee-details";
+      window.location.href = "/house-details";
     } else if (localStorage.getItem("postProperty") == "true") {
       window.location.href = "/post-property";
     } else {

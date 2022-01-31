@@ -399,7 +399,7 @@ const SearchBox = (props) => {
               > */}
               <NextLink
                 href={{
-                  pathname: "/search-property-details",
+                  pathname: `/search-property-details/${pType}`,
                   query: {
                     keyword,
                     pType,

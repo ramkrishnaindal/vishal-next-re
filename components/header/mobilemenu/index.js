@@ -136,12 +136,12 @@ export default function Mobilemenu(props) {
               {
                 id: 3,
                 title: "Sell",
-                href: "/search-property-details?type=Sell",
+                href: "/search-property-details/Sell",
               },
               {
                 id: 4,
                 title: "Rent",
-                href: "/search-property-details?type=Rent",
+                href: "/search-property-details/Rent",
               },
             ],
           },

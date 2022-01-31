@@ -340,8 +340,8 @@ const MyFavorite = (props) => {
                                       className="btn btn-primary"
                                       component={NextLink}
                                       href={{
-                                        pathname: "/house-details",
-                                        query: item?.Features?.propertyId,
+                                        pathname: `/house-details/${item?.Features?.propertyId}`,
+                                        // query: item?.Features?.propertyId,
                                       }}
                                     >
                                       MORE DETAIL
