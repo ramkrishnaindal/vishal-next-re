@@ -104,7 +104,9 @@ export default function Blog() {
                   <Box className="ParentButton">
                     <NextLink
                       href={{
-                        pathname: "/blog-details",
+                        pathname: `/blog-details/${(
+                          title.toLowerCase() || ""
+                        ).replace(/\s/g, "-")}`,
                         query: _id,
                       }}
                     >

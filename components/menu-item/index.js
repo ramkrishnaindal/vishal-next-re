@@ -133,7 +133,7 @@ const MenuItem = (props) => {
               <NextLink
                 key={idx}
                 href={{
-                  pathname: `/service-details/${sm.toLowerCase()}/`,
+                  pathname: `/service-details/${sm?.title?.toLowerCase()}/`,
                   query: sm._id,
                 }}
                 style={mStyle}
@@ -196,7 +196,9 @@ const MenuItem = (props) => {
           }}
         >
           <img
-            src={process.env.NEXT_PUBLIC_PUBLIC_URL + "/property_img3.jpeg"}
+            src={
+              process.env.NEXT_PUBLIC_PUBLIC_URL + "/images/property_img3.jpeg"
+            }
             style={{ width: 100, height: 100 }}
           />
         </Grid>
@@ -257,9 +259,13 @@ const MenuItem = (props) => {
           }}
         >
           {/* <Link href={href} passHref> */}
-          <NextLink href={href || "/"} className={menuStyle}>
-            <Typography>{title}</Typography>
-          </NextLink>
+          {href ? (
+            <NextLink href={href} className={menuStyle}>
+              <Typography>{title}</Typography>
+            </NextLink>
+          ) : (
+            <Typography style={{ cursor: "pointer" }}>{title}</Typography>
+          )}
           {/* </Link> */}
           {_renderIcon()}
         </Grid>

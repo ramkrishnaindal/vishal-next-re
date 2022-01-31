@@ -37,19 +37,28 @@ const InnerCarouselSlider = (props) => {
           <div>
             <img
               className="img"
-              src={process.env.NEXT_PUBLIC_PUBLIC_URL + "/property_img3.jpeg"}
+              src={
+                process.env.NEXT_PUBLIC_PUBLIC_URL +
+                "/images/property_img3.jpeg"
+              }
             />
           </div>
           <div>
             <img
               className="img"
-              src={process.env.NEXT_PUBLIC_PUBLIC_URL + "/property_img3.jpeg"}
+              src={
+                process.env.NEXT_PUBLIC_PUBLIC_URL +
+                "/images/property_img3.jpeg"
+              }
             />
           </div>
           <div>
             <img
               className="img"
-              src={process.env.NEXT_PUBLIC_PUBLIC_URL + "/property_img3.jpeg"}
+              src={
+                process.env.NEXT_PUBLIC_PUBLIC_URL +
+                "/images/property_img3.jpeg"
+              }
             />
           </div>
         </Box>

@@ -152,7 +152,7 @@ const SupplierFormPage = (props) => {
   //     getData();
   //   };
 
-  let img1 = "/property_img3.jpeg";
+  let img1 = "/images/property_img3.jpeg";
   let banner = "/images/about_us.jpeg";
   let images = [];
   //   if (serviceDetail !== {} && serviceDetail.media && serviceDetail.media.length > 0 && serviceDetail.media[0].image && serviceDetail.media[0].image.length > 0) {

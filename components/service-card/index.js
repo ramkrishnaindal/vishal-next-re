@@ -28,7 +28,7 @@ const ServiceCard = (props) => {
 
   // console.log("Service card", props.service);
   // console.log("{title, shortDescription}", title, shortDescription, media);
-  let img1 = "/property_img3.jpeg";
+  let img1 = "/images/property_img3.jpeg";
   if (
     media !== [] &&
     media.length > 0 &&

@@ -6,6 +6,7 @@ import Drawer from "@material-ui/core/Drawer";
 import NextLink from "../../UI/NextLink";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
+import { Box } from "@material-ui/core";
 // import { Link as MUILink } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -175,23 +176,23 @@ export default function Mobilemenu(props) {
           return (
             <div onClick={!submenu ? toggleDrawer(anchor, false) : () => {}}>
               {/* <Link href={href} passHref> */}
-              <NextLink href={href || "/"}>
-                <ListItem
-                  button
-                  key={id}
-                  onClick={() => {
-                    setNo({
-                      no: index,
-                      status: !no.status,
-                    });
-                  }}
-                >
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={title} />
-                </ListItem>
-              </NextLink>
+              {/* <NextLink href={href || "/"}> */}
+              <ListItem
+                button
+                key={id}
+                onClick={() => {
+                  setNo({
+                    no: index,
+                    status: !no.status,
+                  });
+                }}
+              >
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={title} />
+              </ListItem>
+              {/* </NextLink> */}
               {/* </Link> */}
               {submenu
                 ? submenu.map((sm, i) => {
@@ -208,7 +209,7 @@ export default function Mobilemenu(props) {
                           <NextLink
                             key={i}
                             href={{
-                              pathname: "/service-details",
+                              pathname: `/service-details/${sm?.title}`,
                               query: sm._id,
                             }}
                             className={
@@ -245,9 +246,8 @@ export default function Mobilemenu(props) {
 
                     return (
                       // <Link href={href} passHref>
-                      <NextLink
+                      <Box
                         key={id}
-                        href={href || "/"}
                         className={
                           no.no == index && no.status === true
                             ? "showNav"
@@ -264,7 +264,7 @@ export default function Mobilemenu(props) {
                             </b>
                           </ListItemIcon>
                         </ListItem>
-                      </NextLink>
+                      </Box>
                       // </Link>
                     );
                   })

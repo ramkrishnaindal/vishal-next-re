@@ -64,7 +64,7 @@ function BlogDetailsRight(props) {
       <Typography className="heading">Recent Blogs</Typography>
       <Box className="recent-blogs">
         <Box className="blog-card" style={{ display: "flex" }}>
-          <img src={"property_img3.jpeg"} alt="" height={100} />
+          <img src={"/images/property_img3.jpeg"} alt="" height={100} />
           <Box className="blog-content">
             <Typography className="blog-title">
               Jack Ma & future of E-commerce
