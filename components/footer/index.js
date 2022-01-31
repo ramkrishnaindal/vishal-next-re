@@ -435,7 +435,7 @@ const Footer = (props) => {
                   <NextLink
                     className={`${classes.text3} links`}
                     href={{
-                      pathname: `/cms-page-details/${(
+                      pathname: `/pages/${(
                         lp.pageName.toLowerCase() || ""
                       ).replace(/\s/g, "-")}`,
                       query: { id: lp._id },
@@ -593,9 +593,10 @@ const Footer = (props) => {
               <NextLink
                 className={`${classes.text3} links`}
                 href={{
-                  pathname: `/cms-page-details/${(
-                    bp.pageName.toLowerCase() || ""
-                  ).replace(/\s/g, "-")}`,
+                  pathname: `/pages/${(bp.pageName.toLowerCase() || "").replace(
+                    /\s/g,
+                    "-"
+                  )}`,
                   query: { id: bp._id },
                 }}
               >
