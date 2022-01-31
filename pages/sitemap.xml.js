@@ -6,7 +6,8 @@ const Sitemap = () => {};
 export const getServerSideProps = ({ res }) => {
   const baseUrl = {
     development: "http://localhost:3000",
-    production: "https://vishal-next.vercel.app",
+    production:
+      process.env.NEXT_PUBLIC_PUBLIC_URL || "https://vishal-next.vercel.app",
   }[process.env.NODE_ENV];
 
   const staticPages = fs
