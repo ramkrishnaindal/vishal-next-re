@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import NextLink from "../UI/NextLink";
 // import { useHistory } from "react-router-dom";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {
   Grid,
@@ -46,7 +46,7 @@ import ApiClient from "../../api-client";
 // import "../../components/outer-carousel-slider/featured.css";
 
 import * as Snackbar from "../../redux/actions/SnackbarActions";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 // const baseTheme = createMuiTheme();
 const useStyles = makeStyles((theme) => ({
   text1: {
@@ -173,7 +173,6 @@ const stylessd = (theme) => ({
 
 const DialogTitle = withStyles(stylessd)((props) => {
   const { children, classes, onClose, ...other } = props;
-  const router = useRouter();
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
@@ -199,6 +198,7 @@ const DialogActions = withStyles((theme) => ({
 
 const PropertyListCard = (props) => {
   // const largeScreen = useMediaQuery(theme => theme.breakpoints.up('sm'));
+  const router = useRouter();
 
   const { item } = props;
   // console.log("item", item);
@@ -412,25 +412,32 @@ const PropertyListCard = (props) => {
               justifyContent: "flex-start",
             }}
           >
-            <div
-              onClick={contentClickHandler.bind(null, item)}
-              style={{ position: "relative", cursor: "pointer" }}
+            <NextLink
+              href={{
+                pathname: `/house-details/${item?._id}`,
+                // query: item?._id,
+              }}
             >
-              {propertTag ? (
-                <span className="featured">{propertTag}</span>
-              ) : null}
-              <img
-                className="image"
-                src={mainImage}
-                style={{
-                  width: "100%",
-                  height: 300,
-                  objectFit: "cover",
-                  backgroundColor: "red",
-                }}
-                alt=""
-              />
-            </div>
+              <div
+                onClick={contentClickHandler.bind(null, item)}
+                style={{ position: "relative", cursor: "pointer" }}
+              >
+                {propertTag ? (
+                  <span className="featured">{propertTag}</span>
+                ) : null}
+                <img
+                  className="image"
+                  src={mainImage}
+                  style={{
+                    width: "100%",
+                    height: 300,
+                    objectFit: "cover",
+                    backgroundColor: "red",
+                  }}
+                  alt=""
+                />
+              </div>
+            </NextLink>
             {/* <span className="featured">FEATURED</span> */}
           </Grid>
           <Grid item xs={12} md={8} style={{ padding: 30 }}>
