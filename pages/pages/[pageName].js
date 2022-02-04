@@ -17,22 +17,25 @@ import ApiClient from "../../api-client";
 // import OwlCarouselSlider from '../../components/carousel-slider';
 import HtmlParser from "react-html-parser";
 import API_ENDPOINTS from "../../constants/api-endpoints";
+import { useSelector } from "react-redux";
 const useStyles = makeStyles((theme) => ({}));
 
 const CmsPageDetails = (props) => {
   const classes = useStyles();
+  const stateRoute = useSelector((state) => state.route);
+  console.log("stateRoute", stateRoute);
   // const location = useLocation();
   const router = useRouter();
   // let query = useQuery();
   const [data, setData] = useState();
   const [bgImage, setBgImage] = useState("");
 
-  const { query: id } = router;
+  // const { query: id } = router;
   debugger;
   React.useEffect(() => {
-    if (id) populateAboutUsDetails(id);
+    if (stateRoute.id) populateAboutUsDetails(stateRoute.id);
     // populateTeamDetails();
-  }, [id]);
+  }, [stateRoute.id]);
 
   const populateAboutUsDetails = (id) => {
     const getData = async () => {
@@ -40,7 +43,7 @@ const CmsPageDetails = (props) => {
         const response = await ApiClient.call(
           ApiClient.REQUEST_METHOD.POST,
           "/cms/getDetailData",
-          { _id: id.id },
+          { _id: id },
           {},
           {},
           false

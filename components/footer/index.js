@@ -27,8 +27,10 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import PhoneIphoneIcon from "@material-ui/icons/PhoneIphone";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 // import $ from "jquery";
+import { SetRoute } from "../../redux/actions/RouteActions";
 import * as Snackbar from "../../redux/actions/SnackbarActions";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -89,6 +91,7 @@ const Footer = (props) => {
   const [hide, setHide] = useState(true);
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter();
   useEffect(() => {
     const company_detials = localStorage.getItem("company_detials");
     if (!company_detials) populateFooterDetails();
@@ -432,18 +435,29 @@ const Footer = (props) => {
                   //   }}
                   //   passHref
                   // >
-                  <NextLink
-                    className={`${classes.text3} links`}
-                    href={{
-                      pathname: `/pages/${(
-                        lp.pageName.toLowerCase() || ""
-                      ).replace(/\s/g, "-")}`,
-                      query: { id: lp._id },
+                  // <NextLink
+                  //   className={`${classes.text3} links`}
+                  //   href={{
+                  //     pathname: `/pages/${(
+                  //       lp.pageName.toLowerCase() || ""
+                  //     ).replace(/\s/g, "-")}`,
+                  //   }}
+                  //   key={index + 5000}
+                  // >
+                  <Typography
+                    onClick={() => {
+                      dispatch(SetRoute({ id: lp._id }));
+                      router.push({
+                        pathname: `/pages/${(
+                          lp.pageName.toLowerCase() || ""
+                        ).replace(/\s/g, "-")}`,
+                      });
                     }}
-                    key={index + 5000}
+                    style={{ cursor: "pointer" }}
                   >
-                    <Typography>{lp.pageName || ""}</Typography>
-                  </NextLink>
+                    {lp.pageName || ""}
+                  </Typography>
+                  // </NextLink>
                   // </Link>
                 ))}
             </Grid>
@@ -590,20 +604,29 @@ const Footer = (props) => {
 
               // // onClick={onBottomPageHandler.bind(this, bp._id)}
             >
-              <NextLink
+              {/* <NextLink
                 className={`${classes.text3} links`}
                 href={{
-                  pathname: `/pages/${(bp.pageName.toLowerCase() || "").replace(
-                    /\s/g,
-                    "-"
-                  )}`,
-                  query: { id: bp._id },
+                  pathname: `/pages/${(
+                    bp.pageName.toLowerCase() || ""
+                  ).replace(/\s/g, "-")}`,
+                }}
+              > */}
+              <Typography
+                className={classes.text4}
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  dispatch(SetRoute({ id: bp._id }));
+                  router.push({
+                    pathname: `/pages/${(
+                      bp.pageName.toLowerCase() || ""
+                    ).replace(/\s/g, "-")}`,
+                  });
                 }}
               >
-                <Typography className={classes.text4}>
-                  {bp.pageName || ""}
-                </Typography>
-              </NextLink>
+                {bp.pageName || ""}
+              </Typography>
+              {/* </NextLink> */}
             </Grid>
             // </Link>
           ))}
