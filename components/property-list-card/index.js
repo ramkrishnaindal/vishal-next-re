@@ -1,6 +1,7 @@
 // import { ThemeProvider } from '@material-ui/styles';
 // import { createMuiTheme } from '@material-ui/core';
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import NextLink from "../UI/NextLink";
 // import { useHistory } from "react-router-dom";
 import { useRouter } from "next/router";
@@ -19,6 +20,7 @@ import {
   NativeSelect,
   // Link as MUILink,
 } from "@material-ui/core";
+import { SetRoute } from "../../redux/actions/RouteActions";
 // import PropTypes from "prop-types";
 import Rating from "@material-ui/lab/Rating";
 // import { Link as RouterLink } from "react-router-dom";
@@ -31,7 +33,7 @@ import DriveEtaIcon from "@material-ui/icons/DriveEta";
 // import StarIcon from "@material-ui/icons/Star";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import "../header/header.css";
 import APP_CONSTANTS from "../../constants/app-constants";
 import Dialog from "@material-ui/core/Dialog";
@@ -105,6 +107,77 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#ECECEC",
   },
 }));
+const styles = {
+  text1: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#FF7601",
+    fontSize: 14,
+    marginTop: 10,
+  },
+  text2: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#333333",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  text3: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#666666",
+    fontSize: 14,
+  },
+  text4: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#333333",
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+  text5: {
+    fontFamily: '"Open Sans",sans-serif',
+    color: "#FF7601",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  features: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingTop: 20,
+  },
+  icon: {
+    color: "#FF7601",
+    fontSize: 20,
+    paddingRight: 10,
+  },
+  btn1: {
+    borderRadius: 15,
+    color: "#FFFFFF",
+    textTransform: "none",
+    marginRight: 10,
+    fontFamily: '"Open Sans",sans-serif',
+  },
+  btn2: {
+    borderRadius: 15,
+    background: "#FF7601",
+    color: "#FFFFFF",
+    textTransform: "none",
+    fontFamily: "Open Sans,sans-serif",
+  },
+  btn3: {
+    borderRadius: 15,
+    background: "#ECECEC",
+    marginRight: 10,
+    color: "#000000",
+    textTransform: "none",
+    fontFamily: '"Open Sans",sans-serif',
+  },
+  btn4: {
+    borderRadius: 15,
+    color: "#000000",
+    textTransform: "none",
+    fontFamily: '"Open Sans",sans-serif',
+  },
+};
 
 const stylessd = (theme) => ({
   root: {
@@ -174,12 +247,12 @@ const stylessd = (theme) => ({
 const DialogTitle = withStyles(stylessd)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
-    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+    <MuiDialogTitle disableTypography style={styles.root} {...other}>
       <Typography variant="h6">{children}</Typography>
       {onClose ? (
         <IconButton
           aria-label="close"
-          className={classes.closeButton}
+          style={styles.closeButton}
           onClick={onClose}
         >
           <CloseIcon />
@@ -199,7 +272,7 @@ const DialogActions = withStyles((theme) => ({
 const PropertyListCard = (props) => {
   // const largeScreen = useMediaQuery(theme => theme.breakpoints.up('sm'));
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const { item } = props;
   // console.log("item", item);
   // console.log("item?.favorite", item.favorite);
@@ -216,7 +289,7 @@ const PropertyListCard = (props) => {
   const [otp, setOtp] = useState("");
 
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const history = useHistory();
   // const router = useRouter();
   function handleNull(val) {
@@ -339,8 +412,10 @@ const PropertyListCard = (props) => {
     setOpen(false);
   };
   const contentClickHandler = (item) => {
+    dispatch(SetRoute({ id: item?._id }));
+
     router.push({
-      pathname: `/house-details/${item?._id}`,
+      pathname: `/house-details`,
       // query: item?._id,
     });
   };
@@ -414,12 +489,15 @@ const PropertyListCard = (props) => {
           >
             <NextLink
               href={{
-                pathname: `/house-details/${item?._id}`,
+                pathname: `/house-details`,
                 // query: item?._id,
               }}
             >
               <div
-                onClick={contentClickHandler.bind(null, item)}
+                onClick={() => {
+                  dispatch(SetRoute({ id: item?._id }));
+                  contentClickHandler(item);
+                }}
                 style={{ position: "relative", cursor: "pointer" }}
               >
                 {propertTag ? (
@@ -455,7 +533,7 @@ const PropertyListCard = (props) => {
                   cursor: "pointer",
                 }}
               >
-                <Typography className={classes.text2}>
+                <Typography style={styles.text2}>
                   {item?.nameOfProject}
                 </Typography>
                 <Grid>
@@ -477,7 +555,7 @@ const PropertyListCard = (props) => {
                         marginRight: 8,
                       }}
                     />
-                    <Typography className={classes.text3}>
+                    <Typography style={styles.text3}>
                       {handleNull(address.latitude)},{" "}
                       {handleNull(address.longitude)}{" "}
                       {handleNull(address.address)} {handleNull(address.city)}{" "}
@@ -486,27 +564,27 @@ const PropertyListCard = (props) => {
                   </Grid>
                 </Grid>
                 <Grid container>
-                  <Grid item xs={6} md={6} className={classes.features}>
-                    <ZoomOutMapIcon className={classes.icon} />
-                    <Typography className={classes.text4}>
+                  <Grid item xs={6} md={6} style={styles.features}>
+                    <ZoomOutMapIcon style={styles.icon} />
+                    <Typography style={styles.text4}>
                       {handleNull(item?.features[0]?.builtUpArea)} Sq-Ft
                     </Typography>
                   </Grid>
-                  <Grid item xs={6} md={6} className={classes.features}>
-                    <LocalHotelIcon className={classes.icon} />
-                    <Typography className={classes.text4}>
+                  <Grid item xs={6} md={6} style={styles.features}>
+                    <LocalHotelIcon style={styles.icon} />
+                    <Typography style={styles.text4}>
                       {handleNull(item?.features[0]?.bedrooms)} Bedrooms
                     </Typography>
                   </Grid>
-                  <Grid item xs={6} md={6} className={classes.features}>
-                    <DriveEtaIcon className={classes.icon} />
-                    <Typography className={classes.text4}>
+                  <Grid item xs={6} md={6} style={styles.features}>
+                    <DriveEtaIcon style={styles.icon} />
+                    <Typography style={styles.text4}>
                       {handleNull(item?.features[0]?.totalFloors)} TotalFloors
                     </Typography>
                   </Grid>
-                  <Grid item xs={6} md={6} className={classes.features}>
-                    <BathtubIcon className={classes.icon} />
-                    <Typography className={classes.text4}>
+                  <Grid item xs={6} md={6} style={styles.features}>
+                    <BathtubIcon style={styles.icon} />
+                    <Typography style={styles.text4}>
                       {handleNull(item?.features[0]?.bathrooms)} Bathroom
                     </Typography>
                   </Grid>
@@ -588,9 +666,7 @@ const PropertyListCard = (props) => {
                       className="starts-from"
                       style={{ display: "flex", flexDirection: "column" }}
                     >
-                      <Typography className={classes.text3}>
-                        Starts From
-                      </Typography>
+                      <Typography style={styles.text3}>Starts From</Typography>
                       {/* <Typography
                       style={{
                         width: 10,
@@ -602,7 +678,7 @@ const PropertyListCard = (props) => {
                       /
                     </Typography> */}
 
-                      <Typography className={classes.text5}>
+                      <Typography style={styles.text5}>
                         Rs. {item?.price[0].expectedPrice}
                       </Typography>
                     </Grid>
@@ -624,9 +700,9 @@ const PropertyListCard = (props) => {
                               justifyContent: "flex-start",
                             }}
                           >
-                            <EventAvailableIcon className={classes.icon} />
+                            <EventAvailableIcon style={styles.icon} />
                             <Box style={{ width: 10 }}></Box>
-                            <Typography className={classes.text3}>
+                            <Typography style={styles.text3}>
                               {timeAgo}
                             </Typography>
                           </Grid>
@@ -684,18 +760,25 @@ const PropertyListCard = (props) => {
                         > */}
                         <NextLink
                           href={{
-                            pathname: `/house-details/${item?._id}`,
+                            pathname: `/house-details`,
                             // query: item?._id,
                           }}
-                          className={classes.btn1}
+                          style={{ ...styles.btn2, padding: "10px 15px" }}
                         >
-                          <Button variant="contained">View Detail</Button>
+                          <Typography
+                            variant="contained"
+                            onClick={() => {
+                              dispatch(SetRoute({ id: item?._id }));
+                            }}
+                          >
+                            View Detail
+                          </Typography>
                         </NextLink>
                         {/* </Link> */}
                         <Box style={{ width: 10 }}></Box>
-                        <Button
+                        <Typography
                           variant="contained"
-                          className={classes.btn2}
+                          style={{ ...styles.btn3, padding: "10px 15px" }}
                           onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
@@ -703,7 +786,7 @@ const PropertyListCard = (props) => {
                           }}
                         >
                           Visit Site
-                        </Button>
+                        </Typography>
 
                         {/* <Button
                           variant="contained"

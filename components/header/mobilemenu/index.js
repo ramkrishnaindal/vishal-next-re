@@ -20,6 +20,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import ApiClient from "../../../api-client";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { SetRoute } from "../../../redux/actions/RouteActions";
 // import "../header.css";
 
 const useStyles = makeStyles({
@@ -34,6 +36,7 @@ const useStyles = makeStyles({
 export default function Mobilemenu(props) {
   const router = useRouter();
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -210,7 +213,6 @@ export default function Mobilemenu(props) {
                             key={i}
                             href={{
                               pathname: `/service-details/${sm?.title}`,
-                              query: sm._id,
                             }}
                             className={
                               no.no == index && no.status === true
@@ -219,7 +221,10 @@ export default function Mobilemenu(props) {
                             }
                           >
                             <ListItem
-                              onClick={toggleDrawer(anchor, false)}
+                              onClick={() => {
+                                dispatch(SetRoute({ id: sm._id }));
+                                toggleDrawer(anchor, false);
+                              }}
                               button
                             >
                               <ListItemIcon>

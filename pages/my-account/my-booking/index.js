@@ -18,13 +18,15 @@ import * as Snackbar from "../../../redux/actions/SnackbarActions";
 // import Link from "next/link";
 import NextLink from "./../../../components/UI/NextLink";
 import { useRouter } from "next/router";
+import { SetRoute } from "../../../redux/actions/RouteActions";
+import { useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({}));
 
 const MyBooking = (props) => {
   const [name, setName] = useState("");
   const [booking, setBookingList] = useState([]);
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const logoutHandler = () => {
     if (typeof window !== "undefined") {
       localStorage.removeItem("user");
@@ -218,11 +220,17 @@ const MyBooking = (props) => {
                                   > */}
                                   <NextLink
                                     href={{
-                                      pathname: `/house-details/${item?._id}`,
+                                      pathname: `/house-details`,
                                       // query: item?._id,
                                     }}
                                   >
-                                    <Button>View</Button>
+                                    <Button
+                                      onClick={() => {
+                                        dispatch(SetRoute({ id: item?._id }));
+                                      }}
+                                    >
+                                      View
+                                    </Button>
                                   </NextLink>
                                   {/* </Link> */}
                                 </p>

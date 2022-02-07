@@ -5,6 +5,8 @@ import { makeStyles, Box } from "@material-ui/core";
 // import Link from "next/link";
 import ApiClient from "../../api-client";
 import NextLink from "../UI/NextLink";
+import { useDispatch } from "react-redux";
+import { SetRoute } from "../../redux/actions/RouteActions";
 const useStyles = makeStyles((theme) => ({
   btnBox1: {
     display: "flex",
@@ -24,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const ServiceCard = (props) => {
   // console.log("segrvice", props);
   const classes = useStyles();
+  const dispatch = useDispatch();
   const { title, shortDescription, media, _id } = props.service;
 
   // console.log("Service card", props.service);
@@ -61,12 +64,17 @@ const ServiceCard = (props) => {
           <NextLink
             href={{
               pathname: "/service-details",
-              query: _id,
             }}
             className={"info"}
             style={{ marginTop: 10 }}
           >
-            <Box>MORE DETAIL</Box>
+            <Box
+              onClick={() => {
+                dispatch(SetRoute({ id: _id }));
+              }}
+            >
+              MORE DETAIL
+            </Box>
           </NextLink>
           {/* </Link> */}
           {/* <a href="/service-details" className="info" style={{marginTop: 10}} >Read More</a> */}

@@ -15,7 +15,8 @@ import CloseIcon from "@material-ui/icons/Close";
 // import Link from "next/link";
 import { useRouter } from "next/router";
 import ApiClient from "../../api-client";
-
+import { useDispatch } from "react-redux";
+import { SetRoute } from "../../redux/actions/RouteActions";
 const useStyles = makeStyles((theme) => ({
   menu: {
     padding: 0,
@@ -49,6 +50,7 @@ const MenuItem = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   // const history = useHistory();
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const classes = useStyles();
@@ -133,12 +135,16 @@ const MenuItem = (props) => {
               <NextLink
                 key={idx}
                 href={{
-                  pathname: `/service-details/${sm?.title?.toLowerCase()}/`,
-                  query: sm._id,
+                  pathname: `/service-details/${sm?.title?.toLowerCase()}`,
                 }}
                 style={mStyle}
               >
-                <DropdownMenu onClick={() => handleClose(sm)}>
+                <DropdownMenu
+                  onClick={() => {
+                    dispatch(SetRoute({ id: sm._id }));
+                    handleClose(sm);
+                  }}
+                >
                   {sm.title}
                 </DropdownMenu>
               </NextLink>

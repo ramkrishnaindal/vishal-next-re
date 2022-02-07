@@ -16,6 +16,7 @@ import {
   Box,
   // Link as MUILink,
 } from "@material-ui/core";
+import { SetRoute } from "../../redux/actions/RouteActions";
 // import LocationOnIcon from "@material-ui/icons/LocationOn";
 import LocalHotelIcon from "@material-ui/icons/LocalHotel";
 // import { Link as RouterLink } from "react-router-dom";
@@ -169,12 +170,17 @@ const OuterCarouselSlider = (props) => {
             return (
               <NextLink
                 href={{
-                  pathname: `/house-details/${_id}`,
+                  pathname: `/house-details`,
                 }}
                 className="property-item"
                 style={{ cursor: "pointer" }}
               >
-                <Box key={i}>
+                <Box
+                  key={i}
+                  onClick={() => {
+                    dispatch(SetRoute({ id: _id }));
+                  }}
+                >
                   <Grid className="property-wrap">
                     {/* <InnerCarouselSlider /> */}
                     <Grid
@@ -286,12 +292,18 @@ const OuterCarouselSlider = (props) => {
                       <Grid className="property-button">
                         <NextLink
                           href={{
-                            pathname: `/house-details/${_id}`,
+                            pathname: `/house-details`,
                             // query: _id,
                           }}
                           className="btn btn-primary"
                         >
-                          <Box>MORE DETAIL</Box>
+                          <Box
+                            onClick={() => {
+                              dispatch(SetRoute({ id: _id }));
+                            }}
+                          >
+                            MORE DETAIL
+                          </Box>
                         </NextLink>
                         {/* </Link> */}
                         <Box className="btn btn-secondary" style={{ flex: 1 }}>

@@ -23,6 +23,7 @@ import * as Snackbar from "../../../redux/actions/SnackbarActions";
 // import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import { SetRoute } from "../../../redux/actions/RouteActions";
 import NextLink from "../../../components/UI/NextLink";
 const settings1 = {
   dots: false,
@@ -336,16 +337,26 @@ const MyFavorite = (props) => {
                                       }}
                                       passHref
                                     > */}
-                                    <Button
-                                      className="btn btn-primary"
-                                      component={NextLink}
+                                    <NextLink
                                       href={{
-                                        pathname: `/house-details/${item?.Features?.propertyId}`,
+                                        pathname: `/house-details`,
                                         // query: item?.Features?.propertyId,
                                       }}
                                     >
-                                      MORE DETAIL
-                                    </Button>
+                                      <Button
+                                        className="btn btn-primary"
+                                        component={NextLink}
+                                        onClick={() => {
+                                          dispatch(
+                                            SetRoute({
+                                              id: item?.Features?.propertyId,
+                                            })
+                                          );
+                                        }}
+                                      >
+                                        MORE DETAIL
+                                      </Button>
+                                    </NextLink>
                                     {/* </Link> */}
                                   </Grid>
                                 </Grid>

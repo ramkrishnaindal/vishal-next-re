@@ -23,6 +23,8 @@ import ApiClient from "./../../../api-client/index";
 // import { Link, useHistory } from "react-router-dom";
 // import Link from "next/link";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { SetRoute } from "../../../redux/actions/RouteActions";
 // import "../my-account.css";
 const settings1 = {
   dots: false,
@@ -56,8 +58,13 @@ const MyProperty = (props) => {
   };
 
   const propertyClickHandler = (propertyId) => {
+    dispatch(
+      SetRoute({
+        id: propertyId,
+      })
+    );
     router.push({
-      pathname: `/house-details/${propertyId}`,
+      pathname: `/house-details`,
       // search: "?update=true", // query string
       // query: propertyId,
     });

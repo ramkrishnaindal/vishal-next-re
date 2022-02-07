@@ -107,10 +107,15 @@ export default function Blog() {
                         pathname: `/blog-details/${(
                           title.toLowerCase() || ""
                         ).replace(/\s/g, "-")}`,
-                        query: _id,
                       }}
                     >
-                      <Button>View Details </Button>
+                      <Button
+                        onClick={() => {
+                          dispatch(SetRoute({ id: _id }));
+                        }}
+                      >
+                        View Details{" "}
+                      </Button>
                     </NextLink>
                   </Box>
                   {/* </Link> */}

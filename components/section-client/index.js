@@ -15,7 +15,8 @@ import ApiClient from "../../api-client/index";
 // import { Link as RouterLink } from "react-router-dom";
 // import Link from "next/link";
 import ReactHtmlParser from "react-html-parser";
-
+import { SetRoute } from "../../redux/actions/RouteActions";
+import { useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SectionClient = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   // console.log("dealingInData", props.dealingInData.media);
   const { header, title, description, media, items } = props.dealingInData;
   return (
@@ -76,10 +78,14 @@ const SectionClient = (props) => {
                     passHref
                   > */}
                   <NextLink
-                    href={{ pathname: "/dealingIn-details", query: _id }}
+                    href={{ pathname: "/dealingIn-details" }}
                     className="client-block-summery"
                   >
-                    <Box>
+                    <Box
+                      onClick={() => {
+                        dispatch(SetRoute({ id: _id }));
+                      }}
+                    >
                       <Typography>
                         <strong>{title}</strong>
                       </Typography>

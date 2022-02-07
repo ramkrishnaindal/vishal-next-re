@@ -22,6 +22,7 @@ import PageBanner from "../../components/page-banner";
 import InfoCard from "./components/info-card";
 import FactAndFeature from "./components/fact-and-feature";
 import CarouselSlider from "./components/property-carousel-slider";
+// import { useSelector } from "react-redux";
 // import familyIcon from "/public/images/icon-family.svg";
 // import yearIcon from "/public/images/icon-year.svg";
 import Aminities from "./components/amenities";
@@ -250,6 +251,7 @@ const HouseDetailPage = (props) => {
   const [otp, setOtp] = useState("");
   const [enableOtpField, setEnableOtpField] = useState(false);
   const [open, setOpen] = useState(false);
+  const stateRoute = useSelector((state) => state.route);
   const classes = useStyles();
   // const location = useLocation();
   const router = useRouter();
@@ -288,7 +290,7 @@ const HouseDetailPage = (props) => {
     }
     dispatch(PropertyAction.ResetPropertyDetail());
   }, []);
-  const pId = router?.query?.pid;
+  const pId = stateRoute?.id;
   debugger;
   const { isFavorite: isFavoriteState } = propertyListItem?.data || {
     isFavorite: false,
@@ -297,7 +299,7 @@ const HouseDetailPage = (props) => {
     debugger;
     reset();
     let reqData = {
-      propertyId: router?.query?.pid,
+      propertyId: stateRoute?.id,
       // || localStorage.getItem("pid")
       // propertyId: "6125373540f10f2712e43db5"
     };

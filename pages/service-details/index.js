@@ -22,7 +22,7 @@ import EnquryFormService from "../../components/enquryFormService/enquryForm";
 // import "photoswipe/dist/default-skin/default-skin.css";
 
 import { Gallery, Item } from "react-photoswipe-gallery";
-
+import { useSelector } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -119,6 +119,7 @@ const ServiceDetailPage = (props) => {
   const classes = useStyles();
   // const location = useLocation();
   const router = useRouter();
+  const stateRoute = useSelector((state) => state.route);
   // const { item } = props;
   const dispatch = useDispatch();
   // let query = useQuery();
@@ -145,16 +146,16 @@ const ServiceDetailPage = (props) => {
     //   // serviceId: router?.query,
 
     // };
-    const serviceId = router?.query;
-    fetchServiceDetails(serviceId);
-  }, [router?.query]);
+    // const serviceId = router?.query;
+    fetchServiceDetails(stateRoute.id);
+  }, [stateRoute.id]);
 
   const fetchServiceDetails = (serviceId) => {
     const getData = async () => {
       const response = await ApiClient.call(
         ApiClient.REQUEST_METHOD.POST,
         "/home/getServiceDetails",
-        { _id: Object.keys(serviceId)[0] + "" },
+        { _id: serviceId },
         {},
         { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
         false
