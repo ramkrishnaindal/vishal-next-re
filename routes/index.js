@@ -76,7 +76,7 @@ const routes = [
     render: (props) => {
       if (props.isAuth) {
         return <CartPage />;
-      }
+      } 
       return <Redirect to={{ pathname: "/" }} />;
     },
   },

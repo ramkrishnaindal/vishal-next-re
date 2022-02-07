@@ -120,15 +120,15 @@ export default function Mobilemenu(props) {
               },
               {
                 title: "About The Directors",
-                href: "/about-us/about-director",
+                href: "/about-director",
               },
               {
                 title: "Invest With Us",
-                href: "/about-us/invest-with-us",
+                href: "/invest-with-us",
               },
               {
                 title: "Construction Process",
-                href: "/about-us/construction-process",
+                href: "/construction-process",
               },
             ],
           },

@@ -7,8 +7,8 @@ import {
   Box,
 } from "@material-ui/core";
 // import '../about-us.css';
-import PageBanner from "../../../components/page-banner";
-import ApiClient from "../../../api-client";
+import PageBanner from "../../components/page-banner";
+import ApiClient from "../../api-client";
 import ReactHtmlParser from "react-html-parser";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";

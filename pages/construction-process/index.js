@@ -7,8 +7,8 @@ import {
   Box,
 } from "@material-ui/core";
 // import '../about-us.css';
-import PageBanner from "../../../components/page-banner";
-import ApiClient from "../../../api-client";
+import PageBanner from "../../components/page-banner";
+import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
 
 const useStyles = makeStyles((theme) => ({}));
