@@ -18,6 +18,7 @@ import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
 import API_ENDPOINTS from "../../constants/api-endpoints";
 import { useSelector } from "react-redux";
+import { wrapper } from "../../redux";
 const useStyles = makeStyles((theme) => ({}));
 
 const CmsPageDetails = (props) => {
@@ -27,8 +28,8 @@ const CmsPageDetails = (props) => {
   // const location = useLocation();
   const router = useRouter();
   // let query = useQuery();
-  const [data, setData] = useState();
-  const [bgImage, setBgImage] = useState("");
+  const [data, setData] = useState(props.data);
+  const [bgImage, setBgImage] = useState(props.bgImage);
 
   // const { query: id } = router;
   debugger;
@@ -238,5 +239,52 @@ const CmsPageDetails = (props) => {
     // </div>
   );
 };
+export async function getStaticPaths() {
+  const response = await ApiClient.call(
+    ApiClient.REQUEST_METHOD.POST,
+    "/cms/getBottomPages",
+    {},
+    {},
+    null,
+    true,
+    true
+  );
+  const data = response.data;
+  const paths = data.map((bp) =>
+    ("/pages/" + bp.pageName.toLowerCase() || "").replace(/\s/g, "-")
+  );
+  // const paths = ["/pages/2-bhk-flats-in-jaipur"];
+  return {
+    paths: paths,
+    // Enable statically generating additional pages
+    // For example: `/posts/3`
+    fallback: true,
+  };
+}
+export const getStaticProps = wrapper.getStaticProps(
+  (store) => async (props) => {
+    try {
+      console.log("store", store);
+      const response = await ApiClient.call(
+        ApiClient.REQUEST_METHOD.POST,
+        "/cms/getDetailData",
+        { _id: store.getState().route.id },
+        {},
+        {},
+        true,
+        true
+      );
 
+      return {
+        props: {
+          data: response.data,
+          bgImage:
+            API_ENDPOINTS.BASE_URL + response.data?.image[0]?.image[0]?.path,
+        }, // will be passed to the page component as props
+      };
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 export default CmsPageDetails;

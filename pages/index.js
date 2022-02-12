@@ -101,15 +101,19 @@ function reducer2(state, newState) {
 }
 
 const HomePage = (props) => {
+  console.log("props.statsData", props.statsData);
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [stats, setStats] = useState(statsInfo);
+  const [stats, setStats] = useState(props.statsData);
   const [aboutSection, setAboutUsSection] = useState({});
-  const [services, setServices] = useReducer(reducer, {});
+  const [services, setServices] = useReducer(reducer, props.services);
   const [banners, setBanners] = useState([]);
-  const [propertyData, setPropertyData] = useState({});
-  const [dealingInData, setDealingInData] = useState({});
-  const [building_materials, setBuildingMaterials] = useReducer(reducer2, []);
+  const [propertyData, setPropertyData] = useState(props.propertyData);
+  const [dealingInData, setDealingInData] = useState(props.dealingInData);
+  const [building_materials, setBuildingMaterials] = useReducer(
+    reducer2,
+    props.buildingMaterialImgInfo
+  );
   const [showDealingInDetails, setShowDealingInDetaisl] = useState(false);
 
   // useEffect(() => {
@@ -582,5 +586,91 @@ const HomePage = (props) => {
     </div>
   );
 };
+export async function getStaticProps(context) {
+  const cookie =
+    "connect.sid=s%3AOTR7JRcRLkCbykuoWLRX4yOvqEZu20Is.4utrypcpaXicNe3A0foHiWeVNP8fQDryd6%2FdCibio%2BI";
+  const authorization =
+    "Bearer eyJhbGciOiJIUzI1NiJ9.VmlrcmFtSmVldFNpbmdoSkk.MaACpq-fK6F02rVz3vEAUgAYvTqDAEVKpq9zNbmWCPs";
 
+  const response = await ApiClient.call(
+    ApiClient.REQUEST_METHOD.POST,
+    "/property/getAllPropertyForHome",
+    {},
+    {},
+    { Cookie: cookie, Authorization: authorization },
+    false,
+    true
+  );
+  const responseStats = await ApiClient.call(
+    ApiClient.REQUEST_METHOD.POST,
+    "/home/getMovingBanner",
+    {},
+    {},
+    { Cookie: cookie, Authorization: authorization },
+    false,
+    true
+  );
+  const dataStats = responseStats.data;
+  const statsData = {
+    years: dataStats?.years || statsInfo.years,
+    clients: dataStats?.clients || statsInfo.clients,
+    projects: dataStats?.projects || statsInfo.projects,
+    shortDescription: dataStats?.shortDescription || statsInfo.shortDescription,
+  };
+  const responseBuilding = await ApiClient.call(
+    ApiClient.REQUEST_METHOD.POST,
+    "/builder/getBuildingMaterials",
+    {},
+    {},
+    { Cookie: cookie, Authorization: authorization },
+    false,
+    true
+  );
+
+  // console.log("/builder/getBuildingMaterials ", response);
+
+  const buildingMaterialImgInfo = [];
+  const baseUrl = ApiClient.SERVER_ADDRESS;
+
+  (responseBuilding?.data || []).forEach((imageInfo) => {
+    const imgDetails = { imageUrl: "", desc: "", name: "" };
+
+    imgDetails.imageUrl = baseUrl + "/" + imageInfo.image[0]?.path;
+    imgDetails.desc = "";
+    imgDetails.name = imageInfo.name;
+    buildingMaterialImgInfo.push(imgDetails);
+  });
+  // console.log("statsData", statsData);
+  const responseService = await ApiClient.call(
+    ApiClient.REQUEST_METHOD.POST,
+    "/home/getService",
+    {},
+    {},
+    { Cookie: cookie, Authorization: authorization },
+    false,
+    true
+  );
+  const responseDealing = await ApiClient.call(
+    ApiClient.REQUEST_METHOD.POST,
+    "/home/getDealingIn",
+    {},
+    {},
+    { Cookie: cookie, Authorization: authorization },
+    false,
+    true
+  );
+  // setBuildingMaterials(buildingMaterialImgInfo);
+  // console.log("statsData", statsData);
+  // setStats(statsData);
+  // console.log("response.data", response.data);
+  return {
+    props: {
+      propertyData: response.data,
+      services: responseService.data,
+      statsData,
+      dealingInData: responseDealing.data,
+      buildingMaterialImgInfo,
+    }, // will be passed to the page component as props
+  };
+}
 export default HomePage;

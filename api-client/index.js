@@ -39,7 +39,8 @@ export default class ApiClient {
     payload,
     params,
     apiHeaders,
-    isAuthTokenRequired = true
+    isAuthTokenRequired = true,
+    isServerSide = false
   ) {
     let headers = apiHeaders ? apiHeaders : {};
     let requestParams = params ? params : {};
@@ -48,9 +49,10 @@ export default class ApiClient {
     //TODO: get tokens from reducer or localstorage
     const token =
       "eyJhbGciOiJIUzI1NiJ9.VmlrcmFtSmVldFNpbmdoSkk.MaACpq-fK6F02rVz3vEAUgAYvTqDAEVKpq9zNbmWCPs";
-
-    let userData = JSON.parse(window.localStorage.getItem("user"));
-
+    let userData;
+    if (!isServerSide) {
+      userData = JSON.parse(window.localStorage.getItem("user"));
+    }
     if (userData?.token) {
       headers["Authorization"] = "Bearer " + userData?.token;
     } else {

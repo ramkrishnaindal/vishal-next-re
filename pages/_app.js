@@ -6,7 +6,7 @@ import "photoswipe/dist/photoswipe.css";
 import "photoswipe/dist/default-skin/default-skin.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { wrapper } from "./../redux/index";
 import "../styles/globals.css";
 import "../Final.css";
 import Head from "next/head";
@@ -24,7 +24,7 @@ import store from "../redux";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+    <>
       <Head>
         <link
           rel="stylesheet"
@@ -63,8 +63,8 @@ function MyApp({ Component, pageProps }) {
           <Footer />
         </Container>
       </div>
-    </Provider>
+    </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

@@ -10,7 +10,7 @@ export const SetRoute = (data) => {
   return (dispatch) => {
     setTimeout(() => {
       // dispatch(ClearRoute());
-    }, 2000);
+    }, 10000);
     dispatch(SetRouteData(data));
   };
 };
