@@ -1,5 +1,5 @@
 import ACTION_KEYS from "../../constants/action-keys";
-
+import { HYDRATE } from "next-redux-wrapper";
 const initialState = {
   isRequesting: false,
   success: false,
@@ -12,6 +12,11 @@ const CallbackRequestReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case HYDRATE:
+      return {
+        ...state, // use previous state
+        ...action.payload, // apply delta from hydration
+      };
     case ACTION_KEYS.CALLBACKREQUEST_REQUEST:
       return {
         ...state,

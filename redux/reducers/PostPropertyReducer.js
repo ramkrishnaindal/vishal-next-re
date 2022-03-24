@@ -1,5 +1,5 @@
 import ACTION_KEYS from "../../constants/action-keys";
-
+import { HYDRATE } from "next-redux-wrapper";
 const initialState = {
   isRequesting: false,
   success: false,
@@ -12,6 +12,11 @@ const PostPropertyReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case HYDRATE:
+      return {
+        ...state, // use previous state
+        ...action.payload, // apply delta from hydration
+      };
     case ACTION_KEYS.PROPERTY_LIST_REQUEST:
       return {
         ...state,
@@ -49,7 +54,7 @@ const PostPropertyReducer = (state = initialState, action) => {
         error: payload.error,
       };
 
-      case ACTION_KEYS.POST_PROPERTY_REQUEST:
+    case ACTION_KEYS.POST_PROPERTY_REQUEST:
       return {
         ...state,
         isRequesting: true,
