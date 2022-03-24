@@ -8,9 +8,9 @@ import ACTION_KEYS from "../../constants/action-keys";
 export const SetRoute = (data) => {
   console.log(data);
   return (dispatch) => {
-    setTimeout(() => {
-      // dispatch(ClearRoute());
-    }, 10000);
+    // setTimeout(() => {
+    //   // dispatch(ClearRoute());
+    // }, 10000);
     dispatch(SetRouteData(data));
   };
 };

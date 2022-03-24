@@ -63,7 +63,7 @@ const ServiceCard = (props) => {
           > */}
           <NextLink
             href={{
-              pathname: "/service-details",
+              pathname: "/services",
             }}
             className={"info"}
             style={{ marginTop: 10 }}

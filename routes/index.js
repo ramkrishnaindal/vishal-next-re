@@ -21,7 +21,7 @@ import AboutDirectors from "../pages/about-us/about-director";
 import InvestWithUs from "../pages/about-us/invest-with-us";
 import ConstructionProcess from "../pages/about-us/construction-process";
 import Finance from "../pages/finance";
-import ServiceDetailPage from "../pages/service-details";
+import ServiceDetailPage from "../pages/services";
 import SupplierFormPage from "../pages/supplier-form";
 import DealingInItemDetailPage from "../pages/dealingIn-details";
 import SearchPropertyList from "../pages/search-property-details";
@@ -76,7 +76,7 @@ const routes = [
     render: (props) => {
       if (props.isAuth) {
         return <CartPage />;
-      } 
+      }
       return <Redirect to={{ pathname: "/" }} />;
     },
   },
@@ -135,7 +135,7 @@ const routes = [
     render: (props) => <Finance {...props} />,
   },
   {
-    path: "/service-details",
+    path: "/services",
     render: (props) => <ServiceDetailPage {...props} />,
   },
   {

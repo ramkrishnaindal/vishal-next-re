@@ -177,7 +177,7 @@ export default function Mobilemenu(props) {
           },
         ].map(({ id, title, href, submenu }, index) => {
           return (
-            <div onClick={!submenu ? toggleDrawer(anchor, false) : () => {}}>
+            <div onClick={!submenu ? toggleDrawer(anchor, false) : () => { }}>
               {/* <Link href={href} passHref> */}
               {/* <NextLink href={href || "/"}> */}
               <ListItem
@@ -199,80 +199,80 @@ export default function Mobilemenu(props) {
               {/* </Link> */}
               {submenu
                 ? submenu.map((sm, i) => {
-                    if (sm == "services") {
-                      return (services || []).map((sm, idx) => {
-                        return (
-                          //   <Link
-                          //     href={{
-                          //       pathname: "/service-details",
-                          //       query: sm._id,
-                          //     }}
-                          //     passHref
-                          //   >
-                          <NextLink
-                            key={i}
-                            href={{
-                              pathname: `/service-details/${sm?.title}`,
+                  if (sm == "services") {
+                    return (services || []).map((sm, idx) => {
+                      return (
+                        //   <Link
+                        //     href={{
+                        //       pathname: "/service-details",
+                        //       query: sm._id,
+                        //     }}
+                        //     passHref
+                        //   >
+                        <NextLink
+                          key={i}
+                          href={{
+                            pathname: `/services/${sm?.title.toLowerCase()}`,
+                          }}
+                          className={
+                            no.no == index && no.status === true
+                              ? "showNav"
+                              : "hideNav"
+                          }
+                        >
+                          <ListItem
+                            onClick={() => {
+                              dispatch(SetRoute({ id: sm._id }));
+                              toggleDrawer(anchor, false);
                             }}
-                            className={
-                              no.no == index && no.status === true
-                                ? "showNav"
-                                : "hideNav"
-                            }
+                            button
                           >
-                            <ListItem
-                              onClick={() => {
-                                dispatch(SetRoute({ id: sm._id }));
-                                toggleDrawer(anchor, false);
-                              }}
-                              button
-                            >
-                              <ListItemIcon>
-                                <DoubleArrowIcon />
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                                <b>
-                                  {" "}
-                                  <ListItemText primary={sm.title} />
-                                </b>
-                              </ListItemIcon>
-                            </ListItem>
-                          </NextLink>
-                          // </Link>
-                        );
-                      });
+                            <ListItemIcon>
+                              <DoubleArrowIcon />
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                              <b>
+                                {" "}
+                                <ListItemText primary={sm.title} />
+                              </b>
+                            </ListItemIcon>
+                          </ListItem>
+                        </NextLink>
+                        // </Link>
+                      );
+                    });
 
-                      // return <ListItem onClick={toggleDrawer(anchor, false)} className={no.no == index && no.status === true ? 'showNav' : 'hideNav'} button key={i} component={RouterLink} to={{pathname: '/service-details', state: sm._id}}>
-                      //     <ListItemIcon><DoubleArrowIcon />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <ListItemText primary={sm.title} /></b></ListItemIcon>
+                    // return <ListItem onClick={toggleDrawer(anchor, false)} className={no.no == index && no.status === true ? 'showNav' : 'hideNav'} button key={i} component={RouterLink} to={{pathname: '/service-details', state: sm._id}}>
+                    //     <ListItemIcon><DoubleArrowIcon />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> <ListItemText primary={sm.title} /></b></ListItemIcon>
 
-                      // </ListItem>;
-                    }
+                    // </ListItem>;
+                  }
 
-                    const { id, title, href, submenu } = sm;
+                  const { id, title, href, submenu } = sm;
 
-                    return (
-                      // <Link href={href} passHref>
-                      <Box
-                        key={id}
-                        className={
-                          no.no == index && no.status === true
-                            ? "showNav"
-                            : "hideNav"
-                        }
-                      >
-                        <ListItem onClick={toggleDrawer(anchor, false)} button>
-                          <ListItemIcon>
-                            <DoubleArrowIcon />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                            <b>
-                              {" "}
-                              <ListItemText primary={title} />
-                            </b>
-                          </ListItemIcon>
-                        </ListItem>
-                      </Box>
-                      // </Link>
-                    );
-                  })
+                  return (
+                    // <Link href={href} passHref>
+                    <Box
+                      key={id}
+                      className={
+                        no.no == index && no.status === true
+                          ? "showNav"
+                          : "hideNav"
+                      }
+                    >
+                      <ListItem onClick={toggleDrawer(anchor, false)} button>
+                        <ListItemIcon>
+                          <DoubleArrowIcon />
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                          <b>
+                            {" "}
+                            <ListItemText primary={title} />
+                          </b>
+                        </ListItemIcon>
+                      </ListItem>
+                    </Box>
+                    // </Link>
+                  );
+                })
                 : null}
             </div>
           );

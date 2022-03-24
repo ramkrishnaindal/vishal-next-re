@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({}));
 
 const ConstructionProcess = (props) => {
   const classes = useStyles();
-  const [constructionProcessData, setConstructionProcessData] = useState([]);
+  const [constructionProcessData, setConstructionProcessData] = useState(props.data || []);
 
   React.useEffect(() => {
     populateConstructionProcessDetails();
@@ -63,11 +63,10 @@ const ConstructionProcess = (props) => {
                       </Box>
                     </Grid>
                     <Grid
-                      className="about-page-images"
                       item
                       xs={12}
                       md={6}
-                      className={classes.style2}
+                      className={`${classes.style2} about-page-images`}
                     >
                       <Box className="about-page-image">
                         <img src={img} alt="" />
@@ -92,11 +91,10 @@ const ConstructionProcess = (props) => {
                     </Box>
                   </Grid>
                   <Grid
-                    className="about-page-images"
                     item
                     xs={12}
                     md={6}
-                    className={classes.style2}
+                    className={`${classes.style2} about-page-images`}
                   >
                     <Box className="about-page-image">
                       <img src={img} alt="" />
@@ -112,5 +110,30 @@ const ConstructionProcess = (props) => {
     </div>
   );
 };
+export const getStaticProps = async (props) => {
 
+  try {
+    // console.log("property details payload", payload);
+    const getData = async () => {
+      const response = await ApiClient.call(
+        ApiClient.REQUEST_METHOD.POST,
+        "/constructionProcess/getAllActiveConstructionProcess",
+        {},
+        {},
+        { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
+        true
+      );
+
+      // console.log("properties ", response);
+      return {
+        props: {
+          data: response.data,
+        }, // will be passed to the page component as props
+      };
+    };
+    getData();
+  } catch (err) {
+    console.log(err);
+  }
+}
 export default ConstructionProcess;

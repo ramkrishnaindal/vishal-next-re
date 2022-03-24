@@ -41,6 +41,8 @@ import { NoDataAvailable } from "../../components/no-details-available/no-detail
 import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
 import Moment from "react-moment";
+import { wrapper } from "./../../redux/index";
+import API_ENDPOINTS from "./../../constants/api-endpoints";
 // import OwlCarousel from "react-owl-carousel";
 // import dynamic from "next/dynamic";
 // import OwlCarousel from "react-owl-carousel";
@@ -262,7 +264,7 @@ const HouseDetailPage = (props) => {
   // let token = query.get("token");
   const [PropertyDetail, setPropertyDetail] = React.useState({});
   debugger;
-  const propertyListItem = useSelector((state) => state.PropertyDetail.data);
+  const propertyListItem = useSelector((state) => state.PropertyDetail.data || props.data);
   const [bookNow, setBookNow] = useState(false);
   const [reviews, setReviews] = useState([]);
 
@@ -1187,7 +1189,7 @@ const HouseDetailPage = (props) => {
 
             <Grid item xs={12} md={4}>
               <Grid container>
-                <Grid item item xs={12} md={12} style={{ marginTop: 20 }}>
+                <Grid item xs={12} md={12} style={{ marginTop: 20 }}>
                   <Paper style={{ padding: 20 }}>
                     <Grid container>
                       <Grid item xs={12} md={12} className={classes.style1}>
@@ -1402,18 +1404,17 @@ const HouseDetailPage = (props) => {
                         ></TextField>
                         {
                           mobile.length === 10 &&
-                            nameFeedback.length > 0 &&
-                            emailValid &&
-                            !enableOtpField && (
-                              <Button
-                                style={{ width: "23%" }}
-                                onClick={otpHandler}
-                                variant="contained"
-                                style={{ marginBottom: 15 }}
-                              >
-                                Verify
-                              </Button>
-                            )
+                          nameFeedback.length > 0 &&
+                          emailValid &&
+                          !enableOtpField && (
+                            <Button
+                              onClick={otpHandler}
+                              variant="contained"
+                              style={{ width: "23%", marginBottom: 15 }}
+                            >
+                              Verify
+                            </Button>
+                          )
                           // : (
                           //   isOtpVerified && (
                           //     <div onClick={reset}>
@@ -1438,21 +1439,20 @@ const HouseDetailPage = (props) => {
                                 name="otp"
                                 type="number"
                                 variant="outlined"
-                                // InputProps={{
-                                //   classes: {
-                                //     notchedOutline: classes.notchedOutline,
-                                //   },
-                                // }}
-                                // InputLabelProps={{
-                                //   style: { color: "#FFFFFF" },
-                                // }}
+                              // InputProps={{
+                              //   classes: {
+                              //     notchedOutline: classes.notchedOutline,
+                              //   },
+                              // }}
+                              // InputLabelProps={{
+                              //   style: { color: "#FFFFFF" },
+                              // }}
                               />
                               {!isOtpVerified && (
                                 <Button
-                                  style={{ width: "23%" }}
                                   onClick={otpHandler}
                                   variant="contained"
-                                  style={{ marginBottom: 15 }}
+                                  style={{ width: "23%", marginBottom: 15 }}
                                 >
                                   Resend OTP
                                 </Button>
@@ -1548,5 +1548,43 @@ const HouseDetailPage = (props) => {
     </div>
   );
 };
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) =>
+    async ({ req }) => {
+      // await store.dispatch(getRooms(req));
+      console.log("getState().route", store.getState().route)
+    }
+);
+// export const getStaticProps = wrapper.getStaticProps(
+//   (store) => async (props) => {
+//     try {
+//       console.log('store.getState()', store.getState());
+//       let reqData = {
+//         propertyId: store.getState().route.id,
+//         // || localStorage.getItem("pid")
+//         // propertyId: "6125373540f10f2712e43db5"
+//       };
+//       const result = await ApiClient.call(
+//         ApiClient.REQUEST_METHOD.POST,
+//         API_ENDPOINTS.PROPERTY_DETAIL,
+//         reqData,
+//         null,
+//         null,
+//         true,
+//         true
+//       );
+//       console.log('result', result);
 
+//       return {
+//         props: {
+//           data: result.data
+//           // bgImage:
+//           //   API_ENDPOINTS.BASE_URL + response.data?.image[0]?.image[0]?.path,
+//         }, // will be passed to the page component as props
+//       };
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// );
 export default HouseDetailPage;

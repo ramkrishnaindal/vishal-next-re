@@ -26,9 +26,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Blog() {
+export default function Blog(props) {
   const classes = useStyles();
-  const [blogList, setBlogList] = useState([]);
+  const [blogList, setBlogList] = useState(props.data || []);
 
   useEffect(() => {
     populateBlogList();
@@ -127,4 +127,31 @@ export default function Blog() {
       </Container>
     </Box>
   );
+}
+export const getStaticProps = async (props) => {
+
+  try {
+    // console.log("property details payload", payload);
+    const getData = async () => {
+      const response = await ApiClient.call(
+        ApiClient.REQUEST_METHOD.POST,
+        "/blog/getAllActiveBlog",
+        {},
+        {},
+        { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
+        true
+      );
+
+      // console.log("properties ", response);
+      const data = response.data.filter((d) => d.active);
+      return {
+        props: {
+          data,
+        }, // will be passed to the page component as props
+      };
+    };
+    getData();
+  } catch (err) {
+    console.log(err);
+  }
 }

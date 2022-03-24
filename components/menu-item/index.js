@@ -135,7 +135,7 @@ const MenuItem = (props) => {
               <NextLink
                 key={idx}
                 href={{
-                  pathname: `/service-details/${sm?.title?.toLowerCase()}`,
+                  pathname: `/services/${sm?.title?.toLowerCase()}`,
                 }}
                 style={mStyle}
               >

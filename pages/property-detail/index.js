@@ -388,7 +388,7 @@ const PropertyDetailPage = (props) => {
             </Grid>
             <Grid item xs={12} md={4}>
               <Grid container>
-                <Grid item item xs={12} md={12} style={{ marginTop: 20 }}>
+                <Grid item xs={12} md={12} style={{ marginTop: 20 }}>
                   <Paper style={{ padding: 20 }}>
                     <Grid container>
                       <Grid item xs={12} md={12} className={classes.style1}>
@@ -461,7 +461,7 @@ const PropertyDetailPage = (props) => {
                           name="gender1"
                           row
                           value="yes"
-                          onChange={() => {}}
+                          onChange={() => { }}
                         >
                           <FormControlLabel
                             value="yes"

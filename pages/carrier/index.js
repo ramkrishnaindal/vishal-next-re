@@ -28,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Carrier() {
+export default function Carrier(props) {
   const classes = useStyles();
-  const [allActiveCareer, setAllActiveCareer] = useState([]);
+  const [allActiveCareer, setAllActiveCareer] = useState(props.data || []);
   const [enableOtpField, setEnableOtpField] = useState(false);
   const [isOtpVerified, setIsOtpVerified] = useState(false);
   const [verifyLoader, setVerifyLoader] = useState(false);
@@ -283,4 +283,30 @@ export default function Carrier() {
       </Box>
     </>
   );
+}
+export const getStaticProps = async (props) => {
+
+  try {
+    // console.log("property details payload", payload);
+    const getData = async () => {
+      const response = await ApiClient.call(
+        ApiClient.REQUEST_METHOD.POST,
+        "/career/getAllActiveCareer",
+        {},
+        {},
+        { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
+        true
+      );
+
+      // console.log("properties ", response);
+      return {
+        props: {
+          data: response.data,
+        }, // will be passed to the page component as props
+      };
+    };
+    getData();
+  } catch (err) {
+    console.log(err);
+  }
 }

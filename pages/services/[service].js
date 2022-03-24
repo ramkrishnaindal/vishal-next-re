@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import ApiClient from "../../api-client";
 import ReactHtmlParser from "react-html-parser";
+import { wrapper } from "./../../redux/index";
 import EnquryFormService from "../../components/enquryFormService/enquryForm";
 // import Zoom from "react-medium-image-zoom";
 // import "react-medium-image-zoom/dist/styles.css";
@@ -124,7 +125,7 @@ const ServiceDetailPage = (props) => {
   const dispatch = useDispatch();
   // let query = useQuery();
   const [viewDetails, setViewDetails] = React.useState(true);
-  const [serviceDetail, setServiceDetail] = React.useState({});
+  const [serviceDetail, setServiceDetail] = React.useState(props.data || {});
 
   // let token = router.query.token;
 
@@ -201,7 +202,7 @@ const ServiceDetailPage = (props) => {
       {viewDetails ? (
         <Box className="CareerPageText">
           <Container>
-            <div className={classes.root} className="headingtext">
+            <div className={`${classes.root} headingtext`} >
               <Grid container>
                 <Grid item md={6}>
                   <Box className="middel-content">
@@ -286,5 +287,56 @@ const ServiceDetailPage = (props) => {
     </div>
   );
 };
+export async function getStaticPaths() {
 
+  const getData = async () => {
+    const response = await ApiClient.call(
+      ApiClient.REQUEST_METHOD.POST,
+      "/home/getService",
+      {},
+      {},
+      { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
+      true,
+      true
+    );
+
+    console.log("response?.data?.items ", response?.data?.items);
+    // setServices(response?.data?.items);
+    return {
+      paths: response?.data?.items.map(pr => "/services/" + pr.title.trim().toLowerCase()),
+      // Enable statically generating additional pages
+      // For example: `/posts/3`
+      fallback: true,
+    };
+
+  };
+  return getData();
+  // const paths = ["/pages/2-bhk-flats-in-jaipur"];
+}
+export const getStaticProps = wrapper.getStaticProps(
+  (store) => async (props) => {
+    try {
+      console.log("store", store);
+      const response = await ApiClient.call(
+        ApiClient.REQUEST_METHOD.POST,
+        "/home/getServiceDetails",
+        { _id: store.getState().route.id },
+        {},
+        {},
+        true,
+        true
+      );
+
+      return {
+        props: {
+          data: response.data
+          // bgImage:
+          //   API_ENDPOINTS.BASE_URL + response.data?.image[0]?.image[0]?.path,
+        }, // will be passed to the page component as props
+      };
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 export default ServiceDetailPage;

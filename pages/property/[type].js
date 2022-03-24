@@ -121,7 +121,8 @@ const SearchPropertyList = (props) => {
   // let query = useQuery();
   const [viewDetails, setViewDetails] = React.useState(true);
   // let token = router.query.token;
-  const [propertyListItems, setPropertyListItem] = useState([]);
+  console.log("props.data", props.data)
+  const [propertyListItems, setPropertyListItem] = useState(props.data || []);
   const propertyListItem = useSelector((state) => state.PropertyDetail.data);
   const [searchPayload, setSearchPayload] = useState(null);
 
@@ -154,7 +155,7 @@ const SearchPropertyList = (props) => {
     const { type } = router.query;
     if (type) {
       const payload = {
-        type: type,
+        type: type.substr(0, 1).toUpperCase() + type.substr(1),
         pType: "",
         minAmount: "",
         maxAmount: "",
@@ -186,7 +187,7 @@ const SearchPropertyList = (props) => {
     // console.log("params changed", params);
     // const type = new URLSearchParams(location.search).get("type");
     const { type } = router.query;
-    if (type === "Rent" || type === "Sell") {
+    if (type === "rent" || type === "sell") {
       // console.log("type is ^^^ ", type);
       const payload = {
         type: type,
@@ -258,5 +259,59 @@ const SearchPropertyList = (props) => {
     </div>
   );
 };
+export async function getStaticPaths() {
+  // const response = await ApiClient.call(
+  //   ApiClient.REQUEST_METHOD.POST,
+  //   "/cms/getBottomPages",
+  //   {},
+  //   {},
+  //   null,
+  //   true,
+  //   true
+  // );
+  // const data = response.data;
+  const paths = ['/property/sell', '/property/rent'];
+  // const paths = ["/pages/2-bhk-flats-in-jaipur"];
+  return {
+    paths: paths,
+    // Enable statically generating additional pages
+    // For example: `/posts/3`
+    fallback: true,
+  };
+}
+export const getStaticProps = async (props) => {
 
+  try {
+    const populateProperties = (payload) => {
+      console.log("property details payload", payload);
+      const getData = async () => {
+        const response = await ApiClient.call(
+          ApiClient.REQUEST_METHOD.POST,
+          "/property/getSearchPropertyList",
+          payload,
+          {},
+          { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
+          true, true
+        );
+
+        // console.log("properties ", response);
+        return {
+          props: {
+            data: response.data.list,
+          }, // will be passed to the page component as props
+        };
+      };
+      return getData();
+    };
+    const payload = {
+      type: props.params.type.substr(0, 1).toUpperCase() + props.params.type.substr(1),
+      pType: "",
+      minAmount: "",
+      maxAmount: "",
+    };
+    return populateProperties(payload);
+  } catch (err) {
+    console.log(err);
+  }
+}
 export default SearchPropertyList;

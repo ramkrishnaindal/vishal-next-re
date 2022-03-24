@@ -275,23 +275,25 @@ function EnquryFormService(props) {
       <form id="ServicesEnquiryForm">
         <Box
           id="customized-dialog-title"
-          //  onClose={handleClose}
+        //  onClose={handleClose}
         >
           ENQUIRY NOW
         </Box>
         <Box className={`emiForm`}>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="Your Name"
             name="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -301,7 +303,9 @@ function EnquryFormService(props) {
           ></TextField>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="Email Address"
             type="email"
@@ -312,9 +316,9 @@ function EnquryFormService(props) {
               setEmailValid(e.target.value.includes("@"));
             }}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -334,16 +338,18 @@ function EnquryFormService(props) {
           </NativeSelect>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="Property Address"
             name="property-address"
             value={pAddress}
             onChange={(e) => setPAddress(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -361,9 +367,9 @@ function EnquryFormService(props) {
             value={address}
             onChange={(e) => setAddress(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -380,9 +386,9 @@ function EnquryFormService(props) {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -392,16 +398,18 @@ function EnquryFormService(props) {
           ></TextField>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="State"
             name="state"
             value={state}
             onChange={(e) => setState(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -411,16 +419,18 @@ function EnquryFormService(props) {
           ></TextField>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="property City"
             name="property-city"
             value={pCity}
             onChange={(e) => setPCity(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -431,16 +441,18 @@ function EnquryFormService(props) {
 
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="property State"
             name="property-state"
             value={pState}
             onChange={(e) => setPState(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -450,16 +462,18 @@ function EnquryFormService(props) {
           ></TextField>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="Property location"
             name="property-location"
             value={pLocation}
             onChange={(e) => setPLocation(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -469,7 +483,9 @@ function EnquryFormService(props) {
           ></TextField>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="Your Budget"
             type="number"
@@ -477,9 +493,9 @@ function EnquryFormService(props) {
             value={budget}
             onChange={(e) => setBudget(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -489,7 +505,9 @@ function EnquryFormService(props) {
           ></TextField>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="Total area"
             type="number"
@@ -497,9 +515,9 @@ function EnquryFormService(props) {
             value={totalArea}
             onChange={(e) => setTotalArea(e.target.value)}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -527,9 +545,9 @@ function EnquryFormService(props) {
             defaultValue=""
             variant="outlined"
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -538,7 +556,9 @@ function EnquryFormService(props) {
           />
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+            style={{
+              marginTop: 15
+            }}
             variant="outlined"
             label="Upload file"
             type="file"
@@ -549,9 +569,9 @@ function EnquryFormService(props) {
               setFile(e.target.value);
             }}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -561,11 +581,13 @@ function EnquryFormService(props) {
           ></TextField>
           <TextField
             className="EmiInputs"
-            style={{ marginTop: 15 }}
+
             variant="outlined"
             label="Phone Number"
             name="Phone"
-            style={{ width: "50%" }}
+            style={{
+              marginTop: 15
+            }}
             disabled={isOtpVerified}
             type="number"
             min="1000000"
@@ -578,9 +600,9 @@ function EnquryFormService(props) {
               if (e.target.value.length <= 10) setMobile(e.target.value);
             }}
             InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline,
-              },
+              // classes: {
+              //   notchedOutline: classes.notchedOutline,
+              // },
               style: { color: "#FFFFFF" },
             }}
             InputLabelProps={{
@@ -590,38 +612,39 @@ function EnquryFormService(props) {
           ></TextField>
           {
             mobile.length === 10 &&
-              name.length > 0 &&
-              emailValid &&
-              email.length > 0 &&
-              city.length > 0 &&
-              state.length > 0 &&
-              address.length > 0 &&
-              type.length > 0 &&
-              pAddress.length > 0 &&
-              pCity.length > 0 &&
-              pState.length > 0 &&
-              budget.length > 0 &&
-              totalArea.length > 0 &&
-              floor.length > 0 &&
-              message.length > 0 &&
-              pLocation.length > 0 &&
-              // time.length > 0 &&
-              !enableOtpField && (
-                <Button
-                  style={{ width: "23%" }}
-                  onClick={otpHandler}
-                  variant="contained"
-                  style={{
-                    background: "green",
-                    height: " 30px",
-                    top: " 10px",
-                    left: "5px",
-                    color: "#fff",
-                  }}
-                >
-                  Verify
-                </Button>
-              )
+            name.length > 0 &&
+            emailValid &&
+            email.length > 0 &&
+            city.length > 0 &&
+            state.length > 0 &&
+            address.length > 0 &&
+            type.length > 0 &&
+            pAddress.length > 0 &&
+            pCity.length > 0 &&
+            pState.length > 0 &&
+            budget.length > 0 &&
+            totalArea.length > 0 &&
+            floor.length > 0 &&
+            message.length > 0 &&
+            pLocation.length > 0 &&
+            // time.length > 0 &&
+            !enableOtpField && (
+              <Button
+
+                onClick={otpHandler}
+                variant="contained"
+                style={{
+                  background: "green",
+                  height: " 30px",
+                  top: " 10px",
+                  left: "5px",
+                  color: "#fff",
+                  width: "23%"
+                }}
+              >
+                Verify
+              </Button>
+            )
             // : (
             //   isOtpVerified && (
             //     <div onClick={reset}>
@@ -651,7 +674,9 @@ function EnquryFormService(props) {
                 <TextField
                   className="EmiInputs"
                   placeholder="Otp"
-                  style={{ width: "50%", color: "#FFFFFF" }}
+                  style={{
+                    width: "50%", color: "#FFFFFF"
+                  }}
                   fullWidth
                   value={otp}
                   disabled={isOtpVerified}
@@ -660,9 +685,9 @@ function EnquryFormService(props) {
                   type="number"
                   variant="outlined"
                   InputProps={{
-                    classes: {
-                      notchedOutline: classes.notchedOutline,
-                    },
+                    // classes: {
+                    //   notchedOutline: classes.notchedOutline,
+                    // },
                     style: { color: "#FFFFFF" },
                   }}
                   InputLabelProps={{
@@ -671,15 +696,15 @@ function EnquryFormService(props) {
                 />
                 {!isOtpVerified && (
                   <Button
-                    style={{ width: "23%" }}
                     onClick={otpHandler}
                     variant="contained"
                     style={{
                       background: "green",
-                      height: " 30px",
+                      height: "30px",
                       top: " 10px",
                       left: "5px",
                       color: "#fff",
+                      width: "23%"
                     }}
                   >
                     Resend OTP

@@ -234,7 +234,7 @@ const HomePage = (props) => {
       setDealingInData(response.data);
       setShowDealingInDetaisl(
         response.message !== "Home DealingIn Data not found" &&
-          response.message !== "Invalid token"
+        response.message !== "Invalid token"
       );
     };
     getData();
@@ -371,8 +371,8 @@ const HomePage = (props) => {
                   src={imgPath.imageUrl}
                   height={viewportToPixels("90vh")}
                   width={viewportToPixels("100vw")}
-                  // layout="fill"
-                  // objectFit="fill"
+                // layout="fill"
+                // objectFit="fill"
                 />
               </Box>
             );
@@ -516,7 +516,7 @@ const HomePage = (props) => {
           <SectionHeader title={services.header} subtitle={services.title} />
           <Grid container spacing={3}>
             {(services.items || []).map((service) => {
-              console.log("service", service);
+              // console.log("service", service);
               return (
                 <Grid item xs={12} md={3}>
                   <ServiceCard service={service} />

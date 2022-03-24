@@ -367,6 +367,9 @@ const PropertyListCard = (props) => {
     return months <= 0 ? 0 : months;
   }
   useEffect(() => {
+    dispatch(SetRoute({ id: item?._id }));
+  }, [])
+  useEffect(() => {
     let dt = new Date(item.created);
     const years = new Date(new Date() - new Date(dt)).getFullYear() - 1970;
     if (years > 1) {
@@ -487,35 +490,39 @@ const PropertyListCard = (props) => {
               justifyContent: "flex-start",
             }}
           >
-            <NextLink
+            {/* <NextLink
               href={{
                 pathname: `/house-details`,
                 // query: item?._id,
               }}
+            > */}
+            <div
+              onClick={() => {
+                // dispatch(SetRoute({ id: item?._id }));
+                // contentClickHandler(item);
+                router.push({
+                  pathname: `/house-details`,
+                  // query: item?._id,
+                })
+              }}
+              style={{ position: "relative", cursor: "pointer" }}
             >
-              <div
-                onClick={() => {
-                  dispatch(SetRoute({ id: item?._id }));
-                  contentClickHandler(item);
+              {propertTag ? (
+                <span className="featured">{propertTag}</span>
+              ) : null}
+              <img
+                className="image"
+                src={mainImage}
+                style={{
+                  width: "100%",
+                  height: 300,
+                  objectFit: "cover",
+                  backgroundColor: "red",
                 }}
-                style={{ position: "relative", cursor: "pointer" }}
-              >
-                {propertTag ? (
-                  <span className="featured">{propertTag}</span>
-                ) : null}
-                <img
-                  className="image"
-                  src={mainImage}
-                  style={{
-                    width: "100%",
-                    height: 300,
-                    objectFit: "cover",
-                    backgroundColor: "red",
-                  }}
-                  alt=""
-                />
-              </div>
-            </NextLink>
+                alt=""
+              />
+            </div>
+            {/* </NextLink> */}
             {/* <span className="featured">FEATURED</span> */}
           </Grid>
           <Grid item xs={12} md={8} style={{ padding: 30 }}>
@@ -758,22 +765,27 @@ const PropertyListCard = (props) => {
                           }}
                           passHref
                         > */}
-                        <NextLink
+                        {/* <NextLink
                           href={{
                             pathname: `/house-details`,
                             // query: item?._id,
                           }}
                           style={{ ...styles.btn2, padding: "10px 15px" }}
+                        > */}
+                        <Typography
+                          variant="contained"
+                          style={{ ...styles.btn2, padding: "10px 15px" }}
+                          onClick={() => {
+                            // dispatch(SetRoute({ id: item?._id }));
+                            router.push({
+                              pathname: `/house-details`,
+                              // query: item?._id,
+                            })
+                          }}
                         >
-                          <Typography
-                            variant="contained"
-                            onClick={() => {
-                              dispatch(SetRoute({ id: item?._id }));
-                            }}
-                          >
-                            View Detail
-                          </Typography>
-                        </NextLink>
+                          View Detail
+                        </Typography>
+                        {/* </NextLink> */}
                         {/* </Link> */}
                         <Box style={{ width: 10 }}></Box>
                         <Typography
@@ -901,25 +913,25 @@ const PropertyListCard = (props) => {
           ></TextField>
           {
             mobile.length === 10 &&
-              name.length > 0 &&
-              emailValid &&
-              time.length > 0 &&
-              !enableOtpField && (
-                <Button
-                  style={{ width: "23%" }}
-                  onClick={otpHandler}
-                  variant="contained"
-                  style={{
-                    background: "green",
-                    height: " 30px",
-                    top: " 10px",
-                    left: "5px",
-                    color: "#fff",
-                  }}
-                >
-                  Verify
-                </Button>
-              )
+            name.length > 0 &&
+            emailValid &&
+            time.length > 0 &&
+            !enableOtpField && (
+              <Button
+                onClick={otpHandler}
+                variant="contained"
+                style={{
+                  background: "green",
+                  height: " 30px",
+                  top: " 10px",
+                  left: "5px",
+                  color: "#fff",
+                  width: "23%"
+                }}
+              >
+                Verify
+              </Button>
+            )
             // : (
             //   isOtpVerified && (
             //     <div onClick={reset}>
@@ -954,7 +966,6 @@ const PropertyListCard = (props) => {
               />
               {!isOtpVerified && (
                 <Button
-                  style={{ width: "23%" }}
                   onClick={otpHandler}
                   variant="contained"
                   style={{
@@ -963,6 +974,7 @@ const PropertyListCard = (props) => {
                     top: " 10px",
                     left: "5px",
                     color: "#fff",
+                    width: "23%"
                   }}
                 >
                   Resend OTP

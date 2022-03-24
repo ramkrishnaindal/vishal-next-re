@@ -33,16 +33,15 @@
       {
         "id": 1,
         "title": "Sell",
-        "href": "/search-property-details/Sell"
+        "href": "/property/sell"
       },
       {
         "id": 2,
         "title": "Rent",
-        "href": "/search-property-details/Rent"
+        "href": "/property/rent"
       }
     ]
   },
-
   {
     "id": 5,
     "title": "Services",

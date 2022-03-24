@@ -316,14 +316,14 @@
   flex-wrap: wrap;
 }
 
-.Emaicalculater .EmiInputs label {
+.EmiInputs label {
   color: #fff;
 }
-.Emaicalculater .EmiInputs input {
+.EmiInputs input {
   color: #fff;
 }
-.Emaicalculater .EmiInputs fieldset,
-.Emaicalculater .EmiInputs fieldset:hover,
+.EmiInputs fieldset,
+.EmiInputs fieldset:hover,
 .MuiInputBase-root:hover {
   border-color: #fff;
 }
