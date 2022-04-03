@@ -64,12 +64,12 @@ export default function OnlineBooking(props) {
   const [state, setState] = useState(initialState);
 
   const [mobile, setMobile] = useState(
-    JSON.parse(localStorage.getItem("user"))?.mobile
+
   );
   const router = useRouter()
   useEffect(() => {
     // let userDetails = JSON.parse(window.localStorage.getItem("user"));
-
+    setMobile(JSON.parse(localStorage.getItem("user"))?.mobile)
     if (!localStorage.getItem("user")) {
       router.push("/signin");
     }
