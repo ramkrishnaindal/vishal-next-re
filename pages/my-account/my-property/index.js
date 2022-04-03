@@ -25,6 +25,7 @@ import ApiClient from "./../../../api-client/index";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { SetRoute } from "../../../redux/actions/RouteActions";
+import Image from "next/image";
 // import "../my-account.css";
 const settings1 = {
   dots: false,
@@ -209,7 +210,26 @@ const MyProperty = (props) => {
                                       <Slider {...settings1}>
                                         {mainImage?.map((img) => (
                                           <Box className="property-image-thumb">
-                                            <img
+                                            <Image
+                                              src={
+                                                img?.path
+                                                  ? ApiClient.SERVER_ADDRESS +
+                                                  "/" +
+                                                  img?.path
+                                                  : "/no-image-available-icon-6.png"
+                                              }
+                                              // className={classes.avatar} 
+                                              alt={""}
+                                              // className={`${classes.detailImage} box-img`}
+                                              // width={100}
+                                              // height={100}
+                                              // style={props.style}
+                                              // style={{ cursor: "pointer" }}
+                                              // className="img"
+                                              layout="fill"
+                                              onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                                            />
+                                            {/* <img
                                               src={
                                                 img?.path
                                                   ? ApiClient.SERVER_ADDRESS +
@@ -217,7 +237,7 @@ const MyProperty = (props) => {
                                                     img?.path
                                                   : "/no-image-available-icon-6.png"
                                               }
-                                            />
+                                            /> */}
                                           </Box>
                                         ))}
                                       </Slider>

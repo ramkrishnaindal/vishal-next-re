@@ -7,7 +7,7 @@ import {
   Box,
   Paper,
 } from "@material-ui/core";
-
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -93,7 +93,25 @@ const FactAndFeature = (props) => {
     <Grid container style={{ marginTop: 20, marginBottom: 20 }}>
       <Grid item xs={12} md={12} className={classes.style2}>
         <Paper style={{ marginRight: 10, padding: 5 }}>
-          <img src={icon} style={{ width: 30, height: 30 }} />
+          <Image
+            src={
+              icon
+            }
+            // className={classes.avatar} 
+            alt={""}
+            // style={{ margin: "15px" }}
+            // className={`${classes.detailImage} box-img`}
+            // width={100}
+            // height={100}
+            // style={props.style}
+            // style={{ cursor: "pointer" }}
+            // className="img"
+            // layout="fill" 
+            width={30}
+            height={30}
+            onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+          />
+          {/* <img src={icon} style={{ width: 30, height: 30 }} /> */}
         </Paper>
         <Grid container>
           <Grid item xs={8} md={8} className={classes.style1}>

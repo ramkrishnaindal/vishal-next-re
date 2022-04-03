@@ -11,6 +11,7 @@ import PageBanner from "../../components/page-banner";
 
 import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
+import Image from 'next/image'
 // import "./invest-with-us.css";
 const useStyles = makeStyles((theme) => ({
   detailImage: {
@@ -147,7 +148,7 @@ const InvestWithUs = (props) => {
                       item
                       xs={12}
                       md={12}
-                      // style={{ flexBasis: "60%" }}
+                    // style={{ flexBasis: "60%" }}
                     >
                       <Grid
                         container
@@ -166,14 +167,31 @@ const InvestWithUs = (props) => {
                             }}
                           >
                             {/* <i class="fas fa-user-tie"></i> */}
-                            <img
+                            <Image
+                              src={
+                                ApiClient.SERVER_ADDRESS +
+                                "/" +
+                                data?.media[0]?.whatWeDoImages[index]?.path
+                              }
+                              // className={classes.avatar} 
+                              alt={""}
+                              className={`${classes.detailImage} box-img`}
+                              // width={100}
+                              // height={100}
+                              // style={props.style}
+                              // style={{ cursor: "pointer" }}
+                              // className="img"
+                              layout="fill"
+                              onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                            />
+                            {/* <img
                               src={
                                 ApiClient.SERVER_ADDRESS +
                                 "/" +
                                 data?.media[0]?.whatWeDoImages[index]?.path
                               }
                               className={`${classes.detailImage} box-img`}
-                            />
+                            /> */}
                           </div>
                         </Grid>
                         <Grid item xs={9} md={9} className="">
@@ -194,7 +212,7 @@ const InvestWithUs = (props) => {
                                     return [...prevChState];
                                   })
                                 }
-                                // checked={checkedState[0]}
+                              // checked={checkedState[0]}
                               />
                               {HtmlParser(whatWeDo.description)}
 
@@ -245,11 +263,10 @@ const InvestWithUs = (props) => {
                   flexBasis: "100%",
                   height: "50%",
                   width: "100%",
-                  background: `url('${
-                    ApiClient.SERVER_ADDRESS +
+                  background: `url('${ApiClient.SERVER_ADDRESS +
                     "/" +
                     data?.media[0]?.image[0]?.path
-                  }'),rgba(0,0,0,.6)`,
+                    }'),rgba(0,0,0,.6)`,
                   position: "relative",
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
@@ -276,14 +293,31 @@ const InvestWithUs = (props) => {
                 return (
                   <Grid className="invest-item" item xs={12} md={4} key={i}>
                     <Box className="client-block-icon">
-                      <img
+                      <Image
+                        src={
+                          ApiClient.SERVER_ADDRESS +
+                          "/" +
+                          data?.media[0]?.howToInvestImages[i]?.path
+                        }
+                        // className={classes.avatar} 
+                        alt={""}
+                        className={`${classes.detailImage} box-img`}
+                        // width={100}
+                        // height={100}
+                        // style={props.style}
+                        // style={{ cursor: "pointer" }}
+                        // className="img"
+                        layout="fill"
+                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                      />
+                      {/* <img
                         src={
                           ApiClient.SERVER_ADDRESS +
                           "/" +
                           data?.media[0]?.howToInvestImages[i]?.path
                         }
                         className={`${classes.detailImage} box-img`}
-                      />
+                      /> */}
                       {/* 
                       <i
                         className={`fas ${details.icon}`}

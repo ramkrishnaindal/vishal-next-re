@@ -14,7 +14,7 @@ import PageBanner from "../../components/page-banner";
 // import ApiClient from '../../api-client';
 // import ReactHtmlParser from 'react-html-parser';
 import SupplierFormService from "../../components/SupplierFormService";
-
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -178,7 +178,7 @@ const SupplierFormPage = (props) => {
       {/* {viewDetails ?  */}(
       <Box className="CareerPageText">
         <Container>
-          <div className={classes.root} className="headingtext">
+          <div className={`${classes.root} headingtext`}>
             <Grid container>
               <Grid item md={6}>
                 <Box className="middel-content">
@@ -201,7 +201,25 @@ const SupplierFormPage = (props) => {
                 return (
                   <Grid container spacing={3}>
                     <Grid item xs={4} className="workSpaceImgaes">
-                      <img src={img} alt="" />
+                      <Image
+                        src={
+                          img
+                        }
+                        // className={classes.avatar} 
+                        alt={""}
+                        // style={{ margin: "15px" }}
+                        // className={`${classes.detailImage} box-img`}
+                        // width={100}
+                        // height={100}
+                        // style={props.style}
+                        // style={{ cursor: "pointer" }}
+                        // className="img"
+                        layout="fill"
+                        // width={80}
+                        // height={80}
+                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                      />
+                      {/* <img src={img} alt="" /> */}
                     </Grid>
                   </Grid>
                 );

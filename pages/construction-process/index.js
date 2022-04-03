@@ -10,7 +10,7 @@ import {
 import PageBanner from "../../components/page-banner";
 import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
-
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({}));
 
 const ConstructionProcess = (props) => {
@@ -69,7 +69,19 @@ const ConstructionProcess = (props) => {
                       className={`${classes.style2} about-page-images`}
                     >
                       <Box className="about-page-image">
-                        <img src={img} alt="" />
+                        <Image
+                          src={img}
+                          // className={classes.avatar} 
+                          alt={""}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          layout="fill"
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                        />
+                        {/* <img src={img} alt="" /> */}
                       </Box>
                     </Grid>
                   </Grid>
@@ -97,7 +109,19 @@ const ConstructionProcess = (props) => {
                     className={`${classes.style2} about-page-images`}
                   >
                     <Box className="about-page-image">
-                      <img src={img} alt="" />
+                      <Image
+                        src={img}
+                        // className={classes.avatar} 
+                        alt={""}
+                        // width={100}
+                        // height={100}
+                        // style={props.style}
+                        // style={{ cursor: "pointer" }}
+                        // className="img"
+                        layout="fill"
+                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                      />
+                      {/* <img src={img} alt="" /> */}
                     </Box>
                   </Grid>
                 </Grid>

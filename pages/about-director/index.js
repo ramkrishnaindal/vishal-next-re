@@ -15,6 +15,7 @@ import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import Image from "next/image";
 // import {NoDataAvailable} from '../../components/no-details-available/no-details-available';
 
 const useStyles = makeStyles((theme) => ({
@@ -173,7 +174,18 @@ const AboutDirectors = (props) => {
                 <Grid container alignItems="center">
                   <Grid className="about-block-images" item xs={12} md={6}>
                     <Box className="about-block-image">
-                      <img src={profileImg} alt="" />
+                      <Image
+                        src={profileImg}
+                        alt={""}
+                        // width={100}
+                        // height={100}
+                        // style={props.style}
+                        // style={{ cursor: "pointer" }}
+                        // className="img"
+                        layout="fill"
+                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                      />
+                      {/* <img src={profileImg} alt="" /> */}
                     </Box>
                   </Grid>
                   <Grid className="about-block-summery" item xs={12} md={6}>
@@ -213,7 +225,18 @@ const AboutDirectors = (props) => {
                   </Grid>
                   <Grid className="about-block-images" item xs={12} md={6}>
                     <Box className="about-block-image">
-                      <img src={profileImg} alt="" />
+                      <Image
+                        src={profileImg}
+                        alt={""}
+                        // width={100}
+                        // height={100}
+                        // style={props.style}
+                        // style={{ cursor: "pointer" }}
+                        // className="img"
+                        layout="fill"
+                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                      />
+                      {/* <img src={profileImg} alt="" /> */}
                     </Box>
                   </Grid>
                 </Grid>

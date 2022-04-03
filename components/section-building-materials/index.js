@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 // const OwlCarousel = dynamic(import("react-owl-carousel"), {
 //   ssr: false,
 // });
+import Image from 'next/image'
 import Slider from "react-slick";
 // import "owl.carousel/dist/assets/owl.carousel.css";
 // import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -112,7 +113,18 @@ const SectionBM = (props) => {
           console.log("=> ", image);
           return (
             <Box key={i} className="building-material-wrap">
-              <img src={image.imageUrl} alt={image.name} />
+              <Image
+                src={image.imageUrl}
+                alt={image.name}
+                // width={100}
+                // height={100}
+                // style={props.style}
+                // style={{ cursor: "pointer" }}
+                // className="img"
+                layout="fill"
+                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+              />
+              {/* <img src={image.imageUrl} alt={image.name} /> */}
               <Box className="mask mask-1"></Box>
               <Box className="mask mask-2"></Box>
               <Box className="content">

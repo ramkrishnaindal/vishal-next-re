@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import ApiClient from "../../api-client";
 import { useDispatch } from "react-redux";
 import { SetRoute } from "../../redux/actions/RouteActions";
+import Image from 'next/image'
 const useStyles = makeStyles((theme) => ({
   menu: {
     padding: 0,
@@ -201,12 +202,23 @@ const MenuItem = (props) => {
             paddingRight: 8,
           }}
         >
-          <img
+          <Image
+            src="/images/property_img3.jpeg"
+            alt=""
+            width={100}
+            height={100}
+            // style={props.style}
+            // className="img"
+            // layout="fill"
+            onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+          />
+          {/* <img
             src={
-              process.env.NEXT_PUBLIC_PUBLIC_URL + "/images/property_img3.jpeg"
+              // process.env.NEXT_PUBLIC_PUBLIC_URL + "/images/property_img3.jpeg"
+              "/images/property_img3.jpeg"
             }
             style={{ width: 100, height: 100 }}
-          />
+          /> */}
         </Grid>
       </Grid>
     );

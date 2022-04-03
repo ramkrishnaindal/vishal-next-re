@@ -25,6 +25,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { SetRoute } from "../../../redux/actions/RouteActions";
 import NextLink from "../../../components/UI/NextLink";
+import Image from "next/image";
 const settings1 = {
   dots: false,
   arrows: false,
@@ -249,7 +250,26 @@ const MyFavorite = (props) => {
                                     >
                                       {item?.images?.map((img) => (
                                         <Box className="property-image-thumb">
-                                          <img
+                                          <Image
+                                            src={
+                                              img?.path
+                                                ? ApiClient.SERVER_ADDRESS +
+                                                "/" +
+                                                img?.path
+                                                : "/no-image-available-icon-6.png"
+                                            }
+                                            // className={classes.avatar} 
+                                            alt={""}
+                                            // className={`${classes.detailImage} box-img`}
+                                            // width={100}
+                                            // height={100}
+                                            // style={props.style}
+                                            // style={{ cursor: "pointer" }}
+                                            // className="img"
+                                            layout="fill"
+                                            onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                                          />
+                                          {/* <img
                                             src={
                                               img?.path
                                                 ? ApiClient.SERVER_ADDRESS +
@@ -257,7 +277,7 @@ const MyFavorite = (props) => {
                                                   img?.path
                                                 : "/no-image-available-icon-6.png"
                                             }
-                                          />
+                                          /> */}
                                         </Box>
                                       ))}
                                     </Slider>

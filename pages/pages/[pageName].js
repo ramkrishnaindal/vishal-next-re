@@ -19,6 +19,7 @@ import HtmlParser from "react-html-parser";
 import API_ENDPOINTS from "../../constants/api-endpoints";
 import { useSelector } from "react-redux";
 import { wrapper } from "../../redux";
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({}));
 
 const CmsPageDetails = (props) => {
@@ -153,11 +154,27 @@ const CmsPageDetails = (props) => {
                     alignItems: "center",
                   }}
                 >
-                  <img
+                  <Image
+                    src={
+                      API_ENDPOINTS.BASE_URL + data.image[0]?.image[0].path
+                    }
+                    // className={classes.avatar} 
+                    alt={""}
+                    style={{ margin: "15px" }}
+                    // className={`${classes.detailImage} box-img`}
+                    // width={100}
+                    // height={100}
+                    // style={props.style}
+                    // style={{ cursor: "pointer" }}
+                    // className="img"
+                    layout="fill"
+                    onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                  />
+                  {/* <img
                     src={API_ENDPOINTS.BASE_URL + data.image[0]?.image[0].path}
                     style={{ margin: "15px" }}
                     alt=""
-                  />
+                  /> */}
                 </Box>
               </Grid>
             )}
@@ -264,7 +281,7 @@ export async function getStaticPaths() {
 export const getStaticProps = wrapper.getStaticProps(
   (store) => async (props) => {
     try {
-      console.log("store", store);
+      console.log("store.getState()", store.getState());
       const response = await ApiClient.call(
         ApiClient.REQUEST_METHOD.POST,
         "/cms/getDetailData",

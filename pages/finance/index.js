@@ -11,7 +11,7 @@ import {
 import PageBanner from "../../components/page-banner";
 import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
-
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({}));
 
 const Finance = (props) => {
@@ -80,7 +80,19 @@ const Finance = (props) => {
             <Grid container spacing={3} alignItems="center">
               <Grid className="about-block-images" item xs={12} md={5}>
                 <Box className="about-block-image">
-                  <img src="../images/about-img.jpg" alt="" />
+                  <Image
+                    src={"../images/about-img.jpg"}
+                    // className={classes.avatar} 
+                    alt={""}
+                    // width={100}
+                    // height={100}
+                    // style={props.style}
+                    // style={{ cursor: "pointer" }}
+                    // className="img"
+                    layout="fill"
+                    onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                  />
+                  {/* <img src="../images/about-img.jpg" alt="" /> */}
 
                   <div id="form1" className="finance-form-block">
                     <form className="form-enquiry finance-form">

@@ -17,6 +17,7 @@ import ApiClient from "../../api-client/index";
 import ReactHtmlParser from "react-html-parser";
 import { SetRoute } from "../../redux/actions/RouteActions";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -128,15 +129,39 @@ const SectionClient = (props) => {
                   );
                 } else if (mediaZero.image || mediaZero.image.length > 0) {
                   return (
-                    <img
+                    <Image
                       src={
                         ApiClient.SERVER_ADDRESS + "/" + media[0].image[0].path
                       }
-                      alt=""
+                      alt={""}
+                      // width={100}
+                      // height={100}
+                      // style={props.style}
+                      // style={{ cursor: "pointer" }}
+                      // className="img"
+                      layout="fill"
+                      onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                     />
+                    // <img
+                    //   src={
+                    //     ApiClient.SERVER_ADDRESS + "/" + media[0].image[0].path
+                    //   }
+                    //   alt=""
+                    // />
                   );
                 } else {
-                  return <img src={"no-image-available-icon-6.png"} alt="" />;
+                  return <Image
+                    src={"no-image-available-icon-6.png"}
+                    alt={""}
+                    // width={100}
+                    // height={100}
+                    // style={props.style}
+                    // style={{ cursor: "pointer" }}
+                    // className="img"
+                    layout="fill"
+                    onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                  />
+                  // <img src={"no-image-available-icon-6.png"} alt="" />;
                 }
               }
             }

@@ -6,7 +6,7 @@ import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import Rating from "@material-ui/lab/Rating";
-
+import Image from 'next/image'
 // const settings = {
 //   dots: false,
 //   arrows: true,
@@ -82,7 +82,14 @@ const FeedbackCard = (props) => {
   return (
     <Box className="feedback-wrap">
       <Box className="feedback-image">
-        <img src={img1} />
+        <Image
+          src={img1}
+          alt=""
+          // style={props.style}
+          layout="fill"
+          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+        />
+        {/* <img src={img1} /> */}
       </Box>
       <Rating
         name="half-rating-read"
@@ -103,7 +110,14 @@ const FeedbackCard = (props) => {
             console.log("asdas", imgPath);
             return (
               <Box className="property-image-thumb">
-                <img src={imgPath} alt="" />
+                <Image
+                  src={imgPath}
+                  alt=""
+                  // style={props.style}
+                  layout="fill"
+                  onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                />
+                {/* <img src={imgPath} alt="" /> */}
               </Box>
             );
           })}

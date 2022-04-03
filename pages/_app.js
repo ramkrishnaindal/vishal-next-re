@@ -6,7 +6,7 @@ import "photoswipe/dist/photoswipe.css";
 import "photoswipe/dist/default-skin/default-skin.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { wrapper } from "./../redux/index";
+import { wrapper } from "./../redux";
 import "../styles/globals.css";
 import "../Final.css";
 import Head from "next/head";

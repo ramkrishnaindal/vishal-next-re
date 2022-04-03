@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ApiClient from "../../api-client";
 import ReactHtmlParser from "react-html-parser";
 import Moment from "react-moment";
-
+import Image from 'next/image'
 function BlogDetailsLeft(props) {
   const [blogDetails, setBlogDetails] = useState({});
 
@@ -41,7 +41,16 @@ function BlogDetailsLeft(props) {
       className="Leftgrid"
     >
       <>
-        <img src={img} alt="blogDetailsImage" />
+        <Image
+          src={img}
+          alt="blogDetailsImage"
+          layout="fill"
+          // returns:
+          // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+        />
+        {/* <img src= alt="blogDetailsImage" /> */}
+
         <Grid container className="detailsheadingData">
           <Grid item xs={3} lg={3} md={3} sm={3} className="date">
             <Typography className="dateText">

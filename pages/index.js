@@ -31,6 +31,7 @@ import SectionClient from "../components/section-client";
 import ServiceCard from "../components/service-card";
 import SectionFeedback from "../components/section-feedback";
 import Slider from "react-slick";
+// import Image from "next/image";
 // import Footer from "../components/footer";
 // import OnlineBooking from "../components/online-form/online-form";
 // import EmiCalculater from "../components/emiCalculater/emiCalculater";
@@ -410,7 +411,16 @@ const HomePage = (props) => {
                         className="property-image-thumb"
                         style={{ maxWidth: 500 }}
                       >
-                        <img src={imgPath.imageUrl} alt="" />
+                        <Image
+                          src={imgPath.imageUrl}
+                          alt=""
+                          layout="fill"
+                          // returns:
+                          // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                        />
+
+                        {/* <img src={imgPath.imageUrl} alt="" /> */}
                       </Box>
                     );
                   }
@@ -550,11 +560,20 @@ const HomePage = (props) => {
                   style={{ margin: "0 15px" }}
                   key={Math.random() * 1000}
                 >
-                  <img
+                  <Image
+                    src={imgPath.imageUrl}
+                    alt=""
+                    layout="fill"
+                    style={{ margin: "0 15px" }}
+                    // returns:
+                    // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+                    onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                  />
+                  {/* <img
                     src={imgPath.imageUrl}
                     alt=""
                     style={{ margin: "0 15px" }}
-                  />
+                  /> */}
                 </Box>
               );
             })}

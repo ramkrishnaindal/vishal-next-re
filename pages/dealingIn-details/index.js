@@ -16,7 +16,7 @@ import ApiClient from "../../api-client";
 import ReactHtmlParser from "react-html-parser";
 // import {NoDataAvailable} from '../../components/no-details-available/no-details-available';
 import CircularProgress from "@mui/material/CircularProgress";
-
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -192,7 +192,19 @@ const DealingInItemDetailPage = (props) => {
           <Paper elevation={0} style={{ padding: 20, marginTop: 20 }}>
             <Grid container>
               <Grid item xs={12} md={6} className={classes.style2}>
-                <img src={img1} height={"auto"} alt="" width={"110%"} />
+                <Image
+                  src={img1}
+                  // className={classes.avatar} 
+                  alt={""}
+                  // width={100}
+                  // height={100}
+                  // style={props.style}
+                  // style={{ cursor: "pointer" }}
+                  // className="img"
+                  layout="fill"
+                  onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                />
+                {/* <img src={img1} height={"auto"} alt="" width={"110%"} /> */}
               </Grid>
               <Grid
                 item

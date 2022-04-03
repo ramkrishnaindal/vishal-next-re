@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import Image from 'next/image'
 // import dynamic from "next/dynamic";
 // import OwlCarousel from "react-owl-carousel";
 // const OwlCarousel = dynamic(import("react-owl-carousel"), {
@@ -35,31 +36,55 @@ const InnerCarouselSlider = (props) => {
       <Slider {...settings1}>
         <Box className="property-image-thumb">
           <div>
-            <img
+            <Image
+              src="/images/property_img3.jpeg"
+              alt=""
+              // style={props.style}
+              className="img"
+              layout="fill"
+              onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+            />
+            {/* <img
               className="img"
               src={
-                process.env.NEXT_PUBLIC_PUBLIC_URL +
+                // process.env.NEXT_PUBLIC_PUBLIC_URL +
                 "/images/property_img3.jpeg"
               }
-            />
+            /> */}
           </div>
           <div>
-            <img
+            <Image
+              src="/images/property_img3.jpeg"
+              alt=""
+              // style={props.style}
+              className="img"
+              layout="fill"
+              onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+            />
+            {/* <img
               className="img"
               src={
-                process.env.NEXT_PUBLIC_PUBLIC_URL +
+                // process.env.NEXT_PUBLIC_PUBLIC_URL +
                 "/images/property_img3.jpeg"
               }
-            />
+            /> */}
           </div>
           <div>
-            <img
+            <Image
+              src="/images/property_img3.jpeg"
+              alt=""
+              // style={props.style}
+              className="img"
+              layout="fill"
+              onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+            />
+            {/* <img
               className="img"
               src={
-                process.env.NEXT_PUBLIC_PUBLIC_URL +
+                // process.env.NEXT_PUBLIC_PUBLIC_URL +
                 "/images/property_img3.jpeg"
               }
-            />
+            /> */}
           </div>
         </Box>
         );

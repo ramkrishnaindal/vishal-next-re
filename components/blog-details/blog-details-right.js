@@ -2,6 +2,7 @@ import { Box, Button, Paper, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import ApiClient from "../../api-client";
 import { TextField } from "@material-ui/core";
+import Image from 'next/image'
 // import './blog-detalis.css';
 
 const btnStyle = {
@@ -64,7 +65,19 @@ function BlogDetailsRight(props) {
       <Typography className="heading">Recent Blogs</Typography>
       <Box className="recent-blogs">
         <Box className="blog-card" style={{ display: "flex" }}>
-          <img src={"/images/property_img3.jpeg"} alt="" height={100} />
+          <Image
+            src="/images/property_img3.jpeg"
+            className="img"
+            alt=""
+            layout="fill"
+            // width={20}
+            height={100}
+            // style={{ paddingRight: 5 }}
+            // returns:
+            // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+            onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+          />
+          {/* <img src={"/images/property_img3.jpeg"} alt="" height={100} /> */}
           <Box className="blog-content">
             <Typography className="blog-title">
               Jack Ma & future of E-commerce

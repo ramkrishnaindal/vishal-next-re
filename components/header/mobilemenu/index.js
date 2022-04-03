@@ -15,13 +15,14 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from "@material-ui/icons/Menufrom ";
 // import logo from "/public/images/vishal-logo.png";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import ApiClient from "../../../api-client";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { SetRoute } from "../../../redux/actions/RouteActions";
+import Image from 'next/image'
 // import "../header.css";
 
 const useStyles = makeStyles({
@@ -140,12 +141,12 @@ export default function Mobilemenu(props) {
               {
                 id: 3,
                 title: "Sell",
-                href: "/search-property-details/Sell",
+                href: "/search-property-details/sell",
               },
               {
                 id: 4,
                 title: "Rent",
-                href: "/search-property-details/Rent",
+                href: "/search-property-details/rent",
               },
             ],
           },
@@ -289,11 +290,19 @@ export default function Mobilemenu(props) {
           <div className="fullWidthheader">
             <div className="blackRowheader PL">
               <a href="/">
-                <img
+                <Image
+                  src={"/images/vishal-logo.png"}
+                  alt="Logo"
+                  // style={props.style}
+                  className="mobilelogoWidth"
+                  layout="fill"
+                  onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                />
+                {/* <img
                   src="/images/vishal-logo.png"
                   alt="Logo"
                   className="mobilelogoWidth"
-                />
+                /> */}
               </a>
               <div className="humbergIcon">
                 <Button onClick={toggleDrawer(anchor, true)}>

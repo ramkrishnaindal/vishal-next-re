@@ -16,7 +16,7 @@ import OurTeam from "./components/ourTeam/index";
 import ApiClient from "../../api-client";
 // import OwlCarouselSlider from '../../components/carousel-slider';
 import HtmlParser from "react-html-parser";
-
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({}));
 
 const AboutUsPage = (props) => {
@@ -98,7 +98,18 @@ const AboutUsPage = (props) => {
                         <Box className="about-block-image">
                           {/* <img src={aboutUsSection.images[0].imageUrl || "about-img.jpeg"} height={"auto"} alt={''} /> */}
                           {/* <OwlCarouselSlider images={aboutUsSection.images || []} autoplay={true} /> */}
-                          <img src={img} alt="" />
+                          <Image
+                            src={img}
+                            alt={""}
+                            // width={100}
+                            // height={100}
+                            // style={props.style}
+                            // style={{ cursor: "pointer" }}
+                            // className="img"
+                            layout="fill"
+                            onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                          />
+                          {/* <img src={img} alt="" /> */}
                         </Box>
                       </Grid>
                       <Grid className="about-block-summery" item xs={12} md={6}>
@@ -137,7 +148,18 @@ const AboutUsPage = (props) => {
                     >
                       <Box className="about-page-image">
                         {" "}
-                        <img src={img} alt="" />
+                        <Image
+                          src={img}
+                          alt={""}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          layout="fill"
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                        />
+                        {/* <img src={img} alt="" /> */}
                       </Box>
                     </Grid>
                   </Grid>

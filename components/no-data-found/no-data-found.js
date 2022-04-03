@@ -1,7 +1,7 @@
-import {makeStyles} from '@material-ui/styles';
-import {createTheme} from '@material-ui/core/styles';
-import {Paper} from '@material-ui/core';
-
+import { makeStyles } from '@material-ui/styles';
+import { createTheme } from '@material-ui/core/styles';
+import { Paper } from '@material-ui/core';
+import Image from 'next/image'
 const defaultTheme = createTheme();
 const useStyles = makeStyles(
     (theme) => ({
@@ -28,15 +28,25 @@ const useStyles = makeStyles(
             marginTop: theme.spacing(1),
         },
     }),
-    {defaultTheme},
+    { defaultTheme },
 );
 
 export function CustomNoRowsOverlay() {
     const classes = useStyles();
 
     return (
-        <Paper style={{borderRadius: 0, padding: 20, marginTop: 30, textAlign: 'center'}}>
-            <img src="no-record-found.png" alt=""></img>
+        <Paper style={{ borderRadius: 0, padding: 20, marginTop: 30, textAlign: 'center' }}>
+            <Image
+                src="no-record-found.png"
+                alt=""
+                // width={100}
+                // height={100}
+                // style={props.style}
+                // className="img"
+                layout="fill"
+                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+            />
+            {/* <img src="no-record-found.png" alt=""></img> */}
         </Paper>
 
     );

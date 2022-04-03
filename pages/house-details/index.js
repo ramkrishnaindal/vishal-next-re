@@ -42,6 +42,7 @@ import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
 import Moment from "react-moment";
 import { wrapper } from "./../../redux/index";
+import Image from "next/image";
 import API_ENDPOINTS from "./../../constants/api-endpoints";
 // import OwlCarousel from "react-owl-carousel";
 // import dynamic from "next/dynamic";
@@ -1016,7 +1017,16 @@ const HouseDetailPage = (props) => {
                               data-fancybox="dialog"
                               data-src={plan.original}
                             >
-                              <img className="img" src={plan.original} />
+                              {/* <img className="img" src={plan.original} /> */}
+                              <Image
+                                src={plan.original}
+                                className="img"
+                                alt=""
+                                layout="fill"
+                                // returns:
+                                // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+                                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                              />
                             </div>
                             <p>{plan.imageFor}</p>
                           </div>

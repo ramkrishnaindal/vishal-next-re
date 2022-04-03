@@ -41,7 +41,7 @@ import API_ENDPOINTS from "../../constants/api-endpoints";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-
+import Image from "next/image";
 // import "./post-property.css";
 const personal_details_options = ["Owner", "Agent", "Builder"];
 const property_details_options = ["Sell", "Rent"];
@@ -1740,7 +1740,7 @@ const PropertyCreateUpdate = () => {
                       variant="outlined"
                       placeholder="Enter Latitude"
                       type="number"
-                      style={{ width: "100%" }}
+                      // style={{ width: "100%" }}
                       onChange={handleChange}
                       style={{ width: "95%" }}
                       name="latitude"
@@ -1762,7 +1762,7 @@ const PropertyCreateUpdate = () => {
                       label="Address"
                       variant="outlined"
                       placeholder="Enter Address"
-                      style={{ width: "100%" }}
+                      // style={{ width: "100%" }}
                       onChange={handleChange}
                       name="address"
                       value={state.address}
@@ -1784,7 +1784,7 @@ const PropertyCreateUpdate = () => {
                       label="City"
                       variant="outlined"
                       placeholder="Enter City"
-                      style={{ width: "100%" }}
+                      // style={{ width: "100%" }}
                       onChange={handleChange}
                       name="city"
                       style={{ width: "95%" }}
@@ -1806,7 +1806,7 @@ const PropertyCreateUpdate = () => {
                       label="State"
                       variant="outlined"
                       placeholder="Enter State"
-                      style={{ width: "100%" }}
+                      // style={{ width: "100%" }}
                       onChange={handleChange}
                       name="State"
                       style={{ width: "95%" }}
@@ -1829,7 +1829,7 @@ const PropertyCreateUpdate = () => {
                       variant="outlined"
                       type="number"
                       placeholder="Enter PinCode"
-                      style={{ width: "100%" }}
+                      // style={{ width: "100%" }}
                       onChange={handleChange}
                       name="pinCode"
                       style={{ width: "95%" }}
@@ -1861,7 +1861,7 @@ const PropertyCreateUpdate = () => {
                     label="Project Name"
                     variant="outlined"
                     placeholder="Enter Project Name"
-                    style={{ width: "100%" }}
+                    // style={{ width: "100%" }}
                     onChange={handleChange}
                     name="nameOfProject"
                     style={{ width: "95%" }}
@@ -1889,7 +1889,7 @@ const PropertyCreateUpdate = () => {
                     label="Posting As"
                     variant="outlined"
                     placeholder="Enter Posting As"
-                    style={{ width: "100%" }}
+                    // style={{ width: "100%" }}
                     onChange={handleChange}
                     name="postingAs"
                     style={{ width: "95%" }}
@@ -1916,12 +1916,30 @@ const PropertyCreateUpdate = () => {
           <FieldsContainer label="Property Image">
             <Grid container>
               <Grid item xs={12} sm={6} md={4}>
-                <img src={file} height="200px" width="200px" />
+                <Image
+                  src={
+                    file
+                  }
+                  // className={classes.avatar} 
+                  alt={""}
+                  // style={{ margin: "15px" }}
+                  // className={`${classes.detailImage} box-img`}
+                  // width={100}
+                  // height={100}
+                  // style={props.style}
+                  // style={{ cursor: "pointer" }}
+                  // className="img"
+                  // layout="fill" 
+                  width={200}
+                  height={200}
+                  onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                />
+                {/* <img src={file} height="200px" width="200px" /> */}
                 <Box>
                   <br />
                   <label className="uploadbutton" htmlFor="mainImage">
                     <Button
-                      color="default"
+                      // color="default"
                       variant="contained"
                       component="span"
                       color="primary"
@@ -1944,11 +1962,29 @@ const PropertyCreateUpdate = () => {
                 </Typography>
                 {propertyData?.images?.exteriorView?.map((item, index) => {
                   return (
-                    <img
-                      src={API_ENDPOINTS.BASE_URL + item.path}
-                      height="80px"
-                      width="80px"
+                    <Image
+                      src={
+                        API_ENDPOINTS.BASE_URL + item.path
+                      }
+                      // className={classes.avatar} 
+                      alt={""}
+                      // style={{ margin: "15px" }}
+                      // className={`${classes.detailImage} box-img`}
+                      // width={100}
+                      // height={100}
+                      // style={props.style}
+                      // style={{ cursor: "pointer" }}
+                      // className="img"
+                      // layout="fill" 
+                      width={80}
+                      height={80}
+                      onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                     />
+                    // <img
+                    //   src={API_ENDPOINTS.BASE_URL + item.path}
+                    //   height="80px"
+                    //   width="80px"
+                    // />
                   );
                 })}
                 <Dropzone
@@ -1968,11 +2004,29 @@ const PropertyCreateUpdate = () => {
                     </Typography>
                     {propertyData?.images?.livingRoom?.map((item, index) => {
                       return (
-                        <img
-                          src={API_ENDPOINTS.BASE_URL + item.path}
-                          height="80px"
-                          width="80px"
+                        <Image
+                          src={
+                            API_ENDPOINTS.BASE_URL + item.path
+                          }
+                          // className={classes.avatar} 
+                          alt={""}
+                          // style={{ margin: "15px" }}
+                          // className={`${classes.detailImage} box-img`}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          // layout="fill" 
+                          width={80}
+                          height={80}
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                         />
+                        // <img
+                        //   src={API_ENDPOINTS.BASE_URL + item.path}
+                        //   height="80px"
+                        //   width="80px"
+                        // />
                       );
                     })}
                     <Dropzone
@@ -1990,11 +2044,29 @@ const PropertyCreateUpdate = () => {
                     </Typography>
                     {propertyData?.images?.badrooms?.map((item, index) => {
                       return (
-                        <img
-                          src={API_ENDPOINTS.BASE_URL + item.path}
-                          height="80px"
-                          width="80px"
+                        <Image
+                          src={
+                            API_ENDPOINTS.BASE_URL + item.path
+                          }
+                          // className={classes.avatar} 
+                          alt={""}
+                          // style={{ margin: "15px" }}
+                          // className={`${classes.detailImage} box-img`}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          // layout="fill" 
+                          width={80}
+                          height={80}
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                         />
+                        // <img
+                        //   src={API_ENDPOINTS.BASE_URL + item.path}
+                        //   height="80px"
+                        //   width="80px"
+                        // />
                       );
                     })}
                     <Dropzone
@@ -2010,11 +2082,29 @@ const PropertyCreateUpdate = () => {
                     </Typography>
                     {propertyData?.images?.kitchen?.map((item, index) => {
                       return (
-                        <img
-                          src={API_ENDPOINTS.BASE_URL + item.path}
-                          height="80px"
-                          width="80px"
+                        <Image
+                          src={
+                            API_ENDPOINTS.BASE_URL + item.path
+                          }
+                          // className={classes.avatar} 
+                          alt={""}
+                          // style={{ margin: "15px" }}
+                          // className={`${classes.detailImage} box-img`}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          // layout="fill" 
+                          width={80}
+                          height={80}
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                         />
+                        // <img
+                        //   src={API_ENDPOINTS.BASE_URL + item.path}
+                        //   height="80px"
+                        //   width="80px"
+                        // />
                       );
                     })}
                     <Dropzone
@@ -2034,11 +2124,29 @@ const PropertyCreateUpdate = () => {
                     </Typography>
                     {propertyData?.images?.livingRoom?.map((item, index) => {
                       return (
-                        <img
-                          src={API_ENDPOINTS.BASE_URL + item.path}
-                          height="80px"
-                          width="80px"
+                        <Image
+                          src={
+                            API_ENDPOINTS.BASE_URL + item.path
+                          }
+                          // className={classes.avatar} 
+                          alt={""}
+                          // style={{ margin: "15px" }}
+                          // className={`${classes.detailImage} box-img`}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          // layout="fill" 
+                          width={80}
+                          height={80}
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                         />
+                        // <img
+                        //   src={API_ENDPOINTS.BASE_URL + item.path}
+                        //   height="80px"
+                        //   width="80px"
+                        // />
                       );
                     })}
                     <Dropzone
@@ -2053,11 +2161,29 @@ const PropertyCreateUpdate = () => {
                     </Typography>
                     {propertyData?.images?.badrooms?.map((item, index) => {
                       return (
-                        <img
-                          src={API_ENDPOINTS.BASE_URL + item.path}
-                          height="80px"
-                          width="80px"
+                        <Image
+                          src={
+                            API_ENDPOINTS.BASE_URL + item.path
+                          }
+                          // className={classes.avatar} 
+                          alt={""}
+                          // style={{ margin: "15px" }}
+                          // className={`${classes.detailImage} box-img`}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          // layout="fill" 
+                          width={80}
+                          height={80}
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                         />
+                        // <img
+                        //   src={API_ENDPOINTS.BASE_URL + item.path}
+                        //   height="80px"
+                        //   width="80px"
+                        // />
                       );
                     })}
                     <Dropzone
@@ -2073,11 +2199,29 @@ const PropertyCreateUpdate = () => {
                     </Typography>
                     {propertyData?.images?.badrooms?.map((item, index) => {
                       return (
-                        <img
-                          src={API_ENDPOINTS.BASE_URL + item.path}
-                          height="80px"
-                          width="80px"
+                        <Image
+                          src={
+                            API_ENDPOINTS.BASE_URL + item.path
+                          }
+                          // className={classes.avatar} 
+                          alt={""}
+                          // style={{ margin: "15px" }}
+                          // className={`${classes.detailImage} box-img`}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          // layout="fill" 
+                          width={80}
+                          height={80}
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                         />
+                        // <img
+                        //   src={API_ENDPOINTS.BASE_URL + item.path}
+                        //   height="80px"
+                        //   width="80px"
+                        // />
                       );
                     })}
                     <Dropzone
@@ -2097,11 +2241,29 @@ const PropertyCreateUpdate = () => {
                 </Typography>
                 {propertyData?.images?.bathrooms?.map((item, index) => {
                   return (
-                    <img
-                      src={API_ENDPOINTS.BASE_URL + item.path}
-                      height="80px"
-                      width="80px"
+                    <Image
+                      src={
+                        API_ENDPOINTS.BASE_URL + item.path
+                      }
+                      // className={classes.avatar} 
+                      alt={""}
+                      // style={{ margin: "15px" }}
+                      // className={`${classes.detailImage} box-img`}
+                      // width={100}
+                      // height={100}
+                      // style={props.style}
+                      // style={{ cursor: "pointer" }}
+                      // className="img"
+                      // layout="fill" 
+                      width={80}
+                      height={80}
+                      onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                     />
+                    // <img
+                    //   src={API_ENDPOINTS.BASE_URL + item.path}
+                    //   height="80px"
+                    //   width="80px"
+                    // />
                   );
                 })}
                 <Dropzone
@@ -2117,11 +2279,29 @@ const PropertyCreateUpdate = () => {
                 </Typography>
                 {propertyData?.images?.floorPlan?.map((item, index) => {
                   return (
-                    <img
-                      src={API_ENDPOINTS.BASE_URL + item.path}
-                      height="80px"
-                      width="80px"
+                    <Image
+                      src={
+                        API_ENDPOINTS.BASE_URL + item.path
+                      }
+                      // className={classes.avatar} 
+                      alt={""}
+                      // style={{ margin: "15px" }}
+                      // className={`${classes.detailImage} box-img`}
+                      // width={100}
+                      // height={100}
+                      // style={props.style}
+                      // style={{ cursor: "pointer" }}
+                      // className="img"
+                      // layout="fill" 
+                      width={80}
+                      height={80}
+                      onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                     />
+                    // <img
+                    //   src={API_ENDPOINTS.BASE_URL + item.path}
+                    //   height="80px"
+                    //   width="80px"
+                    // />
                   );
                 })}
                 <Dropzone
@@ -2137,11 +2317,29 @@ const PropertyCreateUpdate = () => {
                 </Typography>
                 {propertyData?.images?.masterPlan?.map((item, index) => {
                   return (
-                    <img
-                      src={API_ENDPOINTS.BASE_URL + item.path}
-                      height="80px"
-                      width="80px"
+                    <Image
+                      src={
+                        API_ENDPOINTS.BASE_URL + item.path
+                      }
+                      // className={classes.avatar} 
+                      alt={""}
+                      // style={{ margin: "15px" }}
+                      // className={`${classes.detailImage} box-img`}
+                      // width={100}
+                      // height={100}
+                      // style={props.style}
+                      // style={{ cursor: "pointer" }}
+                      // className="img"
+                      // layout="fill" 
+                      width={80}
+                      height={80}
+                      onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                     />
+                    // <img
+                    //   src={API_ENDPOINTS.BASE_URL + item.path}
+                    //   height="80px"
+                    //   width="80px"
+                    // />
                   );
                 })}
                 <Dropzone
@@ -2167,11 +2365,29 @@ const PropertyCreateUpdate = () => {
                 </Typography>
                 {propertyData?.images?.other?.map((item, index) => {
                   return (
-                    <img
-                      src={API_ENDPOINTS.BASE_URL + item.path}
-                      height="80px"
-                      width="80px"
+                    <Image
+                      src={
+                        API_ENDPOINTS.BASE_URL + item.path
+                      }
+                      // className={classes.avatar} 
+                      alt={""}
+                      // style={{ margin: "15px" }}
+                      // className={`${classes.detailImage} box-img`}
+                      // width={100}
+                      // height={100}
+                      // style={props.style}
+                      // style={{ cursor: "pointer" }}
+                      // className="img"
+                      // layout="fill" 
+                      width={80}
+                      height={80}
+                      onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                     />
+                    // <img
+                    //   src={API_ENDPOINTS.BASE_URL + item.path}
+                    //   height="80px"
+                    //   width="80px"
+                    // />
                   );
                 })}
                 <Dropzone
@@ -2294,7 +2510,7 @@ const PropertyCreateUpdate = () => {
                   onClick={handleNext}
                   style={{ marginTop: 20 }}
                   className={classes.button}
-                  // type="submit"
+                // type="submit"
                 >
                   {getStepButtonText(activeStep)}
                   {/* {activeStep === steps.length - 1 ? "Finish" : "Next"} */}

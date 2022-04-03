@@ -10,6 +10,7 @@ import Slider from "react-slick";
 // import "./slider.css";
 
 import { Grid } from "@material-ui/core";
+import Image from 'next/image'
 const settings1 = {
   dots: true,
   arrows: false,
@@ -59,12 +60,19 @@ const OwlCarouselSlider = (props) => {
         {(images || []).map((image, i) => {
           return (
             <div className="carousel-wrap" key={i}>
-              <img
+              <Image
+                src={image.imageUrl}
+                alt=""
+                style={props.style}
+                layout="fill"
+                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+              />
+              {/* <img
                 className="img"
                 src={image.imageUrl}
                 style={props.style}
                 alt=""
-              />
+              /> */}
             </div>
           );
         })}

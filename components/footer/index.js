@@ -349,7 +349,7 @@ const Footer = (props) => {
                 <NextLink
                   className={`${classes.text3} links`}
                   href={{
-                    pathname: "search-property-details/Sell",
+                    pathname: "search-property-details/sell",
                   }}
                 >
                   <Typography>Properties</Typography>
@@ -602,7 +602,7 @@ const Footer = (props) => {
               md={2}
               mb={2}
 
-              // // onClick={onBottomPageHandler.bind(this, bp._id)}
+            // // onClick={onBottomPageHandler.bind(this, bp._id)}
             >
               {/* <NextLink
                 className={`${classes.text3} links`}

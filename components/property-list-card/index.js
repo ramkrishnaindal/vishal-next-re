@@ -46,7 +46,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import * as SitevisitAction from "../../redux/actions/SitevisitAction";
 import ApiClient from "../../api-client";
 // import "../../components/outer-carousel-slider/featured.css";
-
+import Image from 'next/image'
 import * as Snackbar from "../../redux/actions/SnackbarActions";
 // import { useRouter } from "next/router";
 // const baseTheme = createMuiTheme();
@@ -510,7 +510,24 @@ const PropertyListCard = (props) => {
               {propertTag ? (
                 <span className="featured">{propertTag}</span>
               ) : null}
-              <img
+              <Image
+                src={mainImage}
+                alt=""
+                className="image"
+                // width={100}
+                height={300}
+                // style={props.style}
+                style={{
+                  width: "100%",
+                  height: 300,
+                  objectFit: "cover",
+                  backgroundColor: "red",
+                }}
+                // className="img"
+                layout="fill"
+                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+              />
+              {/* <img
                 className="image"
                 src={mainImage}
                 style={{
@@ -520,7 +537,7 @@ const PropertyListCard = (props) => {
                   backgroundColor: "red",
                 }}
                 alt=""
-              />
+              /> */}
             </div>
             {/* </NextLink> */}
             {/* <span className="featured">FEATURED</span> */}

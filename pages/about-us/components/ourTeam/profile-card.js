@@ -14,7 +14,7 @@ import { Instagram } from "@material-ui/icons";
 import { Box } from "@material-ui/core";
 import ReactHtmlParser from "react-html-parser";
 import ApiClient from "../../../../api-client";
-
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({
   teamwrap: {
     backgroundColor: "#f4f4f4",
@@ -86,7 +86,19 @@ export default function ProfileCard(props) {
   return (
     <Card className={classes.teamwrap}>
       <Box className={classes.teamimage}>
-        <img src={profileImage} className={classes.avatar} alt="" />
+        <Image
+          src={profileImage}
+          className={classes.avatar}
+          alt={""}
+          // width={100}
+          // height={100}
+          // style={props.style}
+          // style={{ cursor: "pointer" }}
+          // className="img"
+          layout="fill"
+          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+        />
+        {/* <img src={profileImage} className={classes.avatar} alt="" /> */}
       </Box>
       <CardContent className={classes.teamsummery}>
         <Typography className={classes.teamname} variant="body2" component="p">

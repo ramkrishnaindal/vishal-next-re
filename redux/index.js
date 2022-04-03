@@ -20,10 +20,9 @@ const initialState = {
   route: {},
 };;
 
-var makeStore =
+var makeStore = (context) =>
   createStore(
     rootReducer,
-    initialState,
     composeWithDevTools(applyMiddleware(...middleware))
   );
 export const wrapper = createWrapper(makeStore, { debug: true });

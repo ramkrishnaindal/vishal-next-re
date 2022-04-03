@@ -11,6 +11,7 @@ import {
 import PageBanner from "../../components/page-banner";
 import NextLink from "./../../components/UI/NextLink";
 import { useRouter } from "next/router";
+import Image from "next/image";
 // import './my-account.css';
 
 const useStyles = makeStyles((theme) => ({}));
@@ -53,7 +54,22 @@ const MyAccount = (props) => {
                   <Box className="user-intro box-body">
                     <Box className="user-icon">
                       {" "}
-                      <img src="images/profile-img.jpg" alt="" />{" "}
+                      <Image
+                        src={
+                          "images/profile-img.jpg"
+                        }
+                        // className={classes.avatar} 
+                        alt={""}
+                        // className={`${classes.detailImage} box-img`}
+                        // width={100}
+                        // height={100}
+                        // style={props.style}
+                        // style={{ cursor: "pointer" }}
+                        // className="img"
+                        layout="fill"
+                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                      />
+                      {/* <img src="images/profile-img.jpg" alt="" />{" "} */}
                     </Box>
                     <Box className="user-info">
                       <h4> {name}</h4>
@@ -119,7 +135,22 @@ const MyAccount = (props) => {
                       <Grid container spacing={3}>
                         <Grid item xs={12} md={4}>
                           <Box className="myaccount-profileimg">
-                            <img src="../images/profile-img.jpg" alt="" />
+                            <Image
+                              src={
+                                "../images/profile-img.jpg"
+                              }
+                              // className={classes.avatar} 
+                              alt={""}
+                              // className={`${classes.detailImage} box-img`}
+                              // width={100}
+                              // height={100}
+                              // style={props.style}
+                              // style={{ cursor: "pointer" }}
+                              // className="img"
+                              layout="fill"
+                              onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                            />
+                            {/* <img src="../images/profile-img.jpg" alt="" /> */}
                           </Box>
                         </Grid>
                         <Grid item xs={12} md={8}>

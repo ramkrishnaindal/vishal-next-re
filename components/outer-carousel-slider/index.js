@@ -24,6 +24,7 @@ import LocalHotelIcon from "@material-ui/icons/LocalHotel";
 import { useRouter } from "next/router";
 import ZoomOutMapIcon from "@material-ui/icons/ZoomOutMap";
 import BathtubIcon from "@material-ui/icons/Bathtub";
+import Image from 'next/image'
 // import DriveEtaIcon from "@material-ui/icons/DriveEta";
 // import './property-view-card.css';
 // import InnerCarouselSlider from "../inner-carousel-slider";
@@ -195,11 +196,22 @@ const OuterCarouselSlider = (props) => {
                         {imgs.map((imgPath) => {
                           return (
                             <Box className="property-image-thumb">
-                              <img
+                              <Image
+                                src={imgPath}
+                                alt=""
+                                // width={100}
+                                // height={100}
+                                // style={props.style}
+                                style={{ cursor: "pointer" }}
+                                // className="img"
+                                layout="fill"
+                                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                              />
+                              {/* <img
                                 src={imgPath}
                                 alt=""
                                 style={{ cursor: "pointer" }}
-                              />
+                              /> */}
                             </Box>
                           );
                         })}
@@ -211,7 +223,7 @@ const OuterCarouselSlider = (props) => {
                           e.stopPropagation();
                           handleFavourite(_id, isFavorite, e);
                         }}
-                        // onClick={(e) => handleFavourite(_id,isFavorite, e)}
+                      // onClick={(e) => handleFavourite(_id,isFavorite, e)}
                       >
                         {!isFavorite && (
                           <svg

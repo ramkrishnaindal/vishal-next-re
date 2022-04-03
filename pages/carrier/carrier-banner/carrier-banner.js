@@ -1,13 +1,26 @@
-import { Box, Container, Image } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import React from "react";
+import Image from "next/image";
 // import "./carrer-banner.css"
 
 function CarrierBannerImg() {
   return (
     <Box className="onlineFormHeader">
-      <img
-        src={process.env.NEXT_PUBLIC_PUBLIC_URL + "/banner/carrier-banner.jpg"}
+      <Image
+        src={"/banner/carrier-banner.jpg"}
+        // className={classes.avatar} 
+        alt={""}
+        // width={100}
+        // height={100}
+        // style={props.style}
+        // style={{ cursor: "pointer" }}
+        // className="img"
+        layout="fill"
+        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
       />
+      {/* <img
+        src={"/banner/carrier-banner.jpg"}
+      /> */}
     </Box>
   );
 }

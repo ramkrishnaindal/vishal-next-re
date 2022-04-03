@@ -20,6 +20,7 @@ import NextLink from "./../../../components/UI/NextLink";
 import { useRouter } from "next/router";
 import { SetRoute } from "../../../redux/actions/RouteActions";
 import { useDispatch } from "react-redux";
+import Image from "next/image";
 const useStyles = makeStyles((theme) => ({}));
 
 const MyBooking = (props) => {
@@ -184,7 +185,28 @@ const MyBooking = (props) => {
                             <Box className="tabel-row">
                               <Box className="table-cell booking-img">
                                 <NextLink href="#">
-                                  <img
+                                  <Image
+                                    src={
+                                      item?.images[0]?.mainImage[0]?.path
+                                        ? ApiClient.SERVER_ADDRESS +
+                                        "/" +
+                                        item?.images[0]?.mainImage[0]?.path
+                                        : "/no-image-available-icon-6.png"
+                                    }
+                                    // className={classes.avatar} 
+                                    alt={""}
+                                    // className={`${classes.detailImage} box-img`}
+                                    // width={100}
+                                    // height={100}
+                                    // style={props.style}
+                                    // style={{ cursor: "pointer" }}
+                                    // className="img"
+                                    width="75"
+                                    height="75"
+                                    // layout="fill"
+                                    onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                                  />
+                                  {/* <img
                                     src={
                                       item?.images[0]?.mainImage[0]?.path
                                         ? ApiClient.SERVER_ADDRESS +
@@ -194,7 +216,7 @@ const MyBooking = (props) => {
                                     }
                                     width="75"
                                     height="75"
-                                  />
+                                  /> */}
                                 </NextLink>
                               </Box>
                               <Box className="table-cell">

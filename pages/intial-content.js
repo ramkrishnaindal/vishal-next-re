@@ -33,25 +33,25 @@ export const servicesInfo = [
     title: "RENT",
     description:
       "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.",
-    img: process.env.NEXT_PUBLIC_PUBLIC_URL + "/images/property_img3.jpeg",
+    img: "/images/property_img3.jpeg",
   },
   {
     title: "SELL",
     description:
       "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.",
-    img: process.env.NEXT_PUBLIC_PUBLIC_URL + "/images/property_img3.jpeg",
+    img: "/images/property_img3.jpeg",
   },
   {
     title: "CONSTRUCTION",
     description:
       "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.",
-    img: process.env.NEXT_PUBLIC_PUBLIC_URL + "/images/property_img3.jpeg",
+    img: "/images/property_img3.jpeg",
   },
   {
     title: "INTERIOR",
     description:
       "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.",
-    img: process.env.NEXT_PUBLIC_PUBLIC_URL + "/images/property_img3.jpeg",
+    img: "/images/property_img3.jpeg",
   },
 ];
 

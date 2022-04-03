@@ -7,6 +7,7 @@ import ApiClient from "../../api-client";
 import NextLink from "../UI/NextLink";
 import { useDispatch } from "react-redux";
 import { SetRoute } from "../../redux/actions/RouteActions";
+// import Image from 'next/image'
 const useStyles = makeStyles((theme) => ({
   btnBox1: {
     display: "flex",
@@ -45,6 +46,7 @@ const ServiceCard = (props) => {
   return (
     <div className="portfolio-item">
       <figure>
+
         <img
           className="img pulse"
           src={img1}
