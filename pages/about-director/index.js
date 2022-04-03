@@ -16,6 +16,7 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import Image from "next/image";
+import Head from 'next/head'
 // import {NoDataAvailable} from '../../components/no-details-available/no-details-available';
 
 const useStyles = makeStyles((theme) => ({
@@ -154,99 +155,109 @@ const AboutDirectors = (props) => {
   };
 
   return loading == false ? (
-    <div style={{ background: "#fff" }}>
-      <PageBanner
-        bgImage={"/images/about_us.jpeg"}
-        title="About Directors"
-        currentPage="About The Director"
-      />
-      <Container>
-        <Box className="content-wrapper">
-          {directors.map((director, i) => {
-            const { facebook, twitter, instagram, linkedin } = director;
+    <>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content=" luxurious real estate construction companies in Jaipur." />
+        <meta name="description" content="The main objective of Vishal Construction company is to uphold the values of ethics, social responsibility, and satisfy the need of millions of people." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
+      <div style={{ background: "#fff" }}>
+        <PageBanner
+          bgImage={"/images/about_us.jpeg"}
+          title="About Directors"
+          currentPage="About The Director"
+        />
+        <Container>
+          <Box className="content-wrapper">
+            {directors.map((director, i) => {
+              const { facebook, twitter, instagram, linkedin } = director;
 
-            const profileImg = director?.image[0]?.path
-              ? ApiClient.SERVER_ADDRESS + "/" + director?.image[0]?.path
-              : "no-image-available-icon-6.png";
+              const profileImg = director?.image[0]?.path
+                ? ApiClient.SERVER_ADDRESS + "/" + director?.image[0]?.path
+                : "no-image-available-icon-6.png";
 
-            return i % 2 == 0 ? (
-              <Box className="about-block-item">
-                <Grid container alignItems="center">
-                  <Grid className="about-block-images" item xs={12} md={6}>
-                    <Box className="about-block-image">
-                      <Image
-                        src={profileImg}
-                        alt={""}
-                        // width={100}
-                        // height={100}
-                        // style={props.style}
-                        // style={{ cursor: "pointer" }}
-                        // className="img"
-                        layout="fill"
-                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                      />
-                      {/* <img src={profileImg} alt="" /> */}
-                    </Box>
+              return i % 2 == 0 ? (
+                <Box className="about-block-item">
+                  <Grid container alignItems="center">
+                    <Grid className="about-block-images" item xs={12} md={6}>
+                      <Box className="about-block-image">
+                        <Image
+                          src={profileImg}
+                          alt={""}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          layout="fill"
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                        />
+                        {/* <img src={profileImg} alt="" /> */}
+                      </Box>
+                    </Grid>
+                    <Grid className="about-block-summery" item xs={12} md={6}>
+                      <Box className="about-block-content">
+                        <Typography variant="h3">{director.name}</Typography>
+                        <Typography variant="h6">
+                          {director.designation}
+                        </Typography>
+                        <Typography>
+                          {ReactHtmlParser(director.shortDescription)}
+                        </Typography>
+                        <Typography>
+                          {ReactHtmlParser(director.description)}
+                        </Typography>
+                        <SocialIcons socialLinks={{ ...director }} />
+                      </Box>
+                    </Grid>
                   </Grid>
-                  <Grid className="about-block-summery" item xs={12} md={6}>
-                    <Box className="about-block-content">
-                      <Typography variant="h3">{director.name}</Typography>
-                      <Typography variant="h6">
-                        {director.designation}
-                      </Typography>
-                      <Typography>
-                        {ReactHtmlParser(director.shortDescription)}
-                      </Typography>
-                      <Typography>
-                        {ReactHtmlParser(director.description)}
-                      </Typography>
-                      <SocialIcons socialLinks={{ ...director }} />
-                    </Box>
+                </Box>
+              ) : (
+                <Box className="about-block-item about-block-left-content">
+                  <Grid container alignItems="center">
+                    <Grid className="about-block-summery" item xs={12} md={6}>
+                      <Box className="about-block-content">
+                        <Typography variant="h3">{director.name}</Typography>
+                        <Typography variant="h6">
+                          {director.designation}
+                        </Typography>
+                        <Typography>
+                          {ReactHtmlParser(director.shortDescription)}
+                        </Typography>
+                        <Typography>
+                          {ReactHtmlParser(director.description)}
+                        </Typography>
+                        <SocialIcons socialLinks={{ ...director }} />
+                      </Box>
+                    </Grid>
+                    <Grid className="about-block-images" item xs={12} md={6}>
+                      <Box className="about-block-image">
+                        <Image
+                          src={profileImg}
+                          alt={""}
+                          // width={100}
+                          // height={100}
+                          // style={props.style}
+                          // style={{ cursor: "pointer" }}
+                          // className="img"
+                          layout="fill"
+                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                        />
+                        {/* <img src={profileImg} alt="" /> */}
+                      </Box>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Box>
-            ) : (
-              <Box className="about-block-item about-block-left-content">
-                <Grid container alignItems="center">
-                  <Grid className="about-block-summery" item xs={12} md={6}>
-                    <Box className="about-block-content">
-                      <Typography variant="h3">{director.name}</Typography>
-                      <Typography variant="h6">
-                        {director.designation}
-                      </Typography>
-                      <Typography>
-                        {ReactHtmlParser(director.shortDescription)}
-                      </Typography>
-                      <Typography>
-                        {ReactHtmlParser(director.description)}
-                      </Typography>
-                      <SocialIcons socialLinks={{ ...director }} />
-                    </Box>
-                  </Grid>
-                  <Grid className="about-block-images" item xs={12} md={6}>
-                    <Box className="about-block-image">
-                      <Image
-                        src={profileImg}
-                        alt={""}
-                        // width={100}
-                        // height={100}
-                        // style={props.style}
-                        // style={{ cursor: "pointer" }}
-                        // className="img"
-                        layout="fill"
-                        onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                      />
-                      {/* <img src={profileImg} alt="" /> */}
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Box>
-            );
-          })}
-        </Box>
-      </Container>
-      )
-    </div>
+                </Box>
+              );
+            })}
+          </Box>
+        </Container>
+        )
+      </div>
+    </>
   ) : (
     <div style={{ textAlign: "center" }}>loading...</div>
   );

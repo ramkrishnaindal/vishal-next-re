@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Grid,
@@ -24,6 +24,7 @@ import EnquryFormService from "../../components/enquryFormService/enquryForm";
 
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { useSelector } from "react-redux";
+import Head from 'next/head'
 const useStyles = makeStyles((theme) => ({
   text1: {
     fontFamily: '"Open Sans",sans-serif',
@@ -125,6 +126,8 @@ const ServiceDetailPage = (props) => {
   const dispatch = useDispatch();
   // let query = useQuery();
   const [viewDetails, setViewDetails] = React.useState(true);
+  // const [headTitle, setHeadTitle] = useState('')
+  // const [headDescription, setHeadDescription] = useState('')
   const [serviceDetail, setServiceDetail] = React.useState(props.data || {});
 
   // let token = router.query.token;
@@ -148,6 +151,8 @@ const ServiceDetailPage = (props) => {
 
     // };
     // const serviceId = router?.query;
+    // const { service } = router.query;
+
     fetchServiceDetails(stateRoute.id);
   }, [stateRoute.id]);
 
@@ -192,66 +197,75 @@ const ServiceDetailPage = (props) => {
   }
 
   return (
-    <div style={{ background: "#F7F7F7" }}>
-      <PageBanner
-        bgImage={banner}
-        title="Service details"
-        currentPage="SERVICE DETAILS"
-      />
-      {/* <Gallery /> */}
-      {viewDetails ? (
-        <Box className="CareerPageText">
-          <Container>
-            <div className={`${classes.root} headingtext`} >
-              <Grid container>
-                <Grid item md={6}>
-                  <Box className="middel-content">
-                    <h2>
-                      {" "}
-                      <span style={{ color: "#00afb8" }}>
-                        {ReactHtmlParser(serviceDetail?.title)}
-                      </span>
-                    </h2>
-                    <p>{ReactHtmlParser(serviceDetail?.description)}</p>
-                  </Box>
+    <>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content={props.headTitle} />
+        <meta name="description" content={props.headDescription} />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
+      <div style={{ background: "#F7F7F7" }}>
+        <PageBanner
+          bgImage={banner}
+          title="Service details"
+          currentPage="SERVICE DETAILS"
+        />
+        {/* <Gallery /> */}
+        {viewDetails ? (
+          <Box className="CareerPageText">
+            <Container>
+              <div className={`${classes.root} headingtext`} >
+                <Grid container>
+                  <Grid item md={6}>
+                    <Box className="middel-content">
+                      <h2>
+                        {" "}
+                        <span style={{ color: "#00afb8" }}>
+                          {ReactHtmlParser(serviceDetail?.title)}
+                        </span>
+                      </h2>
+                      <p>{ReactHtmlParser(serviceDetail?.description)}</p>
+                    </Box>
+                  </Grid>
+                  <Grid item md={6}>
+                    <Box className="middel-content">
+                      <EnquryFormService />
+                    </Box>
+                  </Grid>
                 </Grid>
-                <Grid item md={6}>
-                  <Box className="middel-content">
-                    <EnquryFormService />
-                  </Box>
-                </Grid>
-              </Grid>
-              <Box className="work-space">
-                <h2 style={{ textAlign: "left" }}>
-                  <span style={{ color: "#00afb8" }}>COMPLETED PROJECTS</span>
-                </h2>
-                <Grid container spacing={3}>
-                  <Gallery>
-                    {(images || []).map((img) => {
-                      return (
-                        <Grid item xs={4} className="workSpaceImgaes">
-                          <Item
-                            original={img}
-                            thumbnail={img}
-                            width="1024"
-                            height="768"
-                          >
-                            {({ ref, open }) => (
-                              <img ref={ref} onClick={open} src={img} />
-                            )}
-                          </Item>
-                        </Grid>
-                      );
-                    })}
-                  </Gallery>
-                </Grid>
-              </Box>
-            </div>
-          </Container>
-        </Box>
-      ) : null}
-      {/* // <Container> */}
-      {/* <Paper elevation={0} style={{padding: 20, marginTop: 20}}>
+                <Box className="work-space">
+                  <h2 style={{ textAlign: "left" }}>
+                    <span style={{ color: "#00afb8" }}>COMPLETED PROJECTS</span>
+                  </h2>
+                  <Grid container spacing={3}>
+                    <Gallery>
+                      {(images || []).map((img) => {
+                        return (
+                          <Grid item xs={4} className="workSpaceImgaes">
+                            <Item
+                              original={img}
+                              thumbnail={img}
+                              width="1024"
+                              height="768"
+                            >
+                              {({ ref, open }) => (
+                                <img ref={ref} onClick={open} src={img} />
+                              )}
+                            </Item>
+                          </Grid>
+                        );
+                      })}
+                    </Gallery>
+                  </Grid>
+                </Box>
+              </div>
+            </Container>
+          </Box>
+        ) : null}
+        {/* // <Container> */}
+        {/* <Paper elevation={0} style={{padding: 20, marginTop: 20}}>
 
             <Grid container>
               <Grid item xs={12} md={6} className={classes.style2} >
@@ -265,8 +279,8 @@ const ServiceDetailPage = (props) => {
               </Grid>
             </Grid>
           </Paper> */}
-      ;
-      {/* <Paper elevation={0} style={{padding: 20, marginTop: 20, marginBottom: 20}}>
+        ;
+        {/* <Paper elevation={0} style={{padding: 20, marginTop: 20, marginBottom: 20}}>
 
             <Grid container style={{marginBottom: 20}}>
               <Grid item xs={12} md={6} style={{padding: 20, marginTop: 20}}>
@@ -283,8 +297,9 @@ const ServiceDetailPage = (props) => {
 
             </Grid>
           </Paper> */}
-      {/* // </Container> */}
-    </div>
+        {/* // </Container> */}
+      </div>
+    </>
   );
 };
 export async function getStaticPaths() {
@@ -315,8 +330,34 @@ export async function getStaticPaths() {
 }
 export const getStaticProps = wrapper.getStaticProps(
   (store) => async (props) => {
+    let headTitle = '';
+    let headDesc = ""
     try {
-      console.log("store", store);
+      console.log("props", props)
+      const { service } = props.params
+
+
+      switch (service.toLowerCase()) {
+        case "sell":
+          headTitle = "we care for flexibility, innovation, quality, and value for money."
+          headDesc = "We have a team of experts that provide interior design and remodeling services for 1, 2, and 3 BHK flats, and businesses for sale and rent in Jaipur."
+          break;
+        case "construction":
+          headTitle = "flats, and shops that are safe, profitable, and techno-savvy."
+          headDesc = "Vishal Construction knows the difference between bandaging an issue and providing long-term amazing services for both residential and business clients."
+          break;
+        case "interior":
+          headTitle = "highly customized and reliable flats, and workspaces in Jaipur"
+          headDesc = "Our efficient, custom-made home and office interiors design incorporates your desires and ensures the fulfillment of needs and desires."
+          break;
+        case "rent":
+          headTitle = "fully furnished, semi-furnished, and unfurnished properties for rent"
+          headDesc = "We have plenty of alternatives if you're seeking optimum comfort. In our portfolio, we have a big number of empty home properties available for rent."
+          break;
+      }
+      console.log("headTitle", headTitle)
+      console.log("headDesc", headDesc)
+      // console.log("store", store);
       const response = await ApiClient.call(
         ApiClient.REQUEST_METHOD.POST,
         "/home/getServiceDetails",
@@ -329,13 +370,24 @@ export const getStaticProps = wrapper.getStaticProps(
 
       return {
         props: {
-          data: response.data
+          data: response.data,
+          headTitle,
+          headDescription: headDesc
           // bgImage:
           //   API_ENDPOINTS.BASE_URL + response.data?.image[0]?.image[0]?.path,
         }, // will be passed to the page component as props
       };
     } catch (err) {
-      console.log(err);
+      console.log("err", err);
+      return {
+        props: {
+          // data: response.data,
+          headTitle,
+          headDescription: headDesc
+          // bgImage:
+          //   API_ENDPOINTS.BASE_URL + response.data?.image[0]?.image[0]?.path,
+        }, // will be passed to the page component as props
+      };
     }
   }
 );

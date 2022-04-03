@@ -14,7 +14,7 @@ import * as Snackbar from "../../redux/actions/SnackbarActions";
 
 import "photoswipe/dist/photoswipe.css";
 import "photoswipe/dist/default-skin/default-skin.css";
-
+import Head from 'next/head'
 // import { Gallery, Item } from "react-photoswipe-gallery";
 
 const useStyles = makeStyles((theme) => ({
@@ -152,6 +152,14 @@ export default function Carrier(props) {
 
   return (
     <>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content="an aspiring, dedicated, and dynamic team of real estate properties." />
+        <meta name="description" content="At Vishal Construction Company, we always think ahead but our focus remains unerringly on fulfilling the dreams of our customers and stakeholders." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
       <PageBanner
         bgImage="/images/clientbg.jpeg"
         title="Career"

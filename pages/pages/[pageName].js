@@ -51,6 +51,7 @@ const CmsPageDetails = (props) => {
           false
         );
         setData(response.data || null);
+        console.log('cms-data', response.data)
         if (
           response.data?.image &&
           response.data?.image.length > 0 &&
@@ -291,7 +292,7 @@ export const getStaticProps = wrapper.getStaticProps(
         true,
         true
       );
-
+      console.log("cms-data", response.data)
       return {
         props: {
           data: response.data,

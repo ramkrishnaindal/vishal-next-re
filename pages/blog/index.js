@@ -14,6 +14,7 @@ import PageBanner from "../../components/page-banner";
 // import BlogImage from "/public/images/blogImage.jpg";
 import { Box, Container } from "@material-ui/core";
 import ApiClient from "../../api-client";
+import Head from 'next/head'
 // import { Link as RouterLink } from "react-router-dom";
 // import Link from "next/link";
 
@@ -56,6 +57,14 @@ export default function Blog(props) {
   // const img = blogImage && blogImage[0]?.path ? ApiClient.SERVER_ADDRESS + "/" + blogImage[0]?.path : 'no-image-available-icon-6.png';
   return (
     <Box className="BlogPage">
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content="daily updates and news regarding the real estate properties " />
+        <meta name="description" content="For most of us, purchasing a house is a very emotional experience. so, people plan, save, and put in long hours of searching before buying the same." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
       <PageBanner
         bgImage="/images/clientbg.jpeg"
         title="Latest News"

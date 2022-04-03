@@ -12,6 +12,7 @@ import PageBanner from "../../components/page-banner";
 import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
 import Image from "next/image";
+import Head from 'next/head'
 const useStyles = makeStyles((theme) => ({}));
 
 const Finance = (props) => {
@@ -68,6 +69,14 @@ const Finance = (props) => {
   };
   return (
     <div>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content="affordable properties for sale and rent since we value money." />
+        <meta name="description" content="We are the top real estate company in Jaipur, and we have always been at the forefront of forming client partnerships by using a variety of adaptive means." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
       <PageBanner
         bgImage={"/images/about_us.jpeg"}
         title="Finance"

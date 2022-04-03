@@ -441,8 +441,8 @@ export default function OnlineBooking(props) {
 
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
+                  // className=""
                   noValidate
                   autoComplete="off"
                 >
@@ -468,8 +468,8 @@ export default function OnlineBooking(props) {
               </Grid>
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
+                  // className="OutForm"
                   noValidate
                   autoComplete="off"
                 >
@@ -496,8 +496,8 @@ export default function OnlineBooking(props) {
               </Grid>
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
+                  // className="OutForm"
                   noValidate
                   autoComplete="off"
                 >
@@ -524,8 +524,8 @@ export default function OnlineBooking(props) {
               </Grid>
               <Grid item xs={3} className="TextfildGrid">
                 <form
-                  className={classes.root}
-                  className="OutForm"
+                  className={`${classes.root} OutForm`}
+                  // className="OutForm"
                   noValidate
                   autoComplete="off"
                 >
@@ -574,7 +574,7 @@ export default function OnlineBooking(props) {
                         state.country.length > 0 &&
                         state.propertyId.length > 0 && (
                           <Button
-                            style={{ width: "20%" }}
+                            // style={{ }}
                             onClick={otpHandler}
                             variant="contained"
                             style={{
@@ -583,6 +583,7 @@ export default function OnlineBooking(props) {
                               top: " 10px",
                               left: "5px",
                               color: "#fff",
+                              width: "20%"
                             }}
                           >
                             Verify
@@ -637,7 +638,7 @@ export default function OnlineBooking(props) {
                       />
                       {!isOtpVerified && (
                         <Button
-                          style={{ width: "23%" }}
+                          // style={{  }}
                           onClick={otpHandler}
                           variant="contained"
                           style={{
@@ -646,6 +647,7 @@ export default function OnlineBooking(props) {
                             top: " 10px",
                             left: "5px",
                             color: "#fff",
+                            width: "23%"
                           }}
                         >
                           Resend OTP

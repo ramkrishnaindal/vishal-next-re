@@ -10,6 +10,7 @@ import {
   Button,
 } from "@material-ui/core";
 // import "./contact-us.css";
+import Head from 'next/head'
 import PageBanner from "../../components/page-banner";
 // import bannerImage from "/public/images/contact-us.jpeg";
 // import { withRouter } from "react-router-dom";
@@ -221,6 +222,14 @@ const ContactUsPage = (props) => {
 
   return (
     <div style={{ background: "#F7F7F7" }}>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content="For best-desired services, get in touch with us immediately." />
+        <meta name="description" content="Vishal Construction has a pool of experts providing 24/7 customer help services. One can immediately get in contact with us using our contact gateways." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
       <PageBanner
         bgImage="/images/contact-us.jpeg"
         title="Contact Us"

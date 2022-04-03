@@ -1372,10 +1372,7 @@ a {
   color: #333333;
 }
 
-.property-button {
-  /* flex-wrap: nowrap; */
-  /* display: flex; */
-}
+
 
 .property-button .btn {
   position: relative;
@@ -5358,9 +5355,7 @@ hr {
     color: #fff;
   }
 
-  .bannerContainer .bannerh2 {
-    /* color: #00afb8 !important; */
-  }
+
 }
 
 .signin .EmiInputs input {

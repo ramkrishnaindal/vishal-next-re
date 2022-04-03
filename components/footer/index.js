@@ -444,7 +444,7 @@ const Footer = (props) => {
                   //   }}
                   //   key={index + 5000}
                   // >
-                  <Typography
+                  <Typography key={index}
                     onClick={() => {
                       dispatch(SetRoute({ id: lp._id }));
                       router.push({
@@ -589,7 +589,7 @@ const Footer = (props) => {
         spacing={2}
       >
         {bottomPages &&
-          bottomPages.map((bp) => (
+          bottomPages.map((bp, index) => (
             // <Link
             //   href={{
             //     pathname: "/cms-page-details",
@@ -601,7 +601,7 @@ const Footer = (props) => {
               xs={12}
               md={2}
               mb={2}
-
+              key={index}
             // // onClick={onBottomPageHandler.bind(this, bp._id)}
             >
               {/* <NextLink

@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 // import './supplier-form.css';
 import PageBanner from "../../components/page-banner";
+import Head from 'next/head'
 // import { useDispatch } from "react-redux";
 // import { useLocation } from "react-router-dom";
 // import ApiClient from '../../api-client';
@@ -169,6 +170,14 @@ const SupplierFormPage = (props) => {
 
   return (
     <div style={{ background: "#F7F7F7" }}>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content=" gain seamless data from the suppliers of Vishal Construction" />
+        <meta name="description" content="our Forms on Projects and Contracts allow you to collect essential information about your business relationships in a simple and efficient manner." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
       <PageBanner
         bgImage={banner}
         title="Supplier Form"

@@ -43,6 +43,7 @@ import HtmlParser from "react-html-parser";
 import Moment from "react-moment";
 import { wrapper } from "./../../redux/index";
 import Image from "next/image";
+import Head from 'next/head'
 import API_ENDPOINTS from "./../../constants/api-endpoints";
 // import OwlCarousel from "react-owl-carousel";
 // import dynamic from "next/dynamic";
@@ -589,319 +590,328 @@ const HouseDetailPage = (props) => {
   };
   console.log("property details *** ", PropertyDetail);
   return (
-    <div style={{ background: "#F7F7F7" }}>
-      <PageBanner
-        bgImage="/images/property_header_2.jpeg"
-        title="Property"
-        currentPage="PROPERTY DETAIL"
-      />
-      {/* <Gallery /> */}
-      {viewDetails ? (
-        <Container>
-          <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
-            <Grid container>
-              <Grid item xs={12} md={8} className={classes.style2}>
-                <Typography className={classes.text7}>
-                  {PropertyDetail?.nameOfProject}
-                </Typography>
-                <Typography
-                  style={{
-                    textTransform: "capitalize",
-                    backgroundColor: "#00afb8",
-                    padding: "3px 7px",
-                    borderRadius: 5,
-                    fontSize: 10,
-                    color: "#fff",
-                  }}
+    <>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content="we care for flexibility, innovation, quality, and value for money." />
+        <meta name="description" content="We have a team of experts that provide interior design and remodeling services for 1, 2, and 3 BHK flats, and businesses for sale and rent in Jaipur." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
+      <div style={{ background: "#F7F7F7" }}>
+        <PageBanner
+          bgImage="/images/property_header_2.jpeg"
+          title="Property"
+          currentPage="PROPERTY DETAIL"
+        />
+        {/* <Gallery /> */}
+        {viewDetails ? (
+          <Container>
+            <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
+              <Grid container>
+                <Grid item xs={12} md={8} className={classes.style2}>
+                  <Typography className={classes.text7}>
+                    {PropertyDetail?.nameOfProject}
+                  </Typography>
+                  <Typography
+                    style={{
+                      textTransform: "capitalize",
+                      backgroundColor: "#00afb8",
+                      padding: "3px 7px",
+                      borderRadius: 5,
+                      fontSize: 10,
+                      color: "#fff",
+                    }}
+                  >
+                    FOR {PropertyDetail?.for}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={4} className={classes.style3}>
+                  <Typography className={classes.text3}>Starts From</Typography>
+                  <Box className={classes.box1}>/</Box>
+                  <Typography className={classes.text5}>
+                    {PropertyDetail?.price?.expectedPrice}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid container style={{ marginTop: 10 }}>
+                <Grid item xs={12} md={8} className={classes.style2}>
+                  <LocationOnIcon
+                    style={{
+                      color: "#FF7601",
+                      fontSize: 20,
+                      padding: 0,
+                      marginRight: 8,
+                    }}
+                  />
+                  <Typography className={classes.text3}>
+                    {PropertyDetail?.address?.latitude}{" "}
+                    {PropertyDetail?.address?.longitude}{" "}
+                    {PropertyDetail?.address?.address}{" "}
+                    {PropertyDetail?.address?.city}{" "}
+                    {PropertyDetail?.address?.State}{" "}
+                    {PropertyDetail?.address?.pinCode}
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  md={4}
+                  className={classes.style3}
+                  style={{ flexDirection: "column", alignItems: "flex-end" }}
                 >
-                  FOR {PropertyDetail?.for}
-                </Typography>
+                  <div
+                    className="fs-2 mb-3"
+                    onClick={(e) =>
+                      handleFavourite(
+                        PropertyDetail?._id,
+                        PropertyDetail?.isFavorite,
+                        e
+                      )
+                    }
+                  >
+                    {!PropertyDetail?.isFavorite && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="44"
+                        height="44"
+                        fill="red"
+                        className="bi bi-heart"
+                        style={{
+                          position: "relative",
+                          right: "5",
+                          top: "5",
+                          cursor: "pointer",
+                        }}
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                      </svg>
+                    )}
+                    {PropertyDetail?.isFavorite && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="44"
+                        height="44"
+                        fill="red"
+                        className="bi bi-heart-fill"
+                        viewBox="0 0 16 16"
+                        style={{
+                          position: "relative",
+                          right: "5",
+                          top: "5",
+                          cursor: "pointer",
+                        }}
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                        ></path>
+                      </svg>
+                    )}
+                  </div>
+                  <br />
+                  <Rating
+                    name="half-rating-read"
+                    defaultValue={PropertyDetail?.rating}
+                    precision={0.5}
+                    value={propertyDetail?.rating}
+                    readOnly
+                  />
+                </Grid>
+                <Grid item xs={12} md={12} style={{ marginTop: 20 }}>
+                  <Button
+                    variant="contained"
+                    className={`${classes.btn2} btn-book-online`}
+                    onClick={() => {
+                      if (!localStorage.getItem("user")) {
+                        localStorage.setItem("bookNow", true);
+                        localStorage.setItem("pid", router?.query?.pid);
+                        return router.push("/signin");
+                      }
+                      setBookNow(true);
+                      console.log("book now clicked");
+                    }}
+                  >
+                    {APP_CONSTANTS.btnBookNowText}
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={4} className={classes.style3}>
-                <Typography className={classes.text3}>Starts From</Typography>
-                <Box className={classes.box1}>/</Box>
-                <Typography className={classes.text5}>
-                  {PropertyDetail?.price?.expectedPrice}
-                </Typography>
+            </Paper>
+            <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={8} className={classes.style4}>
+                  <CarouselSlider images={imagesData} />
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Typography className={classes.text7}>
+                    {" "}
+                    Property Brief
+                  </Typography>
+                  <Typography
+                    className={classes.text3}
+                    style={{ lineHeight: "2.3em" }}
+                  >
+                    {/* Vishal Construction Company is a Jaipur based construction company which today is a renowned name in providing best in class real estate services to its clients located all over India. Vishal Construction Company specializes in its area of work wherein they are expert in the real estate services, construction process of housing, commercial and other types of properties. They majorly serve clientele of Rajasthan, Hyderabad, Kolkata and other metro cities of India. Vishal Construction Company has a long-standing reputation wherein they deliver excellence catering to services and workmanship. They believe in providing quality projects with timely delivery. */}
+                    {HtmlParser(handleNull(PropertyDetail?.projectDescription))}
+                  </Typography>
+                </Grid>
               </Grid>
-            </Grid>
-            <Grid container style={{ marginTop: 10 }}>
-              <Grid item xs={12} md={8} className={classes.style2}>
-                <LocationOnIcon
-                  style={{
-                    color: "#FF7601",
-                    fontSize: 20,
-                    padding: 0,
-                    marginRight: 8,
-                  }}
-                />
-                <Typography className={classes.text3}>
-                  {PropertyDetail?.address?.latitude}{" "}
-                  {PropertyDetail?.address?.longitude}{" "}
-                  {PropertyDetail?.address?.address}{" "}
-                  {PropertyDetail?.address?.city}{" "}
-                  {PropertyDetail?.address?.State}{" "}
-                  {PropertyDetail?.address?.pinCode}
-                </Typography>
-              </Grid>
+            </Paper>
+            <Grid container mt={2} spacing={2}>
               <Grid
                 item
                 xs={12}
-                md={4}
-                className={classes.style3}
-                style={{ flexDirection: "column", alignItems: "flex-end" }}
+                md={8}
+                style={{ display: "flex", flexDirection: "column" }}
               >
-                <div
-                  className="fs-2 mb-3"
-                  onClick={(e) =>
-                    handleFavourite(
-                      PropertyDetail?._id,
-                      PropertyDetail?.isFavorite,
-                      e
-                    )
-                  }
-                >
-                  {!PropertyDetail?.isFavorite && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="44"
-                      height="44"
-                      fill="red"
-                      className="bi bi-heart"
-                      style={{
-                        position: "relative",
-                        right: "5",
-                        top: "5",
-                        cursor: "pointer",
-                      }}
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                    </svg>
-                  )}
-                  {PropertyDetail?.isFavorite && (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="44"
-                      height="44"
-                      fill="red"
-                      className="bi bi-heart-fill"
-                      viewBox="0 0 16 16"
-                      style={{
-                        position: "relative",
-                        right: "5",
-                        top: "5",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                      ></path>
-                    </svg>
-                  )}
-                </div>
-                <br />
-                <Rating
-                  name="half-rating-read"
-                  defaultValue={PropertyDetail?.rating}
-                  precision={0.5}
-                  value={propertyDetail?.rating}
-                  readOnly
-                />
-              </Grid>
-              <Grid item xs={12} md={12} style={{ marginTop: 20 }}>
-                <Button
-                  variant="contained"
-                  className={`${classes.btn2} btn-book-online`}
-                  onClick={() => {
-                    if (!localStorage.getItem("user")) {
-                      localStorage.setItem("bookNow", true);
-                      localStorage.setItem("pid", router?.query?.pid);
-                      return router.push("/signin");
-                    }
-                    setBookNow(true);
-                    console.log("book now clicked");
-                  }}
-                >
-                  {APP_CONSTANTS.btnBookNowText}
-                </Button>
-              </Grid>
-            </Grid>
-          </Paper>
-          <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={8} className={classes.style4}>
-                <CarouselSlider images={imagesData} />
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Typography className={classes.text7}>
-                  {" "}
-                  Property Brief
-                </Typography>
-                <Typography
-                  className={classes.text3}
-                  style={{ lineHeight: "2.3em" }}
-                >
-                  {/* Vishal Construction Company is a Jaipur based construction company which today is a renowned name in providing best in class real estate services to its clients located all over India. Vishal Construction Company specializes in its area of work wherein they are expert in the real estate services, construction process of housing, commercial and other types of properties. They majorly serve clientele of Rajasthan, Hyderabad, Kolkata and other metro cities of India. Vishal Construction Company has a long-standing reputation wherein they deliver excellence catering to services and workmanship. They believe in providing quality projects with timely delivery. */}
-                  {HtmlParser(handleNull(PropertyDetail?.projectDescription))}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Paper>
-          <Grid container mt={2} spacing={2}>
-            <Grid
-              item
-              xs={12}
-              md={8}
-              style={{ display: "flex", flexDirection: "column" }}
-            >
-              <InfoCard item={{ title: "Facts and Features" }}>
-                <Grid container>
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-bed"}
-                      title="BEDROOMS"
-                      value={handleNull(PropertyDetail?.bedrooms)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-bath"}
-                      title="BATHROOMS"
-                      value={handleNull(PropertyDetail?.bathrooms)}
-                    />
-                  </Grid>
+                <InfoCard item={{ title: "Facts and Features" }}>
+                  <Grid container>
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-bed"}
+                        title="BEDROOMS"
+                        value={handleNull(PropertyDetail?.bedrooms)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-bath"}
+                        title="BATHROOMS"
+                        value={handleNull(PropertyDetail?.bathrooms)}
+                      />
+                    </Grid>
 
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-university"}
-                      title="BALCONY"
-                      value={handleNull(PropertyDetail?.balconies)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-check-circle"}
-                      title="STATUS"
-                      value={handleNull(PropertyDetail?.possessionStatus)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-gift"}
-                      title="FURNISHING"
-                      value={handleNull(PropertyDetail?.furnishedStatus)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-home"}
-                      title="PROPERTY TYPE"
-                      value={handleNull(PropertyDetail?.pType)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-calculator"}
-                      title="TRANSACTION TYPE"
-                      value={handleNull(PropertyDetail?.transactionType)}
-                    />
-                  </Grid>
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-university"}
+                        title="BALCONY"
+                        value={handleNull(PropertyDetail?.balconies)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-check-circle"}
+                        title="STATUS"
+                        value={handleNull(PropertyDetail?.possessionStatus)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-gift"}
+                        title="FURNISHING"
+                        value={handleNull(PropertyDetail?.furnishedStatus)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-home"}
+                        title="PROPERTY TYPE"
+                        value={handleNull(PropertyDetail?.pType)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-calculator"}
+                        title="TRANSACTION TYPE"
+                        value={handleNull(PropertyDetail?.transactionType)}
+                      />
+                    </Grid>
 
-                  <Grid item xs={12} md={3}>
-                    <FactAndFeature
-                      icon={"fa-bars"}
-                      title="TOTAL FLOOR"
-                      value={`${handleNull(
-                        PropertyDetail?.floorNo
-                      )}/${handleNull(PropertyDetail?.totalFloors)}`}
-                    />
+                    <Grid item xs={12} md={3}>
+                      <FactAndFeature
+                        icon={"fa-bars"}
+                        title="TOTAL FLOOR"
+                        value={`${handleNull(
+                          PropertyDetail?.floorNo
+                        )}/${handleNull(PropertyDetail?.totalFloors)}`}
+                      />
+                    </Grid>
                   </Grid>
-                </Grid>
-              </InfoCard>
-              <InfoCard item={{ title: "Property Details" }}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={12}
-                    md={4}
-                    style={{ display: "flex", flexDirection: "row" }}
-                  >
-                    <Typography className={classes.text1}>
-                      Property Code : {handleNull(PropertyDetail?.propertyCode)}
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={4}
-                    style={{ display: "flex", flexDirection: "row" }}
-                  >
-                    <Typography className={classes.text1}>
-                      Property Price :{" "}
-                      {handleNull(PropertyDetail?.price?.expectedPrice)}
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={4}
-                    style={{ display: "flex", flexDirection: "row" }}
-                  >
-                    <Typography className={classes.text1}>
-                      Guard Room:{" "}
-                      {PropertyDetail?.gaurdRoom == true ? "Yes" : "No"}
-                    </Typography>
-                    {/* <Typography className={classes.text1}>
+                </InfoCard>
+                <InfoCard item={{ title: "Property Details" }}>
+                  <Grid container>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <Typography className={classes.text1}>
+                        Property Code : {handleNull(PropertyDetail?.propertyCode)}
+                      </Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <Typography className={classes.text1}>
+                        Property Price :{" "}
+                        {handleNull(PropertyDetail?.price?.expectedPrice)}
+                      </Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <Typography className={classes.text1}>
+                        Guard Room:{" "}
+                        {PropertyDetail?.gaurdRoom == true ? "Yes" : "No"}
+                      </Typography>
+                      {/* <Typography className={classes.text1}>
                       Garages: 1
                     </Typography> */}
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <Typography className={classes.text1}>
+                        Property status : For {handleNull(PropertyDetail?.for)}
+                      </Typography>
+                    </Grid>
+                    {PropertyDetail?.propertyDetails.map((prop) => {
+                      return (
+                        <Grid
+                          key={prop.key}
+                          item
+                          xs={12}
+                          md={4}
+                          style={{ display: "flex", flexDirection: "row" }}
+                        >
+                          <Typography className={classes.text1}>
+                            {prop.key} : {prop.Value}
+                          </Typography>
+                        </Grid>
+                      );
+                    })}
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={4}
-                    style={{ display: "flex", flexDirection: "row" }}
-                  >
-                    <Typography className={classes.text1}>
-                      Property status : For {handleNull(PropertyDetail?.for)}
-                    </Typography>
-                  </Grid>
-                  {PropertyDetail?.propertyDetails.map((prop) => {
-                    return (
-                      <Grid
-                        key={prop.key}
-                        item
-                        xs={12}
-                        md={4}
-                        style={{ display: "flex", flexDirection: "row" }}
-                      >
-                        <Typography className={classes.text1}>
-                          {prop.key} : {prop.Value}
-                        </Typography>
-                      </Grid>
-                    );
-                  })}
-                </Grid>
-              </InfoCard>
+                </InfoCard>
 
-              <InfoCard item={{ title: "Amenities" }}>
-                <Grid container>
-                  {(PropertyDetail?.amenities || []).map((amenities, i) => {
-                    debugger;
-                    return (
-                      <Grid item xs={12} md={4} key={i}>
-                        <Aminities
-                          icon={""}
-                          title={
-                            amenities[0]?.toUpperCase() +
-                            (amenities[0] ? amenities.slice(1) : "")
-                          }
-                        />
-                      </Grid>
-                    );
-                  })}
-                  {/* {PropertyDetail?.amenities?.basketballcourt ? (
+                <InfoCard item={{ title: "Amenities" }}>
+                  <Grid container>
+                    {(PropertyDetail?.amenities || []).map((amenities, i) => {
+                      debugger;
+                      return (
+                        <Grid item xs={12} md={4} key={i}>
+                          <Aminities
+                            icon={""}
+                            title={
+                              amenities[0]?.toUpperCase() +
+                              (amenities[0] ? amenities.slice(1) : "")
+                            }
+                          />
+                        </Grid>
+                      );
+                    })}
+                    {/* {PropertyDetail?.amenities?.basketballcourt ? (
                     <Grid item xs={12} md={4}>
                       <Aminities icon={familyIcon} title="Basketball Court" />
                     </Grid>
@@ -949,90 +959,90 @@ const HouseDetailPage = (props) => {
                       <Aminities icon={yearIcon} title="Home Theater" />
                     </Grid>
                   ) : null} */}
-                </Grid>
-              </InfoCard>
-              <InfoCard item={{ title: "Price Details" }}>
-                <Grid container>
-                  {Object.keys(PropertyDetail?.price || []).map(
-                    (priceInfo, i) => {
-                      if (
-                        priceInfo === "_id" ||
-                        priceInfo === "propertyId" ||
-                        priceInfo === "priceIncludes" ||
-                        priceInfo === "__v" ||
-                        priceInfo === "created" ||
-                        priceInfo === "updated"
-                      ) {
-                        return null;
-                      }
+                  </Grid>
+                </InfoCard>
+                <InfoCard item={{ title: "Price Details" }}>
+                  <Grid container>
+                    {Object.keys(PropertyDetail?.price || []).map(
+                      (priceInfo, i) => {
+                        if (
+                          priceInfo === "_id" ||
+                          priceInfo === "propertyId" ||
+                          priceInfo === "priceIncludes" ||
+                          priceInfo === "__v" ||
+                          priceInfo === "created" ||
+                          priceInfo === "updated"
+                        ) {
+                          return null;
+                        }
 
-                      return (
-                        <Grid item xs={12} md={4} key={i}>
-                          <Grid
-                            container
-                            style={{ marginTop: 10, marginBottom: 10 }}
-                          >
+                        return (
+                          <Grid item xs={12} md={4} key={i}>
                             <Grid
-                              item
-                              xs={12}
-                              md={12}
-                              className={classes.style2}
+                              container
+                              style={{ marginTop: 10, marginBottom: 10 }}
                             >
-                              <Typography className={classes.text1}>
-                                {priceInfo} :{" "}
-                                {handleNull(PropertyDetail?.price[priceInfo])}
-                              </Typography>
+                              <Grid
+                                item
+                                xs={12}
+                                md={12}
+                                className={classes.style2}
+                              >
+                                <Typography className={classes.text1}>
+                                  {priceInfo} :{" "}
+                                  {handleNull(PropertyDetail?.price[priceInfo])}
+                                </Typography>
+                              </Grid>
                             </Grid>
                           </Grid>
-                        </Grid>
-                      );
-                    }
-                  )}
-                </Grid>
-              </InfoCard>
-              <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
-                <Grid container>
-                  <Grid item xs={12} md={12}>
-                    <Typography className={classes.text4}>
-                      Property Plan
-                    </Typography>
+                        );
+                      }
+                    )}
                   </Grid>
-                  <Grid item xs={12} md={12} className={classes.style4}>
-                    <Box className="plan-carousel-wrapper">
-                      {/* <CarouselSlider images={masterPlan} /> */}
-                      {/* {loading && ( */}
-                      <Slider {...settings1} className="plan-carousel">
-                        {(propertyPlan || []).map((plan, i) => (
-                          <div className="plan-item" key={i}>
-                            <a
-                              className="plan-download"
-                              href={plan.original}
-                              download
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              <i className="fa fa-download"></i>
-                            </a>
-                            <div
-                              data-fancybox="dialog"
-                              data-src={plan.original}
-                            >
-                              {/* <img className="img" src={plan.original} /> */}
-                              <Image
-                                src={plan.original}
-                                className="img"
-                                alt=""
-                                layout="fill"
-                                // returns:
-                                // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
-                                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                              />
+                </InfoCard>
+                <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
+                  <Grid container>
+                    <Grid item xs={12} md={12}>
+                      <Typography className={classes.text4}>
+                        Property Plan
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} md={12} className={classes.style4}>
+                      <Box className="plan-carousel-wrapper">
+                        {/* <CarouselSlider images={masterPlan} /> */}
+                        {/* {loading && ( */}
+                        <Slider {...settings1} className="plan-carousel">
+                          {(propertyPlan || []).map((plan, i) => (
+                            <div className="plan-item" key={i}>
+                              <a
+                                className="plan-download"
+                                href={plan.original}
+                                download
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <i className="fa fa-download"></i>
+                              </a>
+                              <div
+                                data-fancybox="dialog"
+                                data-src={plan.original}
+                              >
+                                {/* <img className="img" src={plan.original} /> */}
+                                <Image
+                                  src={plan.original}
+                                  className="img"
+                                  alt=""
+                                  layout="fill"
+                                  // returns:
+                                  // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+                                  onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                                />
+                              </div>
+                              <p>{plan.imageFor}</p>
                             </div>
-                            <p>{plan.imageFor}</p>
-                          </div>
-                        ))}
-                      </Slider>
-                      {/* <OwlCarousel
+                          ))}
+                        </Slider>
+                        {/* <OwlCarousel
                         className="owl-theme plan-carousel"
                         {...options}
                       >
@@ -1056,37 +1066,37 @@ const HouseDetailPage = (props) => {
                           </div>
                         ))}
                       </OwlCarousel> */}
-                      {/* )} */}
+                        {/* )} */}
+                      </Box>
+                    </Grid>
+                    <Box className="download-all">
+                      <button className="btn btn-secondary">Download all</button>
                     </Box>
                   </Grid>
-                  <Box className="download-all">
-                    <button className="btn btn-secondary">Download all</button>
-                  </Box>
-                </Grid>
-              </Paper>
-              {/* {Reviews Component} */}
-              <InfoCard
-                style={{ marginBottom: "40px" }}
-                item={{ title: "Reviews" }}
-                reviewCount={
-                  PropertyDetail?.review?.length != 0
-                    ? PropertyDetail?.review?.length
-                    : "0"
-                }
-              >
-                {(reviews || []).map((review, i) => (
-                  <Paper elevation={0} key={i} style={{ borderRadius: 20 }}>
-                    <Grid
-                      key={i}
-                      container
-                      style={{
-                        backgroundColor: "whitesmoke",
-                        padding: 20,
-                        borderRadius: 20,
-                        marginTop: 20,
-                      }}
-                    >
-                      {/* <Grid item md={2}>
+                </Paper>
+                {/* {Reviews Component} */}
+                <InfoCard
+                  style={{ marginBottom: "40px" }}
+                  item={{ title: "Reviews" }}
+                  reviewCount={
+                    PropertyDetail?.review?.length != 0
+                      ? PropertyDetail?.review?.length
+                      : "0"
+                  }
+                >
+                  {(reviews || []).map((review, i) => (
+                    <Paper elevation={0} key={i} style={{ borderRadius: 20 }}>
+                      <Grid
+                        key={i}
+                        container
+                        style={{
+                          backgroundColor: "whitesmoke",
+                          padding: 20,
+                          borderRadius: 20,
+                          marginTop: 20,
+                        }}
+                      >
+                        {/* <Grid item md={2}>
                       <Box style={{ textOverflow: 'ellipsis', overflow: 'hidden', fontSize: 10, justifyContent: 'center' }} >
                         <Box style={{ display: "flex", justifyContent: 'center' }}> <img className={classes.teamimage} src={'no-image-available-icon-6.png'} className={classes.avatar} alt='' />
                         </Box>
@@ -1095,225 +1105,225 @@ const HouseDetailPage = (props) => {
                         </Box>
                       </Box>
                     </Grid> */}
-                      {/* <Grid item md={10}> */}
-                      <Grid item md={12}>
-                        <h3>{review.name}</h3>
-                        {/* <div>{review.email}</div> */}
-                        <p>
-                          <h6>
-                            <Moment format="MMM DD, YYYY">
-                              {review.created}
-                            </Moment>
-                          </h6>
-                        </p>
-                        <Rating
-                          name="half-rating-read"
-                          style={{ marginBottom: 15, marginTop: 10 }}
-                          defaultValue={0}
-                          precision={0.5}
-                          value={review.rating || 0}
-                        />
-                        <Box mt={1} style={{ fontSize: 14 }}>
-                          {review.comment}
-                        </Box>
+                        {/* <Grid item md={10}> */}
+                        <Grid item md={12}>
+                          <h3>{review.name}</h3>
+                          {/* <div>{review.email}</div> */}
+                          <p>
+                            <h6>
+                              <Moment format="MMM DD, YYYY">
+                                {review.created}
+                              </Moment>
+                            </h6>
+                          </p>
+                          <Rating
+                            name="half-rating-read"
+                            style={{ marginBottom: 15, marginTop: 10 }}
+                            defaultValue={0}
+                            precision={0.5}
+                            value={review.rating || 0}
+                          />
+                          <Box mt={1} style={{ fontSize: 14 }}>
+                            {review.comment}
+                          </Box>
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </Paper>
-                ))}
-              </InfoCard>
-              {/* {Reviews Form} */}
-              <Grid
-                item
-                xs={12}
-                md={12}
-                style={{ marginTop: 20, marginBottom: 20 }}
-              >
-                <Paper style={{ padding: 20 }}>
-                  <Grid container>
-                    <Grid item xs={12} md={12} className={classes.style1}>
-                      <Typography className={classes.text4}>
-                        Rate us and Write a Review
-                      </Typography>
-                      <Typography className={classes.text1}>
-                        Your rating for this listing:
-                      </Typography>
-                      <form
-                        onSubmit={(e) => onReviewSubmit(e)}
-                        style={{ width: "100%" }}
-                      >
-                        <Rating
-                          name="review-rating"
-                          onChange={(event, newValue) => setRating(newValue)}
-                          style={{ marginBottom: 15 }}
-                          precision={0.5}
-                          value={rating}
-                        />
-                        <Container style={{ display: "flex", padding: 0 }}>
-                          <Grid md={6}>
-                            <TextField
-                              label="Your Name *"
-                              fullWidth
-                              variant="outlined"
-                              value={name}
-                              onChange={(e) => setName(e.target.value)}
-                              style={{ marginBottom: 15 }}
-                            ></TextField>
-                          </Grid>
-                          <Grid md={6}>
-                            <TextField
-                              label="Email *"
-                              value={email}
-                              onChange={(e) => setEmail(e.target.value)}
-                              fullWidth
-                              variant="outlined"
-                              style={{ marginBottom: 15 }}
-                            ></TextField>
-                          </Grid>
-                        </Container>
-                        <TextField
-                          id="filled-multiline-static"
-                          label="Comment *"
-                          value={comment}
-                          onChange={(e) => setComment(e.target.value)}
-                          multiline
-                          rows={2}
-                          fullWidth
-                          defaultValue=""
-                          variant="outlined"
-                          style={{ marginBottom: 15 }}
-                        />
-
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          className={classes.btn1}
-                        >
-                          Submit
-                        </Button>
-                      </form>
-                    </Grid>
-                  </Grid>
-                </Paper>
-              </Grid>
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-              <Grid container>
-                <Grid item xs={12} md={12} style={{ marginTop: 20 }}>
+                    </Paper>
+                  ))}
+                </InfoCard>
+                {/* {Reviews Form} */}
+                <Grid
+                  item
+                  xs={12}
+                  md={12}
+                  style={{ marginTop: 20, marginBottom: 20 }}
+                >
                   <Paper style={{ padding: 20 }}>
                     <Grid container>
                       <Grid item xs={12} md={12} className={classes.style1}>
-                        <Box
-                          item
-                          xs={12}
-                          md={12}
-                          className={classes.box1}
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            width: "100%",
-                          }}
+                        <Typography className={classes.text4}>
+                          Rate us and Write a Review
+                        </Typography>
+                        <Typography className={classes.text1}>
+                          Your rating for this listing:
+                        </Typography>
+                        <form
+                          onSubmit={(e) => onReviewSubmit(e)}
+                          style={{ width: "100%" }}
                         >
-                          <Typography>Location</Typography>
-                          <Typography>
-                            <Button
-                              variant="contained"
-                              className={classes.btn1}
-                            >
-                              <a
-                                target="_blank"
-                                style={{
-                                  color: "#fff",
-                                  textDecoration: "none",
-                                }}
-                                href={`https://www.google.com/maps/search/?api=1&query=${PropertyDetail?.address?.latitude},${PropertyDetail?.address?.longitude}`}
-                                className="location-map"
-                              >
-                                View Map{" "}
-                                <i className="far fa-map-marker-alt"></i>
-                              </a>
-                            </Button>
-                          </Typography>
-                        </Box>
-                        <Box
-                          item
-                          className={classes.box1}
-                          style={{ display: "flex", width: "100%" }}
-                        >
-                          <Typography
-                            xs={6}
-                            md={6}
-                            style={{ flexBasis: "20%" }}
-                            className={classes.text1}
+                          <Rating
+                            name="review-rating"
+                            onChange={(event, newValue) => setRating(newValue)}
+                            style={{ marginBottom: 15 }}
+                            precision={0.5}
+                            value={rating}
+                          />
+                          <Container style={{ display: "flex", padding: 0 }}>
+                            <Grid md={6}>
+                              <TextField
+                                label="Your Name *"
+                                fullWidth
+                                variant="outlined"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                style={{ marginBottom: 15 }}
+                              ></TextField>
+                            </Grid>
+                            <Grid md={6}>
+                              <TextField
+                                label="Email *"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                fullWidth
+                                variant="outlined"
+                                style={{ marginBottom: 15 }}
+                              ></TextField>
+                            </Grid>
+                          </Container>
+                          <TextField
+                            id="filled-multiline-static"
+                            label="Comment *"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                            multiline
+                            rows={2}
+                            fullWidth
+                            defaultValue=""
+                            variant="outlined"
+                            style={{ marginBottom: 15 }}
+                          />
+
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            className={classes.btn1}
                           >
-                            Address :
-                          </Typography>
-                          <Typography xs={6} md={6} className={classes.text1}>
-                            {handleNull(PropertyDetail?.address?.address)}
-                          </Typography>
-                        </Box>
-                        <Box
-                          item
-                          className={classes.box1}
-                          style={{ display: "flex", width: "100%" }}
-                        >
-                          <Typography
-                            style={{ flexBasis: "25%" }}
-                            xs={6}
-                            md={6}
-                            className={classes.text1}
-                          >
-                            State/county :
-                          </Typography>
-                          <Typography xs={6} md={6} className={classes.text1}>
-                            {handleNull(PropertyDetail?.address?.State)}
-                          </Typography>
-                        </Box>
-                        {/* <Typography className={classes.text1}>
-                          Neighborhood
-                        </Typography> */}
-                        <Box
-                          item
-                          className={classes.box1}
-                          style={{ display: "flex", width: "100%" }}
-                        >
-                          <Typography
-                            style={{ flexBasis: "32%" }}
-                            xs={6}
-                            md={6}
-                            className={classes.text1}
-                          >
-                            Zip/Postal Code :
-                          </Typography>
-                          <Typography xs={6} md={6} className={classes.text1}>
-                            {handleNull(PropertyDetail?.address?.pinCode)}
-                          </Typography>
-                        </Box>
-                        {/* <Typography className={classes.text1}>
-                          Country
-                        </Typography> */}
-                        <Box
-                          item
-                          className={classes.box1}
-                          style={{ display: "flex", width: "100%" }}
-                        >
-                          <Typography
-                            style={{ flexBasis: "10%" }}
-                            xs={6}
-                            md={6}
-                            className={classes.text1}
-                          >
-                            City :
-                          </Typography>
-                          <Typography xs={6} md={6} className={classes.text1}>
-                            {handleNull(PropertyDetail?.address?.city)}
-                          </Typography>
-                        </Box>
+                            Submit
+                          </Button>
+                        </form>
                       </Grid>
                     </Grid>
                   </Paper>
                 </Grid>
-                {/* <Grid item item xs={12} md={12} style={{marginTop: 20}}>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <Grid container>
+                  <Grid item xs={12} md={12} style={{ marginTop: 20 }}>
+                    <Paper style={{ padding: 20 }}>
+                      <Grid container>
+                        <Grid item xs={12} md={12} className={classes.style1}>
+                          <Box
+                            item
+                            xs={12}
+                            md={12}
+                            className={classes.box1}
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                              width: "100%",
+                            }}
+                          >
+                            <Typography>Location</Typography>
+                            <Typography>
+                              <Button
+                                variant="contained"
+                                className={classes.btn1}
+                              >
+                                <a
+                                  target="_blank"
+                                  style={{
+                                    color: "#fff",
+                                    textDecoration: "none",
+                                  }}
+                                  href={`https://www.google.com/maps/search/?api=1&query=${PropertyDetail?.address?.latitude},${PropertyDetail?.address?.longitude}`}
+                                  className="location-map"
+                                >
+                                  View Map{" "}
+                                  <i className="far fa-map-marker-alt"></i>
+                                </a>
+                              </Button>
+                            </Typography>
+                          </Box>
+                          <Box
+                            item
+                            className={classes.box1}
+                            style={{ display: "flex", width: "100%" }}
+                          >
+                            <Typography
+                              xs={6}
+                              md={6}
+                              style={{ flexBasis: "20%" }}
+                              className={classes.text1}
+                            >
+                              Address :
+                            </Typography>
+                            <Typography xs={6} md={6} className={classes.text1}>
+                              {handleNull(PropertyDetail?.address?.address)}
+                            </Typography>
+                          </Box>
+                          <Box
+                            item
+                            className={classes.box1}
+                            style={{ display: "flex", width: "100%" }}
+                          >
+                            <Typography
+                              style={{ flexBasis: "25%" }}
+                              xs={6}
+                              md={6}
+                              className={classes.text1}
+                            >
+                              State/county :
+                            </Typography>
+                            <Typography xs={6} md={6} className={classes.text1}>
+                              {handleNull(PropertyDetail?.address?.State)}
+                            </Typography>
+                          </Box>
+                          {/* <Typography className={classes.text1}>
+                          Neighborhood
+                        </Typography> */}
+                          <Box
+                            item
+                            className={classes.box1}
+                            style={{ display: "flex", width: "100%" }}
+                          >
+                            <Typography
+                              style={{ flexBasis: "32%" }}
+                              xs={6}
+                              md={6}
+                              className={classes.text1}
+                            >
+                              Zip/Postal Code :
+                            </Typography>
+                            <Typography xs={6} md={6} className={classes.text1}>
+                              {handleNull(PropertyDetail?.address?.pinCode)}
+                            </Typography>
+                          </Box>
+                          {/* <Typography className={classes.text1}>
+                          Country
+                        </Typography> */}
+                          <Box
+                            item
+                            className={classes.box1}
+                            style={{ display: "flex", width: "100%" }}
+                          >
+                            <Typography
+                              style={{ flexBasis: "10%" }}
+                              xs={6}
+                              md={6}
+                              className={classes.text1}
+                            >
+                              City :
+                            </Typography>
+                            <Typography xs={6} md={6} className={classes.text1}>
+                              {handleNull(PropertyDetail?.address?.city)}
+                            </Typography>
+                          </Box>
+                        </Grid>
+                      </Grid>
+                    </Paper>
+                  </Grid>
+                  {/* <Grid item item xs={12} md={12} style={{marginTop: 20}}>
                     <Paper style={{padding: 20}}>
                         <Grid container>
                             <Grid item xs={12} md={12} className={classes.style1}>
@@ -1327,149 +1337,149 @@ const HouseDetailPage = (props) => {
                         </Grid>
                     </Paper>
                 </Grid> */}
-                <Grid
-                  item
-                  xs={12}
-                  md={12}
-                  style={{ marginTop: 20, marginBottom: 20 }}
-                >
-                  <Paper style={{ padding: 20 }}>
-                    <Grid container>
-                      <Grid item xs={12} md={12} className={classes.style1}>
-                        <Typography className={classes.text4}>
-                          Request A Call Back
-                        </Typography>
-                        <TextField
-                          label="Your Name"
-                          fullWidth
-                          name="Name"
-                          value={nameFeedback}
-                          onChange={(e) => setNameFeedback(e.target.value)}
-                          variant="outlined"
-                          style={{ marginBottom: 15 }}
-                        ></TextField>
-                        <TextField
-                          label="Email"
-                          fullWidth
-                          type="email"
-                          name="Email"
-                          value={emailFeedback}
-                          onChange={(e) => {
-                            setEmailFeedback(e.target.value);
-                            setEmailValid(e.target.value.includes("@"));
-                          }}
-                          variant="outlined"
-                          style={{ marginBottom: 15 }}
-                        ></TextField>
+                  <Grid
+                    item
+                    xs={12}
+                    md={12}
+                    style={{ marginTop: 20, marginBottom: 20 }}
+                  >
+                    <Paper style={{ padding: 20 }}>
+                      <Grid container>
+                        <Grid item xs={12} md={12} className={classes.style1}>
+                          <Typography className={classes.text4}>
+                            Request A Call Back
+                          </Typography>
+                          <TextField
+                            label="Your Name"
+                            fullWidth
+                            name="Name"
+                            value={nameFeedback}
+                            onChange={(e) => setNameFeedback(e.target.value)}
+                            variant="outlined"
+                            style={{ marginBottom: 15 }}
+                          ></TextField>
+                          <TextField
+                            label="Email"
+                            fullWidth
+                            type="email"
+                            name="Email"
+                            value={emailFeedback}
+                            onChange={(e) => {
+                              setEmailFeedback(e.target.value);
+                              setEmailValid(e.target.value.includes("@"));
+                            }}
+                            variant="outlined"
+                            style={{ marginBottom: 15 }}
+                          ></TextField>
 
-                        <TextField
-                          label="Message"
-                          multiline
-                          fullWidth
-                          variant="outlined"
-                          value={message}
-                          onChange={(e) => setMessage(e.target.value)}
-                          style={{ marginBottom: 15 }}
-                        ></TextField>
-                        <Typography className={classes.text1}>
-                          Request a Site Visit
-                        </Typography>
-                        <RadioGroup
-                          aria-label="gender"
-                          name="gender1"
-                          row
-                          value={isvisit}
-                          onChange={updateSelection}
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="Yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="No"
-                          />
-                        </RadioGroup>
+                          <TextField
+                            label="Message"
+                            multiline
+                            fullWidth
+                            variant="outlined"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            style={{ marginBottom: 15 }}
+                          ></TextField>
+                          <Typography className={classes.text1}>
+                            Request a Site Visit
+                          </Typography>
+                          <RadioGroup
+                            aria-label="gender"
+                            name="gender1"
+                            row
+                            value={isvisit}
+                            onChange={updateSelection}
+                          >
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio />}
+                              label="Yes"
+                            />
+                            <FormControlLabel
+                              value="no"
+                              control={<Radio />}
+                              label="No"
+                            />
+                          </RadioGroup>
 
-                        <TextField
-                          label="Phone"
-                          fullWidth
-                          name="Phone"
-                          disabled={isOtpVerified}
-                          type="number"
-                          min="1000000"
-                          max="9999999999"
-                          value={mobile}
-                          onChange={(e) => {
-                            if (enableOtpField) {
-                              setEnableOtpField(false);
-                            }
-                            if (e.target.value.length <= 10)
-                              setMobile(e.target.value);
-                          }}
-                          variant="outlined"
-                          style={{ marginBottom: 15 }}
-                        ></TextField>
-                        {
-                          mobile.length === 10 &&
-                          nameFeedback.length > 0 &&
-                          emailValid &&
-                          !enableOtpField && (
-                            <Button
-                              onClick={otpHandler}
-                              variant="contained"
-                              style={{ width: "23%", marginBottom: 15 }}
-                            >
-                              Verify
-                            </Button>
-                          )
-                          // : (
-                          //   isOtpVerified && (
-                          //     <div onClick={reset}>
-                          //       {" "}
-                          //       <EditIcon />{" "}
-                          //     </div>
-                          //   )
-                          // )
-                        }
-                        {enableOtpField &&
-                          nameFeedback.length > 0 &&
-                          emailValid && (
-                            <>
-                              <TextField
-                                className="EmiInputs"
-                                placeholder="Otp"
-                                fullWidth
-                                style={{ marginBottom: 15 }}
-                                value={otp}
-                                disabled={isOtpVerified}
-                                onChange={inputChange}
-                                name="otp"
-                                type="number"
-                                variant="outlined"
-                              // InputProps={{
-                              //   classes: {
-                              //     notchedOutline: classes.notchedOutline,
-                              //   },
-                              // }}
-                              // InputLabelProps={{
-                              //   style: { color: "#FFFFFF" },
-                              // }}
-                              />
-                              {!isOtpVerified && (
-                                <Button
-                                  onClick={otpHandler}
-                                  variant="contained"
-                                  style={{ width: "23%", marginBottom: 15 }}
-                                >
-                                  Resend OTP
-                                </Button>
-                              )}
-                            </>
-                          )}
-                        {/* <Button
+                          <TextField
+                            label="Phone"
+                            fullWidth
+                            name="Phone"
+                            disabled={isOtpVerified}
+                            type="number"
+                            min="1000000"
+                            max="9999999999"
+                            value={mobile}
+                            onChange={(e) => {
+                              if (enableOtpField) {
+                                setEnableOtpField(false);
+                              }
+                              if (e.target.value.length <= 10)
+                                setMobile(e.target.value);
+                            }}
+                            variant="outlined"
+                            style={{ marginBottom: 15 }}
+                          ></TextField>
+                          {
+                            mobile.length === 10 &&
+                            nameFeedback.length > 0 &&
+                            emailValid &&
+                            !enableOtpField && (
+                              <Button
+                                onClick={otpHandler}
+                                variant="contained"
+                                style={{ width: "23%", marginBottom: 15 }}
+                              >
+                                Verify
+                              </Button>
+                            )
+                            // : (
+                            //   isOtpVerified && (
+                            //     <div onClick={reset}>
+                            //       {" "}
+                            //       <EditIcon />{" "}
+                            //     </div>
+                            //   )
+                            // )
+                          }
+                          {enableOtpField &&
+                            nameFeedback.length > 0 &&
+                            emailValid && (
+                              <>
+                                <TextField
+                                  className="EmiInputs"
+                                  placeholder="Otp"
+                                  fullWidth
+                                  style={{ marginBottom: 15 }}
+                                  value={otp}
+                                  disabled={isOtpVerified}
+                                  onChange={inputChange}
+                                  name="otp"
+                                  type="number"
+                                  variant="outlined"
+                                // InputProps={{
+                                //   classes: {
+                                //     notchedOutline: classes.notchedOutline,
+                                //   },
+                                // }}
+                                // InputLabelProps={{
+                                //   style: { color: "#FFFFFF" },
+                                // }}
+                                />
+                                {!isOtpVerified && (
+                                  <Button
+                                    onClick={otpHandler}
+                                    variant="contained"
+                                    style={{ width: "23%", marginBottom: 15 }}
+                                  >
+                                    Resend OTP
+                                  </Button>
+                                )}
+                              </>
+                            )}
+                          {/* <Button
                           disabled={
                             !isOtpVerified ||
                             name.length === 0 ||
@@ -1482,80 +1492,81 @@ const HouseDetailPage = (props) => {
                           Submit
                         </Button> */}
 
-                        <Button
-                          variant="contained"
-                          disabled={
-                            !isOtpVerified ||
-                            nameFeedback.length === 0 ||
-                            !emailValid
-                          }
-                          onClick={(e) => handleData(e)}
-                          className={classes.btn1}
-                        >
-                          Submit
-                        </Button>
+                          <Button
+                            variant="contained"
+                            disabled={
+                              !isOtpVerified ||
+                              nameFeedback.length === 0 ||
+                              !emailValid
+                            }
+                            onClick={(e) => handleData(e)}
+                            className={classes.btn1}
+                          >
+                            Submit
+                          </Button>
+                        </Grid>
                       </Grid>
-                    </Grid>
-                  </Paper>
-                  <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
-                    <Grid container>
-                      <Grid item xs={12} md={12} className={classes.style2}>
-                        <LocationOnIcon
+                    </Paper>
+                    <Paper elevation={1} style={{ padding: 20, marginTop: 20 }}>
+                      <Grid container>
+                        <Grid item xs={12} md={12} className={classes.style2}>
+                          <LocationOnIcon
+                            style={{
+                              color: "#FF7601",
+                              fontSize: 20,
+                              padding: 0,
+                              marginRight: 8,
+                            }}
+                          />
+                          <Typography className={classes.text3}>
+                            {PropertyDetail?.address?.latitude}{" "}
+                            {PropertyDetail?.address?.longitude}{" "}
+                            {PropertyDetail?.address?.address}{" "}
+                            {PropertyDetail?.address?.city}{" "}
+                            {PropertyDetail?.address?.State}{" "}
+                            {PropertyDetail?.address?.pinCode}
+                          </Typography>
+                        </Grid>
+                        <Grid
+                          item
+                          xs={12}
+                          md={12}
+                          className="map-container"
                           style={{
-                            color: "#FF7601",
-                            fontSize: 20,
-                            padding: 0,
-                            marginRight: 8,
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "flex-start",
+                            justifyContent: "flex-start",
+                            overflow: "hidden",
                           }}
-                        />
-                        <Typography className={classes.text3}>
-                          {PropertyDetail?.address?.latitude}{" "}
-                          {PropertyDetail?.address?.longitude}{" "}
-                          {PropertyDetail?.address?.address}{" "}
-                          {PropertyDetail?.address?.city}{" "}
-                          {PropertyDetail?.address?.State}{" "}
-                          {PropertyDetail?.address?.pinCode}
-                        </Typography>
+                        >
+                          <MapContainer
+                            markers={[
+                              {
+                                lat: PropertyDetail?.address?.latitude,
+                                lng: PropertyDetail?.address?.longitude,
+                              },
+                            ]}
+                          />
+                        </Grid>
                       </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        md={12}
-                        className="map-container"
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "flex-start",
-                          justifyContent: "flex-start",
-                          overflow: "hidden",
-                        }}
-                      >
-                        <MapContainer
-                          markers={[
-                            {
-                              lat: PropertyDetail?.address?.latitude,
-                              lng: PropertyDetail?.address?.longitude,
-                            },
-                          ]}
-                        />
-                      </Grid>
-                    </Grid>
-                  </Paper>
+                    </Paper>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </Container>
-      ) : (
-        NoDataAvailable("Details Unavailable")
-        // <CircularProgress />
-      )}
-      <BookNowModal
-        open={bookNow}
-        detail={PropertyDetail}
-        closeBookNow={closeBookNow}
-      />
-    </div>
+          </Container>
+        ) : (
+          NoDataAvailable("Details Unavailable")
+          // <CircularProgress />
+        )}
+        <BookNowModal
+          open={bookNow}
+          detail={PropertyDetail}
+          closeBookNow={closeBookNow}
+        />
+      </div>
+    </>
   );
 };
 export const getServerSideProps = wrapper.getServerSideProps(

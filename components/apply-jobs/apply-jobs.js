@@ -314,11 +314,11 @@ function ApplyJobs(props) {
             <div style={{ display: "flex", width: "80%" }}>
               <TextField
                 className="EmiInputs"
-                style={{ marginTop: 15 }}
+                // style={{  }}
                 variant="outlined"
                 label="Phone Number"
                 name="Phone"
-                style={{ width: "76%" }}
+                style={{ width: "76%", marginTop: 15 }}
                 disabled={isOtpVerified}
                 type="number"
                 min="1000000"
@@ -342,10 +342,11 @@ function ApplyJobs(props) {
               ></TextField>
               {mobile.length === 10 && !enableOtpField ? (
                 <Button
-                  style={{ width: "20%" }}
+                  // style={{  }}
                   onClick={otpHandler}
                   variant="contained"
                   style={{
+                    width: "20%",
                     background: "green",
                     height: " 30px",
                     top: " 10px",
@@ -388,7 +389,7 @@ function ApplyJobs(props) {
 
             {!isOtpVerified && enableOtpField && (
               <Button
-                style={{ width: "23%" }}
+                // style={{  }}
                 onClick={otpHandler}
                 variant="contained"
                 style={{
@@ -397,6 +398,7 @@ function ApplyJobs(props) {
                   display: "inline-block",
                   marginTop: "27px",
                   marginLeft: "15px",
+                  width: "23%",
                   // top: " 10px",
                   // left: "5px",
                   color: "#fff",

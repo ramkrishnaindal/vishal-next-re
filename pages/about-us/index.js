@@ -141,11 +141,11 @@ const AboutUsPage = (props) => {
                         </Box>
                       </Grid>
                       <Grid
-                        className="about-page-images"
+                        className={`${classes.style2} classes.style2`}
                         item
                         xs={12}
                         md={6}
-                        className={classes.style2}
+                      // className={}
                       >
                         <Box className="about-page-image">
                           {" "}
