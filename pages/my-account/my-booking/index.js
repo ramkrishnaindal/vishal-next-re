@@ -185,7 +185,7 @@ const MyBooking = (props) => {
                             <Box className="tabel-row">
                               <Box className="table-cell booking-img">
                                 <NextLink href="#">
-                                  <Image
+                                  {/* <Image
                                     src={
                                       item?.images[0]?.mainImage[0]?.path
                                         ? ApiClient.SERVER_ADDRESS +
@@ -205,18 +205,18 @@ const MyBooking = (props) => {
                                     height="75"
                                     // layout="fill"
                                     onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                                  />
-                                  {/* <img
+                                  /> */}
+                                  <img
                                     src={
                                       item?.images[0]?.mainImage[0]?.path
                                         ? ApiClient.SERVER_ADDRESS +
-                                          "/" +
-                                          item?.images[0]?.mainImage[0]?.path
+                                        "/" +
+                                        item?.images[0]?.mainImage[0]?.path
                                         : "/no-image-available-icon-6.png"
                                     }
                                     width="75"
                                     height="75"
-                                  /> */}
+                                  />
                                 </NextLink>
                               </Box>
                               <Box className="table-cell">

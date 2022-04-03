@@ -56,7 +56,7 @@ const MyAccount = (props) => {
                       {" "}
                       <Image
                         src={
-                          "images/profile-img.jpg"
+                          "/images/profile-img.jpg"
                         }
                         // className={classes.avatar} 
                         alt={""}
@@ -137,7 +137,7 @@ const MyAccount = (props) => {
                           <Box className="myaccount-profileimg">
                             <Image
                               src={
-                                "../images/profile-img.jpg"
+                                "/images/profile-img.jpg"
                               }
                               // className={classes.avatar} 
                               alt={""}

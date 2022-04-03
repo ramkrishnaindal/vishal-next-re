@@ -167,7 +167,7 @@ const InvestWithUs = (props) => {
                             }}
                           >
                             {/* <i class="fas fa-user-tie"></i> */}
-                            <Image
+                            {/* <Image
                               src={
                                 ApiClient.SERVER_ADDRESS +
                                 "/" +
@@ -183,15 +183,15 @@ const InvestWithUs = (props) => {
                               // className="img"
                               layout="fill"
                               onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                            />
-                            {/* <img
+                            /> */}
+                            <img
                               src={
                                 ApiClient.SERVER_ADDRESS +
                                 "/" +
                                 data?.media[0]?.whatWeDoImages[index]?.path
                               }
                               className={`${classes.detailImage} box-img`}
-                            /> */}
+                            />
                           </div>
                         </Grid>
                         <Grid item xs={9} md={9} className="">
@@ -293,7 +293,7 @@ const InvestWithUs = (props) => {
                 return (
                   <Grid className="invest-item" item xs={12} md={4} key={i}>
                     <Box className="client-block-icon">
-                      <Image
+                      {/* <Image
                         src={
                           ApiClient.SERVER_ADDRESS +
                           "/" +
@@ -309,15 +309,15 @@ const InvestWithUs = (props) => {
                         // className="img"
                         layout="fill"
                         onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                      />
-                      {/* <img
+                      /> */}
+                      <img
                         src={
                           ApiClient.SERVER_ADDRESS +
                           "/" +
                           data?.media[0]?.howToInvestImages[i]?.path
                         }
                         className={`${classes.detailImage} box-img`}
-                      /> */}
+                      />
                       {/* 
                       <i
                         className={`fas ${details.icon}`}

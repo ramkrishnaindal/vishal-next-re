@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import NextLink from "../components/UI/NextLink";
 import { useDispatch } from "react-redux";
+import Head from 'next/head'
 // import * as LoginAction from "../redux/actions/LoginAction";
 // import { withRouter } from "react-router-dom";
 // import Header from "../components/header";
@@ -353,235 +354,244 @@ const HomePage = (props) => {
   );
 
   return (
-    <div className="main-content">
-      <Box className="slider-section section">
-        <Slider {...settings1}>
-          {(banners || []).map((imgPath) => {
-            console.log("asdas", imgPath);
-            return (
-              <Box
-                className="property-image-thumb"
-                style={{
-                  width: "100vw",
-                  height: "100vh",
-                  // position: "relative",
-                }}
-              >
-                {/* <img src={imgPath.imageUrl} alt="" /> */}
-                <Image
-                  src={imgPath.imageUrl}
-                  height={viewportToPixels("90vh")}
-                  width={viewportToPixels("100vw")}
-                // layout="fill"
-                // objectFit="fill"
-                />
-              </Box>
-            );
-          })}
-        </Slider>
-        {/* {loaded && <OwlCarouselSlider images={banners} autoPlay={true} />} */}
-      </Box>
-      {/* slider-section */}
-
-      <Box className="search-section section ">
-        <SearchBox />
-      </Box>
-      {/*========== search-section ============*/}
-
-      {/* <EmiCalculater />
-      <EnquryForm/> */}
-
-      <Box className="about-section section">
-        <Container className="container">
-          <Grid
-            container
-            spacing={3}
-            alignItems="center"
-            className="grid-container"
-          >
-            <Grid className="about-image-column" item xs={12} md={6}>
-              {/* <img src={aboutSection.images[0].imageUrl} alt="" style={{height: 490}} /> */}
-              {/* {loaded && ( */}
-              <Slider {...settingsDotsFalse} style={{ maxWidth: 500 }}>
-                {(aboutSection.images || aboutSectionInfo.images || []).map(
-                  (imgPath) => {
-                    // console.log("asdas", imgPath);
-                    return (
-                      <Box
-                        className="property-image-thumb"
-                        style={{ maxWidth: 500 }}
-                      >
-                        <Image
-                          src={imgPath.imageUrl}
-                          alt=""
-                          width={500}
-                          height={535}
-                          // layout="fill"
-                          // returns:
-                          // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
-                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                        />
-
-                        {/* <img src={imgPath.imageUrl} alt="" /> */}
-                      </Box>
-                    );
-                  }
-                )}
-              </Slider>
-
-              {/* <OwlCarouselSlider
-                style={{ maxWidth: 500 }}
-                images={aboutSection.images || aboutSectionInfo.images}
-                autoplay={true}
-              /> */}
-              {/* )} */}
-            </Grid>
-            <Grid
-              className="about-content-column animate__animated animate__backInRight"
-              item
-              xs={12}
-              md={6}
-            >
-              <Grid className="about-content">
-                <Typography variant="h4">
-                  ABOUT VISHAL CONSTRUCTION COMPANY
-                </Typography>
-                <Typography variant="h2">{aboutSection.title}</Typography>
-                <Typography>{aboutSection.description}</Typography>
-                {/* <Link href={{ pathname: "/about-us" }} passHref> */}
-                <NextLink href={{ pathname: "/about-us" }}>
-                  <Typography
-                    variant="outlined"
-                    color="primary"
-                    className="about-btn"
-                  >
-                    Read More
-                  </Typography>
-                </NextLink>
-                {/* </Link> */}
-              </Grid>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-      {/*========== about-section ============*/}
-
-      <Box className="stats-section section">
-        <Container className="container">
-          <Grid container spacing={3} alignItems="center">
-            <Grid className="stats-item" item xs={6} md={3}>
-              <Box className="stats-icon">
-                <DescriptionIcon />
-              </Box>
-              <Typography variant="h3">
-                {Counter(stats.years)}+ YEARS
-              </Typography>
-              <Typography>OF REDEFINING</Typography>
-            </Grid>
-
-            <Grid className="stats-item" item xs={6} md={3}>
-              <Box className="stats-icon">
-                <DescriptionIcon />
-              </Box>
-              <Typography variant="h3">{Counter(stats.projects)}+</Typography>
-              <Typography>PROJECTS</Typography>
-            </Grid>
-
-            <Grid className="stats-item" item xs={6} md={3}>
-              <Box className="stats-icon">
-                <DescriptionIcon />
-              </Box>
-              <Typography variant="h3">{Counter(stats.clients)}+ </Typography>
-              <Typography>Happy Clients</Typography>
-            </Grid>
-
-            <Grid className="stats-largest-block" item xs={6} md={3}>
-              <Typography>{stats.shortDescription}</Typography>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-      {/*========== stats-section ============*/}
-
-      <Box className="property-section section">
-        <Container>
-          <SectionHeader
-            title={APP_CONSTANTS.section2_title}
-            subtitle={APP_CONSTANTS.section2_subtitle}
-          />
-          {showPropertyData()}
-        </Container>
-      </Box>
-      {/*========== property-section ============*/}
-
-      <Box className="client-section section">
-        <Container>
-          {showDealingInDetails ? (
-            <SectionClient dealingInData={dealingInData} />
-          ) : null}
-        </Container>
-      </Box>
-      {/*========== client-section ============*/}
-
-      <Box className="property-section section">
-        <Container>
-          <SectionHeader title={services.header} subtitle={services.title} />
-          <Grid container spacing={3}>
-            {(services.items || []).map((service) => {
-              // console.log("service", service);
-              return (
-                <Grid item xs={12} md={3}>
-                  <ServiceCard service={service} />
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Container>
-      </Box>
-      {/*========== property-section ============*/}
-
-      <Box className="client-feedback-section section">
-        <Container>
-          <SectionFeedback />
-        </Container>
-      </Box>
-      {/*========== client-feedback-section ============*/}
-
-      <Box className="building-material-section section">
-        <Container>
-          <SectionHeader
-            title={APP_CONSTANTS.building_material_title}
-            subtitle={APP_CONSTANTS.building_material_subtitle}
-          />
-          <Slider {...settings5}>
-            {(building_materials || []).map((imgPath) => {
-              // console.log("asdas", imgPath);
+    <>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content="Luxury Flat, Apartment, Villas, House for Sale or Rent in Jaipur" />
+        <meta name="description" content="Buy Flat, Apartment, Villas and House in Jaipur and get 100% verified for buy or Sale with Vishal Construction Company." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
+      <div className="main-content">
+        <Box className="slider-section section">
+          <Slider {...settings1}>
+            {(banners || []).map((imgPath) => {
+              console.log("asdas", imgPath);
               return (
                 <Box
-                  className="building-material-wrap"
-                  style={{ margin: "0 15px" }}
-                  key={Math.random() * 1000}
+                  className="property-image-thumb"
+                  style={{
+                    width: "100vw",
+                    height: "100vh",
+                    // position: "relative",
+                  }}
                 >
+                  {/* <img src={imgPath.imageUrl} alt="" /> */}
                   <Image
                     src={imgPath.imageUrl}
-                    alt=""
-                    layout="fill"
-                    style={{ margin: "0 15px" }}
-                    // returns:
-                    // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
-                    onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                    height={viewportToPixels("90vh")}
+                    width={viewportToPixels("100vw")}
+                  // layout="fill"
+                  // objectFit="fill"
                   />
-                  {/* <img
-                    src={imgPath.imageUrl}
-                    alt=""
-                    style={{ margin: "0 15px" }}
-                  /> */}
                 </Box>
               );
             })}
           </Slider>
+          {/* {loaded && <OwlCarouselSlider images={banners} autoPlay={true} />} */}
+        </Box>
+        {/* slider-section */}
 
-          {/* <OwlCarouselSlider
+        <Box className="search-section section ">
+          <SearchBox />
+        </Box>
+        {/*========== search-section ============*/}
+
+        {/* <EmiCalculater />
+      <EnquryForm/> */}
+
+        <Box className="about-section section">
+          <Container className="container">
+            <Grid
+              container
+              spacing={3}
+              alignItems="center"
+              className="grid-container"
+            >
+              <Grid className="about-image-column" item xs={12} md={6}>
+                {/* <img src={aboutSection.images[0].imageUrl} alt="" style={{height: 490}} /> */}
+                {/* {loaded && ( */}
+                <Slider {...settingsDotsFalse} style={{ maxWidth: 500 }}>
+                  {(aboutSection.images || aboutSectionInfo.images || []).map(
+                    (imgPath) => {
+                      // console.log("asdas", imgPath);
+                      return (
+                        <Box
+                          className="property-image-thumb"
+                          style={{ maxWidth: 500 }}
+                        >
+                          <Image
+                            src={imgPath.imageUrl}
+                            alt=""
+                            width={500}
+                            height={535}
+                            // layout="fill"
+                            // returns:
+                            // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+                            onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                          />
+
+                          {/* <img src={imgPath.imageUrl} alt="" /> */}
+                        </Box>
+                      );
+                    }
+                  )}
+                </Slider>
+
+                {/* <OwlCarouselSlider
+                style={{ maxWidth: 500 }}
+                images={aboutSection.images || aboutSectionInfo.images}
+                autoplay={true}
+              /> */}
+                {/* )} */}
+              </Grid>
+              <Grid
+                className="about-content-column animate__animated animate__backInRight"
+                item
+                xs={12}
+                md={6}
+              >
+                <Grid className="about-content">
+                  <Typography variant="h4">
+                    ABOUT VISHAL CONSTRUCTION COMPANY
+                  </Typography>
+                  <Typography variant="h2">{aboutSection.title}</Typography>
+                  <Typography>{aboutSection.description}</Typography>
+                  {/* <Link href={{ pathname: "/about-us" }} passHref> */}
+                  <NextLink href={{ pathname: "/about-us" }}>
+                    <Typography
+                      variant="outlined"
+                      color="primary"
+                      className="about-btn"
+                    >
+                      Read More
+                    </Typography>
+                  </NextLink>
+                  {/* </Link> */}
+                </Grid>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+        {/*========== about-section ============*/}
+
+        <Box className="stats-section section">
+          <Container className="container">
+            <Grid container spacing={3} alignItems="center">
+              <Grid className="stats-item" item xs={6} md={3}>
+                <Box className="stats-icon">
+                  <DescriptionIcon />
+                </Box>
+                <Typography variant="h3">
+                  {Counter(stats.years)}+ YEARS
+                </Typography>
+                <Typography>OF REDEFINING</Typography>
+              </Grid>
+
+              <Grid className="stats-item" item xs={6} md={3}>
+                <Box className="stats-icon">
+                  <DescriptionIcon />
+                </Box>
+                <Typography variant="h3">{Counter(stats.projects)}+</Typography>
+                <Typography>PROJECTS</Typography>
+              </Grid>
+
+              <Grid className="stats-item" item xs={6} md={3}>
+                <Box className="stats-icon">
+                  <DescriptionIcon />
+                </Box>
+                <Typography variant="h3">{Counter(stats.clients)}+ </Typography>
+                <Typography>Happy Clients</Typography>
+              </Grid>
+
+              <Grid className="stats-largest-block" item xs={6} md={3}>
+                <Typography>{stats.shortDescription}</Typography>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+        {/*========== stats-section ============*/}
+
+        <Box className="property-section section">
+          <Container>
+            <SectionHeader
+              title={APP_CONSTANTS.section2_title}
+              subtitle={APP_CONSTANTS.section2_subtitle}
+            />
+            {showPropertyData()}
+          </Container>
+        </Box>
+        {/*========== property-section ============*/}
+
+        <Box className="client-section section">
+          <Container>
+            {showDealingInDetails ? (
+              <SectionClient dealingInData={dealingInData} />
+            ) : null}
+          </Container>
+        </Box>
+        {/*========== client-section ============*/}
+
+        <Box className="property-section section">
+          <Container>
+            <SectionHeader title={services.header} subtitle={services.title} />
+            <Grid container spacing={3}>
+              {(services.items || []).map((service) => {
+                // console.log("service", service);
+                return (
+                  <Grid item xs={12} md={3}>
+                    <ServiceCard service={service} />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Container>
+        </Box>
+        {/*========== property-section ============*/}
+
+        <Box className="client-feedback-section section">
+          <Container>
+            <SectionFeedback />
+          </Container>
+        </Box>
+        {/*========== client-feedback-section ============*/}
+
+        <Box className="building-material-section section">
+          <Container>
+            <SectionHeader
+              title={APP_CONSTANTS.building_material_title}
+              subtitle={APP_CONSTANTS.building_material_subtitle}
+            />
+            <Slider {...settings5}>
+              {(building_materials || []).map((imgPath) => {
+                // console.log("asdas", imgPath);
+                return (
+                  <Box
+                    className="building-material-wrap"
+                    style={{ margin: "0 15px" }}
+                    key={Math.random() * 1000}
+                  >
+                    <Image
+                      src={imgPath.imageUrl}
+                      alt=""
+                      layout="fill"
+                      style={{ margin: "0 15px" }}
+                      // returns:
+                      // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
+                      onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+                    />
+                    {/* <img
+                    src={imgPath.imageUrl}
+                    alt=""
+                    style={{ margin: "0 15px" }}
+                  /> */}
+                  </Box>
+                );
+              })}
+            </Slider>
+
+            {/* <OwlCarouselSlider
             images={building_materials}
             items={5}
             autoplay={true}
@@ -589,22 +599,23 @@ const HomePage = (props) => {
             navText={["next", "prev"]}
             dots={false}
           /> */}
-          {/* <SectionBM images={building_materials} /> */}
-        </Container>
-      </Box>
-      {/*========== building-material-section ============*/}
+            {/* <SectionBM images={building_materials} /> */}
+          </Container>
+        </Box>
+        {/*========== building-material-section ============*/}
 
-      <Box className="map-enquiry-section section">
-        <Container>
-          <SectionHeader
-            title={APP_CONSTANTS.map_section_title}
-            subtitle={APP_CONSTANTS.map_subsection_title}
-          />
-          <SectionMap />
-        </Container>
-      </Box>
-      {/*========== map-enquiry-section ============*/}
-    </div>
+        <Box className="map-enquiry-section section">
+          <Container>
+            <SectionHeader
+              title={APP_CONSTANTS.map_section_title}
+              subtitle={APP_CONSTANTS.map_subsection_title}
+            />
+            <SectionMap />
+          </Container>
+        </Box>
+        {/*========== map-enquiry-section ============*/}
+      </div>
+    </>
   );
 };
 export async function getStaticProps(context) {

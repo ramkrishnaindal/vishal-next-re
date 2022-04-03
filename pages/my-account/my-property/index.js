@@ -210,7 +210,7 @@ const MyProperty = (props) => {
                                       <Slider {...settings1}>
                                         {mainImage?.map((img) => (
                                           <Box className="property-image-thumb">
-                                            <Image
+                                            {/* <Image
                                               src={
                                                 img?.path
                                                   ? ApiClient.SERVER_ADDRESS +
@@ -228,16 +228,16 @@ const MyProperty = (props) => {
                                               // className="img"
                                               layout="fill"
                                               onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                                            />
-                                            {/* <img
+                                            /> */}
+                                            <img
                                               src={
                                                 img?.path
                                                   ? ApiClient.SERVER_ADDRESS +
-                                                    "/" +
-                                                    img?.path
+                                                  "/" +
+                                                  img?.path
                                                   : "/no-image-available-icon-6.png"
                                               }
-                                            /> */}
+                                            />
                                           </Box>
                                         ))}
                                       </Slider>

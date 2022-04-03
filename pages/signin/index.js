@@ -299,7 +299,7 @@ const LoginPage = (props) => {
         backgroundPosition: "center",
       }}
     >
-      <Paper className={classes.main}>
+      <Paper className={`${classes.main} signin`}>
         <Grid container style={{ flexDirection: "column" }}>
           <Grid
             item
@@ -367,7 +367,7 @@ const LoginPage = (props) => {
                 <TextField
                   className="EmiInputs"
                   placeholder="Otp"
-                  style={{ width: "50%", color: "#FFFFFF" }}
+                  style={{ width: "50%", color: "black!important" }}
                   fullWidth
                   value={state.otp}
                   disabled={isOtpVerified}
@@ -380,14 +380,14 @@ const LoginPage = (props) => {
                       notchedOutline: classes.notchedOutline,
                     },
                   }}
-                  // InputProps={{
-                  //   classes: {
-                  //     notchedOutline: classes.notchedOutline,
-                  //   },
-                  // }}
-                  // InputLabelProps={{
-                  //   style: { color: "#FFFFFF" },
-                  // }}
+                // InputProps={{
+                //   classes: {
+                //     notchedOutline: classes.notchedOutline,
+                //   },
+                // }}
+                // InputLabelProps={{
+                //   style: { color: "#FFFFFF" },
+                // }}
                 />
                 {!isOtpVerified && (
                   <Button

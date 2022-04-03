@@ -5362,3 +5362,7 @@ hr {
     /* color: #00afb8 !important; */
   }
 }
+
+.signin .EmiInputs input {
+  color: black;
+}

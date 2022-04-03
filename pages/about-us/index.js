@@ -17,6 +17,7 @@ import ApiClient from "../../api-client";
 // import OwlCarouselSlider from '../../components/carousel-slider';
 import HtmlParser from "react-html-parser";
 import Image from "next/image";
+import Head from "next/head";
 const useStyles = makeStyles((theme) => ({}));
 
 const AboutUsPage = (props) => {
@@ -75,35 +76,62 @@ const AboutUsPage = (props) => {
   };
 
   return (
-    <div style={{ background: "#fff" }}>
-      <PageBanner
-        bgImage={"/images/about_us.jpeg"}
-        title="About Us"
-        currentPage="ABOUT US"
-      />
-      {/* <Gallery /> */}
-      {viewDetails ? (
-        <Container>
-          <Box className="content-wrapper">
-            {aboutUsSection.map((aboutUsData, i) => {
-              const img = aboutUsData?.image[0]?.path
-                ? ApiClient.SERVER_ADDRESS + "/" + aboutUsData.image[0].path
-                : "no-image-available-icon-6.png";
+    <>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content="highly processed properties for accommodation and commercial purposes" />
+        <meta name="description" content="Our customers are not charged any brokerage or other hidden service fees while buying or selling properties as we follow a straightforward pricing policy." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
+      <div style={{ background: "#fff" }}>
+        <PageBanner
+          bgImage={"/images/about_us.jpeg"}
+          title="About Us"
+          currentPage="ABOUT US"
+        />
+        {/* <Gallery /> */}
+        {viewDetails ? (
+          <Container>
+            <Box className="content-wrapper">
+              {aboutUsSection.map((aboutUsData, i) => {
+                const img = aboutUsData?.image[0]?.path
+                  ? ApiClient.SERVER_ADDRESS + "/" + aboutUsData.image[0].path
+                  : "no-image-available-icon-6.png";
 
-              if (i % 2 === 0) {
-                return (
-                  <Box className="about-block-item">
-                    <Grid container alignItems="center">
-                      <Grid className="about-block-images" item xs={12} md={6}>
-                        <Box className="about-block-image">
-                          {/* <img src={aboutUsSection.images[0].imageUrl || "about-img.jpeg"} height={"auto"} alt={''} /> */}
-                          {/* <OwlCarouselSlider images={aboutUsSection.images || []} autoplay={true} /> */}
-                          <Image width={716} height={766} src={img} alt="" />
-                          {/* <img src={img} alt="" /> */}
-                        </Box>
+                if (i % 2 === 0) {
+                  return (
+                    <Box className="about-block-item">
+                      <Grid container alignItems="center">
+                        <Grid className="about-block-images" item xs={12} md={6}>
+                          <Box className="about-block-image">
+                            {/* <img src={aboutUsSection.images[0].imageUrl || "about-img.jpeg"} height={"auto"} alt={''} /> */}
+                            {/* <OwlCarouselSlider images={aboutUsSection.images || []} autoplay={true} /> */}
+                            <Image width={716} height={766} src={img} alt="" />
+                            {/* <img src={img} alt="" /> */}
+                          </Box>
+                        </Grid>
+                        <Grid className="about-block-summery" item xs={12} md={6}>
+                          <Box className="about-block-content">
+                            <Typography variant="h3">
+                              {aboutUsData.title}
+                            </Typography>
+                            <Typography>
+                              {HtmlParser(aboutUsData.description)}
+                            </Typography>
+                          </Box>
+                        </Grid>
                       </Grid>
-                      <Grid className="about-block-summery" item xs={12} md={6}>
-                        <Box className="about-block-content">
+                    </Box>
+                  );
+                }
+                return (
+                  <Box className="about-page-item about-whyus-item">
+                    <Grid container spacing={3}>
+                      <Grid className="about-page-summery" item xs={12} md={6}>
+                        <Box className="about-page-content">
+                          {/* <Typography variant="h4">Why Us</Typography> */}
                           <Typography variant="h3">
                             {aboutUsData.title}
                           </Typography>
@@ -112,42 +140,24 @@ const AboutUsPage = (props) => {
                           </Typography>
                         </Box>
                       </Grid>
+                      <Grid
+                        className="about-page-images"
+                        item
+                        xs={12}
+                        md={6}
+                        className={classes.style2}
+                      >
+                        <Box className="about-page-image">
+                          {" "}
+                          <img src={img} alt="" />
+                        </Box>
+                      </Grid>
                     </Grid>
                   </Box>
                 );
-              }
-              return (
-                <Box className="about-page-item about-whyus-item">
-                  <Grid container spacing={3}>
-                    <Grid className="about-page-summery" item xs={12} md={6}>
-                      <Box className="about-page-content">
-                        {/* <Typography variant="h4">Why Us</Typography> */}
-                        <Typography variant="h3">
-                          {aboutUsData.title}
-                        </Typography>
-                        <Typography>
-                          {HtmlParser(aboutUsData.description)}
-                        </Typography>
-                      </Box>
-                    </Grid>
-                    <Grid
-                      className="about-page-images"
-                      item
-                      xs={12}
-                      md={6}
-                      className={classes.style2}
-                    >
-                      <Box className="about-page-image">
-                        {" "}
-                        <img src={img} alt="" />
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Box>
-              );
-            })}
+              })}
 
-            {/* <Box className="about-page-item">
+              {/* <Box className="about-page-item">
               <Box className="about-page-content">
                 <Typography variant="h4"> {aboutUsSection.header}</Typography>
                 <Typography variant="h3"> {aboutUsSection.title}</Typography>
@@ -157,16 +167,17 @@ const AboutUsPage = (props) => {
               </Box>
             </Box> */}
 
-            <Box className="page-section-header" align="center">
-              <Box component="h2" className="page-section-title">
-                Our Team
+              <Box className="page-section-header" align="center">
+                <Box component="h2" className="page-section-title">
+                  Our Team
+                </Box>
               </Box>
+              <OurTeam team={team} />
             </Box>
-            <OurTeam team={team} />
-          </Box>
-        </Container>
-      ) : null}
-    </div>
+          </Container>
+        ) : null}
+      </div>
+    </>
   );
 };
 
