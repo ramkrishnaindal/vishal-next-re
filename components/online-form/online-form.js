@@ -16,7 +16,7 @@ import TextField from "@material-ui/core/TextField";
 import SectionHeader from "../section-header";
 // import SectionTabs from "../section-tabs";
 import APP_CONSTANTS from "../../constants/app-constants";
-
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import * as Snackbar from "../../redux/actions/SnackbarActions";
 import ApiClient from "../../api-client";
@@ -66,7 +66,14 @@ export default function OnlineBooking(props) {
   const [mobile, setMobile] = useState(
     JSON.parse(localStorage.getItem("user"))?.mobile
   );
+  const router = useRouter()
+  useEffect(() => {
+    // let userDetails = JSON.parse(window.localStorage.getItem("user"));
 
+    if (!localStorage.getItem("user")) {
+      router.push("/signin");
+    }
+  }, [])
   const otpHandler = async () => {
     try {
       setVerifyLoader(true);
@@ -260,7 +267,7 @@ export default function OnlineBooking(props) {
                       style: { color: "#FFFFFF" },
                     }}
 
-                    // input={<BootstrapInput />}
+                  // input={<BootstrapInput />}
                   >
                     <option value="">Select Property Type</option>
                     <option value="RESIDENTIAL">Residential</option>

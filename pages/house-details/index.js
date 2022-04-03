@@ -494,8 +494,8 @@ const HouseDetailPage = (props) => {
     if (!imgs || imgs.length == 0) {
       return [
         {
-          original: "no-image-available-icon-6.png",
-          thumbnail: "no-image-available-icon-6.png",
+          original: "/no-image-available-icon-6.png",
+          thumbnail: "/no-image-available-icon-6.png",
           description: "",
         },
       ];

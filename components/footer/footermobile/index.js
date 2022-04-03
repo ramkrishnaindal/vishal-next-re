@@ -582,7 +582,7 @@ export default function Mobilefootermenu() {
             time.length > 0 &&
             !enableOtpField && (
               <Button
-                style={{ width: "23%" }}
+                // style={{  }}
                 onClick={otpHandler}
                 variant="contained"
                 style={{
@@ -591,6 +591,7 @@ export default function Mobilefootermenu() {
                   top: " 10px",
                   left: "5px",
                   color: "#fff",
+                  width: "23%"
                 }}
               >
                 Verify
@@ -621,7 +622,7 @@ export default function Mobilefootermenu() {
               />
               {!isOtpVerified && (
                 <Button
-                  style={{ width: "23%" }}
+                  // style={{  }}
                   onClick={otpHandler}
                   variant="contained"
                   style={{
@@ -630,6 +631,7 @@ export default function Mobilefootermenu() {
                     top: " 10px",
                     left: "5px",
                     color: "#fff",
+                    width: "23%"
                   }}
                 >
                   Resend OTP

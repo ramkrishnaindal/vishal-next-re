@@ -295,7 +295,7 @@ export const getStaticProps = async (props) => {
         {},
         {},
         { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
-        true
+        true, true
       );
 
       // console.log("properties ", response);
@@ -305,7 +305,7 @@ export const getStaticProps = async (props) => {
         }, // will be passed to the page component as props
       };
     };
-    getData();
+    return getData();
   } catch (err) {
     console.log(err);
   }

@@ -663,29 +663,30 @@ const Header = (props) => {
             InputLabelProps={{
               style: { color: "#FFFFFF" },
             }}
-            // fullWidth
+          // fullWidth
           ></TextField>
           {
             mobile.length === 10 &&
-              name.length > 0 &&
-              emailValid &&
-              time.length > 0 &&
-              !enableOtpField && (
-                <Button
-                  style={{ width: "23%" }}
-                  onClick={otpHandler}
-                  variant="contained"
-                  style={{
-                    background: "green",
-                    height: " 30px",
-                    top: " 10px",
-                    left: "5px",
-                    color: "#fff",
-                  }}
-                >
-                  Verify
-                </Button>
-              )
+            name.length > 0 &&
+            emailValid &&
+            time.length > 0 &&
+            !enableOtpField && (
+              <Button
+
+                onClick={otpHandler}
+                variant="contained"
+                style={{
+                  background: "green",
+                  height: " 30px",
+                  top: " 10px",
+                  left: "5px",
+                  color: "#fff",
+                  width: "23%"
+                }}
+              >
+                Verify
+              </Button>
+            )
             // : (
             //   isOtpVerified && (
             //     <div onClick={reset}>
@@ -720,7 +721,7 @@ const Header = (props) => {
               />
               {!isOtpVerified && (
                 <Button
-                  style={{ width: "23%" }}
+
                   onClick={otpHandler}
                   variant="contained"
                   style={{
@@ -729,6 +730,7 @@ const Header = (props) => {
                     top: " 10px",
                     left: "5px",
                     color: "#fff",
+                    width: "23%"
                   }}
                 >
                   Resend OTP

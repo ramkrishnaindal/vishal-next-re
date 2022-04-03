@@ -15,7 +15,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menufrom ";
+import MenuIcon from "@material-ui/icons/Menu";
 // import logo from "/public/images/vishal-logo.png";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import ApiClient from "../../../api-client";

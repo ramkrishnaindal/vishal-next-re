@@ -92,23 +92,13 @@ const AboutUsPage = (props) => {
 
               if (i % 2 === 0) {
                 return (
-                  <Box className="about-block-item" key={i}>
+                  <Box className="about-block-item">
                     <Grid container alignItems="center">
                       <Grid className="about-block-images" item xs={12} md={6}>
                         <Box className="about-block-image">
                           {/* <img src={aboutUsSection.images[0].imageUrl || "about-img.jpeg"} height={"auto"} alt={''} /> */}
                           {/* <OwlCarouselSlider images={aboutUsSection.images || []} autoplay={true} /> */}
-                          <Image
-                            src={img}
-                            alt={""}
-                            // width={100}
-                            // height={100}
-                            // style={props.style}
-                            // style={{ cursor: "pointer" }}
-                            // className="img"
-                            layout="fill"
-                            onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                          />
+                          <Image width={716} height={766} src={img} alt="" />
                           {/* <img src={img} alt="" /> */}
                         </Box>
                       </Grid>
@@ -127,7 +117,7 @@ const AboutUsPage = (props) => {
                 );
               }
               return (
-                <Box className="about-page-item about-whyus-item" key={i}>
+                <Box className="about-page-item about-whyus-item">
                   <Grid container spacing={3}>
                     <Grid className="about-page-summery" item xs={12} md={6}>
                       <Box className="about-page-content">
@@ -141,25 +131,15 @@ const AboutUsPage = (props) => {
                       </Box>
                     </Grid>
                     <Grid
+                      className="about-page-images"
                       item
                       xs={12}
                       md={6}
-                      className={`${classes.style2} about-page-images`}
+                      className={classes.style2}
                     >
                       <Box className="about-page-image">
                         {" "}
-                        <Image
-                          src={img}
-                          alt={""}
-                          // width={100}
-                          // height={100}
-                          // style={props.style}
-                          // style={{ cursor: "pointer" }}
-                          // className="img"
-                          layout="fill"
-                          onLoadingComplete={(imageDimension) => console.log(imageDimension)}
-                        />
-                        {/* <img src={img} alt="" /> */}
+                        <img src={img} alt="" />
                       </Box>
                     </Grid>
                   </Grid>

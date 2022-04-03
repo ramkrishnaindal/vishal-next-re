@@ -349,7 +349,7 @@ const Footer = (props) => {
                 <NextLink
                   className={`${classes.text3} links`}
                   href={{
-                    pathname: "search-property-details/sell",
+                    pathname: "property/sell",
                   }}
                 >
                   <Typography>Properties</Typography>

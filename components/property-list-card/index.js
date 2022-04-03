@@ -514,18 +514,18 @@ const PropertyListCard = (props) => {
                 src={mainImage}
                 alt=""
                 className="image"
-                // width={100}
+                width={381}
                 height={300}
-                // style={props.style}
+                // // style={props.style}
                 style={{
                   width: "100%",
                   height: 300,
                   objectFit: "cover",
                   backgroundColor: "red",
                 }}
-                // className="img"
-                layout="fill"
-                onLoadingComplete={(imageDimension) => console.log(imageDimension)}
+              // className="img"
+              // layout="fill"
+              // onLoadingComplete={(imageDimension) => console.log(imageDimension)}
               />
               {/* <img
                 className="image"

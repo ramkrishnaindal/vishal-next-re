@@ -216,7 +216,7 @@ const SearchPropertyList = (props) => {
       // setServices(response.data);
       setPropertyListItem(response.data.list);
     };
-    getData();
+    return getData();
   };
 
   // console.log("view Details", viewDetails);

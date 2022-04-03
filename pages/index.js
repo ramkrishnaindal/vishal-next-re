@@ -414,7 +414,9 @@ const HomePage = (props) => {
                         <Image
                           src={imgPath.imageUrl}
                           alt=""
-                          layout="fill"
+                          width={500}
+                          height={535}
+                          // layout="fill"
                           // returns:
                           // {naturalWidth: <imageNaturalWidth>, naturalHeight: <imageNaturalHeight>}
                           onLoadingComplete={(imageDimension) => console.log(imageDimension)}

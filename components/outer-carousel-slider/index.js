@@ -199,12 +199,12 @@ const OuterCarouselSlider = (props) => {
                               <Image
                                 src={imgPath}
                                 alt=""
-                                // width={100}
-                                // height={100}
+                                width={400}
+                                height={200}
                                 // style={props.style}
                                 style={{ cursor: "pointer" }}
                                 // className="img"
-                                layout="fill"
+                                // layout="fill"
                                 onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                               />
                               {/* <img

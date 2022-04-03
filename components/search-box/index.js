@@ -414,7 +414,7 @@ const SearchBox = (props) => {
                   // type="submit"
                   onClick={() => handleSubmit}
                   variant="contained"
-                  // color="primary"
+                // color="primary"
                 >
                   Search
                 </Typography>

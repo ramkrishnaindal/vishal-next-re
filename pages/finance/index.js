@@ -81,7 +81,7 @@ const Finance = (props) => {
               <Grid className="about-block-images" item xs={12} md={5}>
                 <Box className="about-block-image">
                   <Image
-                    src={"../images/about-img.jpg"}
+                    src={"/images/about-img.jpg"}
                     // className={classes.avatar} 
                     alt={""}
                     // width={100}

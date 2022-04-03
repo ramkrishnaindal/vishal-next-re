@@ -166,7 +166,7 @@ const ServiceDetailPage = (props) => {
       setServiceDetail(response.data);
       setViewDetails(true);
     };
-    getData();
+    return getData();
   };
 
   let img1 = "/images/property_img3.jpeg";
