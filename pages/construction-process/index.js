@@ -49,7 +49,7 @@ const ConstructionProcess = (props) => {
           {constructionProcessData.map((Process, i) => {
             const img = Process?.image[0]?.path
               ? ApiClient.SERVER_ADDRESS + "/" + Process.image[0].path
-              : "no-image-available-icon-6.png";
+              : "/no-image-available-icon-6.png";
             if (i % 2 == 0) {
               return (
                 <Box className="about-page-item">
@@ -145,7 +145,7 @@ export const getStaticProps = async (props) => {
         {},
         {},
         { Cookie: ApiClient.cookie, Authorization: ApiClient.authorization },
-        true
+        true, true
       );
 
       // console.log("properties ", response);
@@ -155,7 +155,7 @@ export const getStaticProps = async (props) => {
         }, // will be passed to the page component as props
       };
     };
-    getData();
+    return getData();
   } catch (err) {
     console.log(err);
   }

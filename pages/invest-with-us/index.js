@@ -12,6 +12,7 @@ import PageBanner from "../../components/page-banner";
 import ApiClient from "../../api-client";
 import HtmlParser from "react-html-parser";
 import Image from 'next/image'
+import Head from 'next/head'
 // import "./invest-with-us.css";
 const useStyles = makeStyles((theme) => ({
   detailImage: {
@@ -105,69 +106,78 @@ const InvestWithUs = (props) => {
       : "no-image-available-icon-6.png";
   }
   return (
-    <div style={{ background: "#fff" }}>
-      <PageBanner
-        bgImage={banner}
-        title="Invest With Us"
-        currentPage="Invest With Us"
-      />
+    <>
+      <Head>
+        <title>Vishal Construction Company</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charset="UTF-8" />
+        <meta name="title" content=" invest with us to enjoy unlimited exciting services" />
+        <meta name="description" content="Vishal Construction Company tends to invest in people as they are the most valuable cornerstone and pillars providing us strength, success, and growth." />
+        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+      </Head>
+      <div style={{ background: "#fff" }}>
+        <PageBanner
+          bgImage={banner}
+          title="Invest With Us"
+          currentPage="Invest With Us"
+        />
 
-      <Container>
-        <Box className="content-wrapper">
-          <Box className="about-page-item">
-            <Box className="about-page-content" align="center">
-              <Typography variant="h3">
-                {data?.whatWeDoHeader || "What We Do"}
-              </Typography>
-              <Typography>{HtmlParser(data?.whatWeDoDescription)}</Typography>
+        <Container>
+          <Box className="content-wrapper">
+            <Box className="about-page-item">
+              <Box className="about-page-content" align="center">
+                <Typography variant="h3">
+                  {data?.whatWeDoHeader || "What We Do"}
+                </Typography>
+                <Typography>{HtmlParser(data?.whatWeDoDescription)}</Typography>
+              </Box>
             </Box>
-          </Box>
-          <Box
-            className="about-page-item"
-            style={{ display: "flex", flexDirection: "row" }}
-          >
-            <Box style={{ flexBasis: "60%" }}>
-              {data?.whatWeDo.map((whatWeDo, index) => {
-                return (
-                  <Grid
-                    key={whatWeDo.title}
-                    container
-                    spacing={3}
-                    xs={12}
-                    md={12}
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      // flexWrap: "wrap",
-                      flexBasis: "100%",
-                      justifyContent: "center",
-                    }}
-                  >
+            <Box
+              className="about-page-item"
+              style={{ display: "flex", flexDirection: "row" }}
+            >
+              <Box style={{ flexBasis: "60%" }}>
+                {data?.whatWeDo.map((whatWeDo, index) => {
+                  return (
                     <Grid
-                      className="about-page-summery"
-                      item
+                      key={whatWeDo.title}
+                      container
+                      spacing={3}
                       xs={12}
                       md={12}
-                    // style={{ flexBasis: "60%" }}
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        // flexWrap: "wrap",
+                        flexBasis: "100%",
+                        justifyContent: "center",
+                      }}
                     >
                       <Grid
-                        container
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "flex-end",
-                        }}
+                        className="about-page-summery"
+                        item
+                        xs={12}
+                        md={12}
+                      // style={{ flexBasis: "60%" }}
                       >
-                        <Grid item xs={3} md={3} style={{ margin: "auto" }}>
-                          <div
-                            className={classes.detailImage}
-                            style={{
-                              color: "coral",
-                              backgroundColor: "cornsilk",
-                            }}
-                          >
-                            {/* <i class="fas fa-user-tie"></i> */}
-                            {/* <Image
+                        <Grid
+                          container
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "flex-end",
+                          }}
+                        >
+                          <Grid item xs={3} md={3} style={{ margin: "auto" }}>
+                            <div
+                              className={classes.detailImage}
+                              style={{
+                                color: "coral",
+                                backgroundColor: "cornsilk",
+                              }}
+                            >
+                              {/* <i class="fas fa-user-tie"></i> */}
+                              {/* <Image
                               src={
                                 ApiClient.SERVER_ADDRESS +
                                 "/" +
@@ -184,116 +194,116 @@ const InvestWithUs = (props) => {
                               layout="fill"
                               onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                             /> */}
-                            <img
-                              src={
-                                ApiClient.SERVER_ADDRESS +
-                                "/" +
-                                data?.media[0]?.whatWeDoImages[index]?.path
-                              }
-                              className={`${classes.detailImage} box-img`}
-                            />
-                          </div>
-                        </Grid>
-                        <Grid item xs={9} md={9} className="">
-                          <Box className="about-page-content">
-                            <Typography variant="h5">
-                              {" "}
-                              {HtmlParser(whatWeDo.title)}
-                            </Typography>
-                            <div className="box-text">
-                              <input
-                                type="checkbox"
-                                id={`expanded${index}`}
-                                defaultChecked={checkedState[0]}
-                                onChange={() =>
-                                  setCheckedState((prevChState) => {
-                                    // const newState = [...prevChState];
-                                    prevChState[0] = !prevChState[0];
-                                    return [...prevChState];
-                                  })
+                              <img
+                                src={
+                                  ApiClient.SERVER_ADDRESS +
+                                  "/" +
+                                  data?.media[0]?.whatWeDoImages[index]?.path
                                 }
-                              // checked={checkedState[0]}
+                                className={`${classes.detailImage} box-img`}
                               />
-                              {HtmlParser(whatWeDo.description)}
-
-                              <label
-                                htmlFor={`expanded${index}`}
-                                role="button"
-                                style={{ cursor: "pointer" }}
-                                onClick={onReadClickHandler.bind(null, index)}
-                              >
-                                read{" "}
-                                {readMore
-                                  ? readMore[index]
-                                    ? "less"
-                                    : "more"
-                                  : "more"}
-                              </label>
                             </div>
-                            {/* <Typography>{HtmlParser(data?.description)}</Typography> */}
-                          </Box>
+                          </Grid>
+                          <Grid item xs={9} md={9} className="">
+                            <Box className="about-page-content">
+                              <Typography variant="h5">
+                                {" "}
+                                {HtmlParser(whatWeDo.title)}
+                              </Typography>
+                              <div className="box-text">
+                                <input
+                                  type="checkbox"
+                                  id={`expanded${index}`}
+                                  defaultChecked={checkedState[0]}
+                                  onChange={() =>
+                                    setCheckedState((prevChState) => {
+                                      // const newState = [...prevChState];
+                                      prevChState[0] = !prevChState[0];
+                                      return [...prevChState];
+                                    })
+                                  }
+                                // checked={checkedState[0]}
+                                />
+                                {HtmlParser(whatWeDo.description)}
+
+                                <label
+                                  htmlFor={`expanded${index}`}
+                                  role="button"
+                                  style={{ cursor: "pointer" }}
+                                  onClick={onReadClickHandler.bind(null, index)}
+                                >
+                                  read{" "}
+                                  {readMore
+                                    ? readMore[index]
+                                      ? "less"
+                                      : "more"
+                                    : "more"}
+                                </label>
+                              </div>
+                              {/* <Typography>{HtmlParser(data?.description)}</Typography> */}
+                            </Box>
+                          </Grid>
                         </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
-                );
-              })}
-            </Box>
-            <Grid
-              item
-              xs={12}
-              md={6}
-              className={`${classes.style2} about-page-images`}
-              style={{
-                flexBasis: "40%",
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "center",
-              }}
-            >
-              <Box
-                className="about-page-image"
+                  );
+                })}
+              </Box>
+              <Grid
+                item
+                xs={12}
+                md={6}
+                className={`${classes.style2} about-page-images`}
                 style={{
-                  margin: "auto",
-                  // flexDirection:"row",
-                  // justifyContent: "center",
-                  // alignItems: "center",
-                  display: "block",
-                  flexBasis: "100%",
-                  height: "50%",
-                  width: "100%",
-                  background: `url('${ApiClient.SERVER_ADDRESS +
-                    "/" +
-                    data?.media[0]?.image[0]?.path
-                    }'),rgba(0,0,0,.6)`,
-                  position: "relative",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
+                  flexBasis: "40%",
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
                 }}
               >
-                {/* <img src="https://images.unsplash.com/photo-1593642633279-1796119d5482?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60" alt="" /> */}
-              </Box>
-            </Grid>
-          </Box>
-        </Box>
-      </Container>
-
-      <Box className="invest-items-wrapper">
-        <Container>
-          <Box className="page-section-header" align="center">
-            <Box component="h2" className="page-section-title">
-              {data?.howToInvestTitle || "How We Invest"}
+                <Box
+                  className="about-page-image"
+                  style={{
+                    margin: "auto",
+                    // flexDirection:"row",
+                    // justifyContent: "center",
+                    // alignItems: "center",
+                    display: "block",
+                    flexBasis: "100%",
+                    height: "50%",
+                    width: "100%",
+                    background: `url('${ApiClient.SERVER_ADDRESS +
+                      "/" +
+                      data?.media[0]?.image[0]?.path
+                      }'),rgba(0,0,0,.6)`,
+                    position: "relative",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                  }}
+                >
+                  {/* <img src="https://images.unsplash.com/photo-1593642633279-1796119d5482?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60" alt="" /> */}
+                </Box>
+              </Grid>
             </Box>
           </Box>
-          <Box className="invest-items">
-            <Grid container spacing={3}>
-              {(data?.howToInvest || []).map((details, i) => {
-                debugger;
-                return (
-                  <Grid className="invest-item" item xs={12} md={4} key={i}>
-                    <Box className="client-block-icon">
-                      {/* <Image
+        </Container>
+
+        <Box className="invest-items-wrapper">
+          <Container>
+            <Box className="page-section-header" align="center">
+              <Box component="h2" className="page-section-title">
+                {data?.howToInvestTitle || "How We Invest"}
+              </Box>
+            </Box>
+            <Box className="invest-items">
+              <Grid container spacing={3}>
+                {(data?.howToInvest || []).map((details, i) => {
+                  debugger;
+                  return (
+                    <Grid className="invest-item" item xs={12} md={4} key={i}>
+                      <Box className="client-block-icon">
+                        {/* <Image
                         src={
                           ApiClient.SERVER_ADDRESS +
                           "/" +
@@ -310,15 +320,15 @@ const InvestWithUs = (props) => {
                         layout="fill"
                         onLoadingComplete={(imageDimension) => console.log(imageDimension)}
                       /> */}
-                      <img
-                        src={
-                          ApiClient.SERVER_ADDRESS +
-                          "/" +
-                          data?.media[0]?.howToInvestImages[i]?.path
-                        }
-                        className={`${classes.detailImage} box-img`}
-                      />
-                      {/* 
+                        <img
+                          src={
+                            ApiClient.SERVER_ADDRESS +
+                            "/" +
+                            data?.media[0]?.howToInvestImages[i]?.path
+                          }
+                          className={`${classes.detailImage} box-img`}
+                        />
+                        {/* 
                       <i
                         className={`fas ${details.icon}`}
                         style={{
@@ -329,17 +339,18 @@ const InvestWithUs = (props) => {
                         }}
                         aria-hidden="true"
                       ></i> */}
-                    </Box>
-                    <Typography variant="h4">{details.title}</Typography>
-                    <Typography> {details.detail}</Typography>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Box>
-        </Container>
-      </Box>
-    </div>
+                      </Box>
+                      <Typography variant="h4">{details.title}</Typography>
+                      <Typography> {details.detail}</Typography>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Box>
+          </Container>
+        </Box>
+      </div>
+    </>
   );
 };
 
