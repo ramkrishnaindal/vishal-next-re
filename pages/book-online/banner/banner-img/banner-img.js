@@ -9,7 +9,7 @@ function BannerImage() {
       className="onlineFormHeader"
       style={{ display: "flex", flexDirection: "column" }}
     >
-      <img src={"/banner/bookonline.jpg"} />
+      <img src={process.env.PUBLIC_URL + "/banner/bookonline.jpg"} />
       <BannerContent />
     </Box>
   );
