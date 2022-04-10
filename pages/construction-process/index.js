@@ -38,7 +38,7 @@ const ConstructionProcess = (props) => {
         <meta charset="UTF-8" />
         <meta name="title" content="construct new living that is attractive, functional, and inventive." />
         <meta name="description" content="Our team works to assist valued customers in constructing the greatest real estate decision possible based on their needs and budget." />
-        <meta name="keywords" content="Construction Company in Jaipur, Construction Company in Jagatpura, Construction Company, Construction Company in Rajasthan, Vishal Construction Company" />
+        <meta name="keywords" content="Construction Company in Jaipur, Property in Jaipur, Real Estate Company in Jaipur, Real Estate Agents in Jaipur, Builders in Jagatpura" />
       </Head>
       <div style={{ background: '#fff' }}>
         <PageBanner
